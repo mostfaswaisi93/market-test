@@ -8,4 +8,5 @@ Route::group(
             Route::get('/', 'AdminController@index')->name('index');
         });
     }
-); 
+);
+
