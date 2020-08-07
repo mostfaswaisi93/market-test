@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use Notifiable;
 
     /**
@@ -16,8 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'image'
     ];
+
+    protected $appends = ['image_path'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,5 +44,20 @@ class User extends Authenticatable
     public function getNameAttribute($value)
     {
         return ucfirst($value);
+    }
+
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getLastNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getImagePathAttribute()
+    {
+        return asset('uploads/user_images/' . $this->image);
     }
 }

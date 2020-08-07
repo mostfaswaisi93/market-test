@@ -55,7 +55,7 @@
                 </a>
                 <ul class="menu-content">
                     <li>
-                        <a href="#">
+                        <a href="{{ route('admin.users.index') }}">
                             <i class="feather icon-user"></i>
                             <span class="menu-item">@lang('site.profile')</span>
                         </a>
