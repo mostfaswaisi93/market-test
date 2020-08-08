@@ -1,4 +1,4 @@
-<!-- BEGIN: Navbar -->
+<!-- BEGIN: Menubar -->
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
     <div class="navbar-wrapper">
         <div class="navbar-container content">
@@ -98,7 +98,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name text-bold-600">
-                                    {{-- {{ auth()->user()->name }} --}} John Doe Hernan
+                                    {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
                                 </span>
                                 <span class="user-status">Available</span>
                             </div>
@@ -130,4 +130,4 @@
         </div>
     </div>
 </nav>
-<!-- END: Navbar -->
+<!-- END: Menubar -->

@@ -47,6 +47,9 @@ return [
     'edit_order'                => 'تعديل طلب',
 
     'users'                     => 'المستخدمين',
+    'create_user'               => 'إضافة مستخدم جديد',
+    'edit_user'                 => 'تعديل مستخدم',
+
     'users_management'          => 'إدارة المستخدمين',
     'user'                      => 'مستخدم',
     'first_name'                => 'الاسم الأول',

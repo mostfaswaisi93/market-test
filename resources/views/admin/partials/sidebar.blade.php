@@ -1,4 +1,4 @@
-@include('admin.partials.navbar')
+@include('admin.partials.menubar')
 
 <!-- BEGIN: Sidebar -->
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -7,16 +7,8 @@
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ route('admin.index') }}">
                     <img class="round" src="{{ url('admin_files/logo.png') }}" alt="avatar" height="45">
-                    {{-- <h2 class="brand-text mb-0">Halal Market</h2> --}}
                 </a>
             </li>
-            {{-- <li class="nav-item nav-toggle">
-                <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">
-                    <i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i>
-                    <i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary"
-                        data-ticon="icon-disc"></i>
-                </a>
-            </li> --}}
         </ul>
     </div>
     <div class="shadow-bottom"></div>
@@ -24,12 +16,21 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="navigation-header"><span>Apps</span>
             </li>
-            <li class="nav-item active">
-                <a href="{{ route('admin.index') }}">
-                    <i class="feather icon-home"></i>
-                    <span class="menu-title">@lang('site.home')</span>
+            <li {{ request()->route()->getName() === 'admin.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.index') }}" class="nav-link">
+                    <i class="fa fa-home font-green"></i>
+                    <span class="title">@lang('site.home')</span>
                 </a>
             </li>
+
+            @if (auth()->user()->hasPermission('read_users'))
+            <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.users.index') }}" class="nav-link">
+                    <i class="fa fa-cogs font-green"></i>
+                    <span class="title">@lang('site.users_management')</span>
+                </a>
+            </li>
+            @endif
             <li class="nav-item">
                 <a href="#">
                     <i class="feather icon-list"></i>
@@ -115,9 +116,42 @@
             <li class=" nav-item"><a href="page-account-settings.html"><i class="feather icon-settings"></i><span
                         class="menu-title" data-i18n="Account Settings">Account Settings</span></a>
             </li>
+
+            @if (auth()->user()->hasPermission('read_categories'))
+            <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
+                <a href="/admin/categories" class="nav-link">
+                    <i class="fa fa-list font-green"></i>
+                    <span class="title">@lang('site.categories')</span>
+                </a>
+            </li>
+            @endif
+            @if (auth()->user()->hasPermission('read_products'))
+            <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
+                <a href="/admin/products" class="nav-link">
+                    <i class="fa fa-product-hunt font-green"></i>
+                    <span class="title">@lang('site.products')</span>
+                </a>
+            </li>
+            @endif
+            @if (auth()->user()->hasPermission('read_clients'))
+            <li {{ request()->route()->getName() === 'admin.clients.index' ? ' class=active' : '' }}>
+                <a href="/admin/clients" class="nav-link">
+                    <i class="fa fa-users font-green"></i>
+                    <span class="title">@lang('site.clients')</span>
+                </a>
+            </li>
+            @endif
+            @if (auth()->user()->hasPermission('read_orders'))
+            <li {{ request()->route()->getName() === 'admin.orders.index' ? ' class=active' : '' }}>
+                <a href="/admin/orders" class="nav-link">
+                    <i class="fa fa-money font-green"></i>
+                    <span class="title">@lang('site.orders')</span>
+                </a>
+            </li>
+            @endif
         </ul>
     </div>
 </div>
 <!-- END: Sidebar -->
 
-@include('admin.partials.menu')
+@include('admin.partials.content')
