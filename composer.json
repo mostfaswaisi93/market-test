@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "mcamara/laravel-localization": "^1.5",
-        "santigarcor/laratrust": "5.2.*",
+        "santigarcor/laratrust": "^6.1",
+        "spatie/laravel-translatable": "^4.4",
         "yajra/laravel-datatables": "^1.5",
         "yajra/laravel-datatables-oracle": "^9.10"
     },

@@ -39,6 +39,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
 
+    <link rel="stylesheet" type="text/css" href="{{url('/css/styles.css')}}">
+
     @else
 
     <!-- BEGIN: Vendor CSS-->
@@ -64,6 +66,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style-rtl.css') }}">
     <!-- END: Custom CSS-->
         
+    <link rel="stylesheet" type="text/css" href="{{url('/css/styles-rtl.css')}}">
+
     @endif
 
 </head>

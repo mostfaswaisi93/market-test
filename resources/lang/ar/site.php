@@ -49,6 +49,7 @@ return [
     'users'                     => 'المستخدمين',
     'create_user'               => 'إضافة مستخدم جديد',
     'edit_user'                 => 'تعديل مستخدم',
+    'status'                    => 'الحالة',
 
     'users_management'          => 'إدارة المستخدمين',
     'user'                      => 'مستخدم',

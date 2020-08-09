@@ -125,16 +125,15 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function destroy($id, User $user)
+    public function destroy(User $user)
     {
         if ($user->image != 'default.png') {
 
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
         }
-        $user->delete();
 
-        $data = User::findOrFail($id);
-        $data->delete();
+        $user->delete();
         session()->flash('success', __('site.deleted_successfully'));
+        return redirect()->route('admin.users.index');
     }
 }

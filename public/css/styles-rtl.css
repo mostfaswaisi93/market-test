@@ -1,0 +1,11 @@
+.breadcrumb .breadcrumb-item+.breadcrumb-item:before {
+    content: '\e849' !important;
+}
+
+body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu .navigation li.has-sub>a:not(.mm-next):after {
+    content: '\f104' !important;
+}
+
+.nav.nav-tabs .nav-item .nav-link:hover {
+    color: #7367F0;
+}
