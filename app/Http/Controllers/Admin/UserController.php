@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -33,13 +35,13 @@ class UserController extends Controller
                     if (auth()->user()->hasPermission('update_users')) {
                         $button = '<a type="button" name="edit" href="users/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
-                        $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></button>';
+                        $button = '<a type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_users')) {
-                        $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></button>';
+                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
-                        $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></button>';
+                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
                     }
                     return $button;
                 })
@@ -81,7 +83,7 @@ class UserController extends Controller
         $user->attachRole('admin');
         $user->syncPermissions($request->permissions);
 
-        session()->flash('success', __('site.added_successfully'));
+        Toastr::success(__('site.added_successfully'), 'Success');
         return redirect()->route('admin.users.index');
     }
 
@@ -121,7 +123,7 @@ class UserController extends Controller
         $user->update($request_data);
 
         $user->syncPermissions($request->permissions);
-        session()->flash('success', __('site.updated_successfully'));
+        Toastr::success(__('site.updated_successfully'), 'Success');
         return redirect()->route('admin.users.index');
     }
 
@@ -135,6 +137,6 @@ class UserController extends Controller
 
         $data = User::findOrFail($id);
         $data->delete();
-        session()->flash('success', __('site.deleted_successfully'));
+        Toastr::success(__('site.deleted_successfully'), 'Success');
     }
 }

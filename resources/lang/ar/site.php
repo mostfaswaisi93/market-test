@@ -52,6 +52,11 @@ return [
     'status'                    => 'الحالة',
 
     'users_management'          => 'إدارة المستخدمين',
+    'categories_management'     => 'إدارة الأقسام',
+    'locations_management'      => 'إدارة المناطق',
+    'notifications_management'  => 'إدارة التنبيهات',
+    'orders_management'         => 'إدارة الطلبات',
+    'customers_management'      => 'إدارة الزبائن',
     'user'                      => 'مستخدم',
     'first_name'                => 'الاسم الأول',
     'last_name'                 => 'الاسم الأخير',

@@ -5,12 +5,3 @@
 body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu .navigation li.has-sub>a:not(.mm-next):after {
     content: '\f104' !important;
 }
-
-.nav.nav-tabs .nav-item .nav-link:hover {
-    color: #7367F0;
-}
-
-.btn.btn-sm.btn-icon:hover {
-    background-color: #6d63e6;
-    color: #fff;
-}

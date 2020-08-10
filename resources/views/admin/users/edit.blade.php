@@ -22,6 +22,7 @@
         </div>
     </div>
 </div>
+
 <section>
     <div class="card">
         <div class="card-content">
@@ -39,7 +40,7 @@
                                         height="90" width="90">
                                 </a>
                                 <div class="media-body mt-50">
-                                    <h4 class="card-title"><i class="feather icon-user-plus mr-25"></i>
+                                    <h4 class="card-title"><i class="feather icon-edit mr-25"></i>
                                         @lang('site.edit_user')</h4>
                                     <div class="col-4 d-flex mt-1 px-0">
                                         <input type="file" class="form-control-file image" name="image" id="image">
@@ -101,6 +102,7 @@
                                         <label>
                                             <div class="vs-checkbox-con vs-checkbox-primary">
                                                 <input type="checkbox" name="permissions[]"
+                                                    {{ $user->hasPermission($map . '_' . $model) ? 'checked' : '' }}
                                                     value="{{ $map . '_' . $model }}">
                                                 <span class="vs-checkbox">
                                                     <span class="vs-checkbox--check">
@@ -119,7 +121,7 @@
                         </div>
                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                             <button type="submit" class="btn btn-primary mr-1 mb-1">
-                                @lang('site.add')
+                                @lang('site.edit')
                             </button>
                             <button type="reset" class="btn btn-outline-warning mr-1 mb-1">
                                 @lang('site.reset')

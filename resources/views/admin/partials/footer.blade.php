@@ -37,6 +37,10 @@
 {{-- Custom js --}}
 <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
 
+{{-- Toastr js --}}
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
+
 <script>
     $(document).ready(function () {
         //Delete
@@ -60,6 +64,8 @@
         });        
     });
 </script>
+
+@include('sweetalert::alert')
 
 @stack('scripts')
 

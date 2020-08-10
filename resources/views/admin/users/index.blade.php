@@ -88,7 +88,6 @@
                 },
                 { data: 'image_path', name: 'image_path',
                     render: function(data, type, full, meta) {
-                        console.log(data);
                         return "<img src=" + data + " width='70px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
