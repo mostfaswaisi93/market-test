@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Carbon;
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
@@ -23,7 +24,8 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at'     => 'datetime',
+        'created_at'            => 'date:Y-m-d',
     ];
 
     public function getFirstNameAttribute($value)

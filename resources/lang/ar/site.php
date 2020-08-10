@@ -60,7 +60,7 @@ return [
     'action'                    => 'خيارات',
 
     'permissions'               => 'الصلاحيات',
-    'categories'                => 'الأقسام/ التصنيفات',
+    'categories'                => 'الأقسام',
     'all_categories'            => 'كل الأقسام',
     'name'                      => 'الاسم',
     'description'               => 'الوصف',

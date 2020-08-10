@@ -31,15 +31,15 @@ class UserController extends Controller
             return datatables()->of($users)
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_users')) {
-                        $button = '<a type="button" name="edit" href="users/' . $data->id . '/edit" class="edit btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" name="edit" href="users/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
-                        $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-xs disabled"><i class="fa fa-edit"></i></button>';
+                        $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></button>';
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_users')) {
-                        $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>';
+                        $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></button>';
                     } else {
-                        $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-xs disabled"><i class="fa fa-trash"></i></button>';
+                        $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></button>';
                     }
                     return $button;
                 })
@@ -125,15 +125,16 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function destroy(User $user)
+    public function destroy($id, User $user)
     {
         if ($user->image != 'default.png') {
 
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
         }
-
         $user->delete();
+
+        $data = User::findOrFail($id);
+        $data->delete();
         session()->flash('success', __('site.deleted_successfully'));
-        return redirect()->route('admin.users.index');
     }
 }

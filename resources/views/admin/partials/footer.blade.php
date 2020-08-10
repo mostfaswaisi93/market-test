@@ -34,67 +34,34 @@
 <script src="{{ url('admin_files/app-assets/js/scripts/datatables/datatable.js') }}"></script>
 <!-- END: Page JS-->
 
-<!-- BEGIN: Custom JS-->
-<script src="{{ url('admin_files/app-assets/js/custom.js') }}"></script>
-<!-- END: Custom JS-->
-
-@stack('scripts')
+{{-- Custom js --}}
+<script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
 
 <script>
     $(document).ready(function () {
-        // $('.sidebar-menu').tree();
-
-        // //icheck
-        // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        //     checkboxClass: 'icheckbox_minimal-blue',
-        //     radioClass: 'iradio_minimal-blue'
-        // });
-
-        //delete
+        //Delete
         $('.delete').click(function (e) {
-
             var that = $(this)
-
             e.preventDefault();
-
             var n = new Noty({
                 text: "@lang('site.confirm_delete')",
-                type: "warning",
+                type: "alert",
                 killer: true,
                 buttons: [
-                    Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
+                    Noty.button("@lang('site.yes')", 'btn btn-danger mr-2', function () {
                         that.closest('form').submit();
                     }),
-
-                    Noty.button("@lang('site.no')", 'btn btn-primary mr-2', function () {
+                    Noty.button("@lang('site.no')", 'btn btn-light mr-2', function () {
                         n.close();
                     })
                 ]
             });
-
             n.show();
-
-        });//end of delete
-
-        // image preview
-        $(".image").change(function () {
-
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('.image-preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(this.files[0]);
-            }
-
-        });
-
-    })
-
-
+        });        
+    });
 </script>
+
+@stack('scripts')
 
 </body>
 <!-- END: Body-->
