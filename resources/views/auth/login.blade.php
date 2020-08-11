@@ -111,19 +111,19 @@
                                                     <fieldset
                                                         class="form-label-group form-group position-relative has-icon-left">
                                                         <input id="email" type="email" class="form-control" name="email"
-                                                            placeholder="@lang('site.email')">
+                                                            placeholder="@lang('admin.email')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
-                                                        <label for="email">@lang('site.email')</label>
+                                                        <label for="email">@lang('admin.email')</label>
                                                     </fieldset>
                                                     <fieldset class="form-label-group position-relative has-icon-left">
                                                         <input id="password" type="password" class="form-control"
-                                                            name="password" placeholder="@lang('site.password')">
+                                                            name="password" placeholder="@lang('admin.password')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-lock"></i>
                                                         </div>
-                                                        <label for="password">@lang('site.password')</label>
+                                                        <label for="password">@lang('admin.password')</label>
                                                     </fieldset>
                                                     <div
                                                         class="form-group d-flex justify-content-between align-items-center">
@@ -136,7 +136,7 @@
                                                                             <i class="vs-icon feather icon-check"></i>
                                                                         </span>
                                                                     </span>
-                                                                    <span class="">@lang('site.remember_me')</span>
+                                                                    <span class="">@lang('admin.remember_me')</span>
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -144,7 +144,7 @@
                                                                 Password?</a></div>
                                                     </div>
                                                     <button type="submit"
-                                                        class="btn btn-primary float-right btn-inline">@lang('site.login')</button>
+                                                        class="btn btn-primary float-right btn-inline">@lang('admin.login')</button>
                                                 </form>
                                             </div>
                                         </div>

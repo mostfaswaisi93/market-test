@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <header class="panel-heading panel-heading-blue"><i class="fa fa-cogs"></i>
-                        @lang('site.users_management')</header>
+                        @lang('admin.users_management')</header>
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -16,13 +16,13 @@
                                     @if (auth()->user()->hasPermission('create_users'))
                                     <a href="{{ route('admin.users.create') }}">
                                         <button class="btn btn-info">
-                                            <i class="fa fa-plus"></i> @lang('site.create_user')
+                                            <i class="fa fa-plus"></i> @lang('admin.create_user')
                                         </button>
                                     </a>
                                     @else
                                     <a href="#">
                                         <button class="btn btn-info disabled">
-                                            <i class="fa fa-plus"></i> @lang('site.create_user')
+                                            <i class="fa fa-plus"></i> @lang('admin.create_user')
                                         </button>
                                     </a>
                                     @endif
@@ -56,17 +56,17 @@
                                 <div class="form-group col-md-4">
                                     <br>
                                     <input type="text" name="usersSearch" class="form-control"
-                                        placeholder="@lang('site.search')" id="usersSearch" value="">
+                                        placeholder="@lang('admin.search')" id="usersSearch" value="">
                                 </div>
                                 <div class="col-md-1">
                                     <br>
                                     @csrf
                                     <button class="btn btn-success" name="search" id="search"
-                                        type="button">@lang('site.search')</button>
+                                        type="button">@lang('admin.search')</button>
                                 </div>
                                 <div class="col-md-1">
                                     <br>
-                                    <button type="reset" class="btn btn-danger">@lang('site.reset')</button>
+                                    <button type="reset" class="btn btn-danger">@lang('admin.reset')</button>
                                 </div>
                             </form>
                         </div>
@@ -76,12 +76,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('site.first_name')</th>
-                                    <th>@lang('site.last_name')</th>
-                                    <th>@lang('site.email')</th>
-                                    {{-- <th>@lang('site.image')</th> --}}
-                                    <th>@lang('site.created_at')</th>
-                                    <th>@lang('site.action')</th>
+                                    <th>@lang('admin.first_name')</th>
+                                    <th>@lang('admin.last_name')</th>
+                                    <th>@lang('admin.email')</th>
+                                    {{-- <th>@lang('admin.image')</th> --}}
+                                    <th>@lang('admin.created_at')</th>
+                                    <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
                         </table>

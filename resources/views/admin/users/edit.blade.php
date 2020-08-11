@@ -6,16 +6,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('site.edit_user')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_user')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('site.home')</a>
+                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.users.index') }}">@lang('site.users_management')</a>
+                            <a href="{{ route('admin.users.index') }}">@lang('admin.users_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('site.edit_user')</li>
+                        <li class="breadcrumb-item active">@lang('admin.edit_user')</li>
                     </ol>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                                 </a>
                                 <div class="media-body mt-50">
                                     <h4 class="card-title"><i class="feather icon-edit mr-25"></i>
-                                        @lang('site.edit_user')</h4>
+                                        @lang('admin.edit_user')</h4>
                                     <div class="col-4 d-flex mt-1 px-0">
                                         <input type="file" class="form-control-file image" name="image" id="image">
                                     </div>
@@ -51,27 +51,27 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('site.first_name')</label>
+                                    <label>@lang('admin.first_name')</label>
                                     <input id="first_name" type="text" name="first_name" class="form-control"
-                                        value="{{ $user->first_name }}" placeholder="@lang('site.first_name')">
+                                        value="{{ $user->first_name }}" placeholder="@lang('admin.first_name')">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('site.last_name')</label>
+                                    <label>@lang('admin.last_name')</label>
                                     <input id="last_name" type="text" name="last_name" class="form-control"
-                                        value="{{ $user->last_name }}" placeholder="@lang('site.last_name')">
+                                        value="{{ $user->last_name }}" placeholder="@lang('admin.last_name')">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('site.email')</label>
+                                    <label>@lang('admin.email')</label>
                                     <input id="email" type="email" name="email" class="form-control"
-                                        value="{{ $user->email }}" placeholder="@lang('site.email')">
+                                        value="{{ $user->email }}" placeholder="@lang('admin.email')">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <div class="table-responsive border rounded px-1">
                                 <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2">
                                     <i class="feather icon-lock mr-50"></i>
-                                    @lang('site.permissions')
+                                    @lang('admin.permissions')
                                 </h6> <br>
                                 @php
                                 $models = ['users', 'categories', 'products'];
@@ -90,7 +90,7 @@
                                     @foreach ($models as $index => $model)
                                     <li class="nav-item">
                                         <a class="nav-link d-flex align-items-center {{ $index == 0 ? 'active' : '' }}"
-                                            href="#{{ $model }}" data-toggle="tab"><b>@lang('site.' .
+                                            href="#{{ $model }}" data-toggle="tab"><b>@lang('admin.' .
                                                 $model)</b></a>
                                     </li>
                                     @endforeach
@@ -109,7 +109,7 @@
                                                         <i class="vs-icon feather icon-check"></i>
                                                     </span>
                                                 </span>
-                                                <span class=""><b>@lang('site.' .$map)</b></span>
+                                                <span class=""><b>@lang('admin.' .$map)</b></span>
                                             </div>
                                         </label>
                                         @endforeach
@@ -121,10 +121,10 @@
                         </div>
                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                             <button type="submit" class="btn btn-primary mr-1 mb-1">
-                                @lang('site.edit')
+                                @lang('admin.edit')
                             </button>
                             <button type="reset" class="btn btn-outline-warning mr-1 mb-1">
-                                @lang('site.reset')
+                                @lang('admin.reset')
                             </button>
                         </div>
                     </div>

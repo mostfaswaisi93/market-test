@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request)
+    public function index1(Request $request)
     {
         $categories = Category::when($request->search, function ($q) use ($request) {
 
@@ -17,6 +17,33 @@ class CategoryController extends Controller
         })->latest()->paginate(5);
 
         return view('admin.categories.index', compact('categories'));
+    }
+
+    public function index()
+    {
+        $categories = Category::OrderBy('created_at', 'desc');
+
+        if (request()->ajax()) {
+
+            return datatables()->of($categories)
+                ->addColumn('action', function ($data) {
+                    if (auth()->user()->hasPermission('update_categories')) {
+                        $button = '<a type="button" name="edit" href="categories/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
+                    } else {
+                        $button = '<a type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
+                    }
+                    $button .= '&nbsp;&nbsp;';
+                    if (auth()->user()->hasPermission('delete_categories')) {
+                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
+                    } else {
+                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
+                    }
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.categories.index');
     }
 
     public function create()
@@ -35,7 +62,7 @@ class CategoryController extends Controller
         $request->validate($rules);
 
         Category::create($request->all());
-        session()->flash('success', __('site.added_successfully'));
+        session()->flash('success', __('admin.added_successfully'));
 
         return redirect()->route('admin.categories.index');
     }
@@ -56,7 +83,7 @@ class CategoryController extends Controller
 
         $request->validate($rules);
         $category->update($request->all());
-        session()->flash('success', __('site.updated_successfully'));
+        session()->flash('success', __('admin.updated_successfully'));
 
         return redirect()->route('admin.categories.index');
     }
@@ -64,7 +91,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        session()->flash('success', __('site.deleted_successfully'));
+        session()->flash('success', __('admin.deleted_successfully'));
         return redirect()->route('admin.categories.index');
     }
 }

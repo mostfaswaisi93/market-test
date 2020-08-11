@@ -1,4 +1,4 @@
-<!-- BEGIN: Menubar -->
+<!-- BEGIN: Menu -->
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
     <div class="navbar-wrapper">
         <div class="navbar-container content">
@@ -118,7 +118,7 @@
 
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                                <i class="feather icon-power"></i> @lang('site.logout')
+                                <i class="feather icon-power"></i> @lang('admin.logout')
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
@@ -130,4 +130,4 @@
         </div>
     </div>
 </nav>
-<!-- END: Menubar -->
+<!-- END: Menu -->

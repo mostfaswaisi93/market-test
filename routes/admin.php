@@ -12,6 +12,8 @@ Route::group(
             Route::resource('locations', 'LocationController')->except(['show']);
             Route::resource('notifications', 'NotificationController')->except(['show']);
             Route::resource('orders', 'OrderController')->except(['show']);
+            Route::resource('countries', 'CountryController')->except(['show']);
+            Route::resource('settings', 'SettingController')->except(['show']);
 
             Route::resource('users', 'UserController')->except(['show']);
             Route::get('users/destroy/{id}', 'UserController@destroy');

@@ -24,11 +24,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::OrderBy('created_at', 'desc')->whereRoleIs('admin');
-        $email = request()->get('email');
 
         if (request()->ajax()) {
-            if (isset($email))
-                $users->where('email', $email);
 
             return datatables()->of($users)
                 ->addColumn('action', function ($data) {
@@ -83,7 +80,7 @@ class UserController extends Controller
         $user->attachRole('admin');
         $user->syncPermissions($request->permissions);
 
-        Toastr::success(__('site.added_successfully'), 'Success');
+        Toastr::success(__('admin.added_successfully'), 'Success');
         return redirect()->route('admin.users.index');
     }
 
@@ -123,7 +120,7 @@ class UserController extends Controller
         $user->update($request_data);
 
         $user->syncPermissions($request->permissions);
-        Toastr::success(__('site.updated_successfully'), 'Success');
+        Toastr::success(__('admin.updated_successfully'), 'Success');
         return redirect()->route('admin.users.index');
     }
 
@@ -137,6 +134,6 @@ class UserController extends Controller
 
         $data = User::findOrFail($id);
         $data->delete();
-        Toastr::success(__('site.deleted_successfully'), 'Success');
+        Toastr::success(__('admin.deleted_successfully'), 'Success');
     }
 }

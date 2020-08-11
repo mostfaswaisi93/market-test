@@ -1,7 +1,7 @@
 <!-- BEGIN: Footer-->
 <footer class="footer footer-static footer-light">
     <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">
-            &copy; @lang('site.all_rights')</span>
+            &copy; @lang('admin.all_rights')</span>
         <span class="float-md-right d-none d-md-block"> <a href="https://github.com/mostfaswaisi93">mostfaswaisi93</a>
             <i class="feather icon-heart pink"></i></span>
         <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
@@ -48,14 +48,14 @@
             var that = $(this)
             e.preventDefault();
             var n = new Noty({
-                text: "@lang('site.confirm_delete')",
+                text: "@lang('admin.confirm_delete')",
                 type: "alert",
                 killer: true,
                 buttons: [
-                    Noty.button("@lang('site.yes')", 'btn btn-danger mr-2', function () {
+                    Noty.button("@lang('admin.yes')", 'btn btn-danger mr-2', function () {
                         that.closest('form').submit();
                     }),
-                    Noty.button("@lang('site.no')", 'btn btn-light mr-2', function () {
+                    Noty.button("@lang('admin.no')", 'btn btn-light mr-2', function () {
                         n.close();
                     })
                 ]

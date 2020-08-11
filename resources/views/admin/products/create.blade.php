@@ -6,13 +6,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('site.create_user')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_user')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.users.index') }}">@lang('site.users')</a>
+                            <a href="{{ route('admin.users.index') }}">@lang('admin.users')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('site.create_user')</li>
+                        <li class="breadcrumb-item active">@lang('admin.create_user')</li>
                     </ol>
                 </div>
             </div>
@@ -26,14 +26,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <header class="panel-heading panel-heading-blue"><i class="fa fa-plus"></i>
-                        @lang('site.create_user')</header>
+                        @lang('admin.create_user')</header>
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="btn-group">
                                     <a href="{{ route('admin.users.index') }}">
                                         <button class="btn btn-info">
-                                            <i class="fa fa-arrow-left"></i> @lang('site.back')
+                                            <i class="fa fa-arrow-left"></i> @lang('admin.back')
                                         </button>
                                     </a>
                                 </div>
@@ -48,28 +48,28 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="name"
-                                            class="control-label col-md-3">@lang('site.first_name')</label>
+                                            class="control-label col-md-3">@lang('admin.first_name')</label>
                                         <div class="col-md-6">
                                             <input type="text" name="first_name" class="form-control"
                                                 value="{{ old('first_name') }}">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('site.last_name')</label>
+                                        <label for="name" class="control-label col-md-3">@lang('admin.last_name')</label>
                                         <div class="col-md-6">
                                             <input type="text" name="last_name" class="form-control"
                                                 value="{{ old('last_name') }}">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('site.email')</label>
+                                        <label for="name" class="control-label col-md-3">@lang('admin.email')</label>
                                         <div class="col-md-6">
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('site.image')</label>
+                                        <label for="name" class="control-label col-md-3">@lang('admin.image')</label>
                                         <div class="col-md-6">
                                             <input type="file" name="image" class="form-control image">
                                         </div>
@@ -82,20 +82,20 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('site.password')</label>
+                                        <label for="name" class="control-label col-md-3">@lang('admin.password')</label>
                                         <div class="col-md-6">
                                             <input type="password" name="password" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="name"
-                                            class="control-label col-md-3">@lang('site.password_confirmation')</label>
+                                            class="control-label col-md-3">@lang('admin.password_confirmation')</label>
                                         <div class="col-md-6">
                                             <input type="password" name="password_confirmation" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="control-label col-md-3">@lang('site.permissions')</label>
+                                        <label class="control-label col-md-3">@lang('admin.permissions')</label>
                                     </div>
                                     <div class="form-group col-md-12">
 
@@ -108,7 +108,7 @@
                                                 <ul class="nav nav-tabs">
                                                     @foreach ($models as $index=>$model)
                                                     <li class="{{ $index == 0 ? 'active' : '' }}"><a
-                                                            href="#{{ $model }}" data-toggle="tab">@lang('site.' .
+                                                            href="#{{ $model }}" data-toggle="tab">@lang('admin.' .
                                                             $model)</a></li>
                                                     @endforeach
                                                 </ul>
@@ -120,7 +120,7 @@
                                                     @foreach ($maps as $map)
                                                     <label><input type="checkbox" name="permissions[]" class="icheck"
                                                             value="{{ $map . '_' . $model }}">
-                                                        @lang('site.' . $map)</label>
+                                                        @lang('admin.' . $map)</label>
                                                     @endforeach
                                                 </div>
                                                 @endforeach
@@ -133,7 +133,7 @@
                             <div class="form-actions">
                                 <div class="btn-set pull-left">
                                     <button type="submit" class="btn blue"><i class="fa fa-plus"></i>
-                                        @lang('site.add')</button>
+                                        @lang('admin.add')</button>
                                 </div>
                             </div>
                         </form>

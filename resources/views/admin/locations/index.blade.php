@@ -6,13 +6,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('site.categories_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.categories_management')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('site.home')</a>
+                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('site.categories_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.categories_management')</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
     <section class="users-list-wrapper">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('site.categories_management')</h4>
+                <h4 class="card-title">@lang('admin.categories_management')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -33,13 +33,13 @@
                         <a href="{{ route('admin.categories.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-user-plus mr-25"></i>
-                                @lang('site.create_user')
+                                @lang('admin.create_user')
                             </button>
                         </a>
                         @else
                         <a href="#">
                             <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('site.create_user')
+                                <i class="feather icon-plus"></i> @lang('admin.create_user')
                             </button>
                         </a>
                         @endif
@@ -50,12 +50,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('site.image')</th>
-                                    <th>@lang('site.first_name')</th>
-                                    <th>@lang('site.last_name')</th>
-                                    <th>@lang('site.email')</th>
-                                    <th>@lang('site.created_at')</th>
-                                    <th>@lang('site.action')</th>
+                                    <th>@lang('admin.image')</th>
+                                    <th>@lang('admin.first_name')</th>
+                                    <th>@lang('admin.last_name')</th>
+                                    <th>@lang('admin.email')</th>
+                                    <th>@lang('admin.created_at')</th>
+                                    <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
