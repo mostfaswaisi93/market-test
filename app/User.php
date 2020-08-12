@@ -38,6 +38,11 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     public function getUserNameAttribute($value)
     {
         $key = ucfirst($value);

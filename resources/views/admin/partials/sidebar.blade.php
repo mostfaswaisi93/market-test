@@ -48,23 +48,15 @@
             {{-- @if (auth()->user()->hasPermission('read_orders')) --}}
             <li {{ request()->route()->getName() === 'admin.orders.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.orders.index') }}" class="nav-link">
-                    <i class="fa fa-map-marker"></i>
+                    <i class="fa fa-tasks"></i>
                     <span class="title">@lang('admin.orders_management')</span>
                 </a>
             </li>
             {{-- @endif --}}
-            @if (auth()->user()->hasPermission('read_users'))
-            <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.users.index') }}" class="nav-link">
-                    <i class="feather icon-users"></i>
-                    <span class="title">@lang('admin.users_management')</span>
-                </a>
-            </li>
-            @endif
             {{-- @if (auth()->user()->hasPermission('read_customers')) --}}
             <li {{ request()->route()->getName() === 'admin.customers.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.customers.index') }}" class="nav-link">
-                    <i class="feather icon-user"></i>
+                    <i class="feather icon-users"></i>
                     <span class="title">@lang('admin.customers_management')</span>
                 </a>
             </li>
@@ -93,6 +85,14 @@
                 </a>
             </li>
             {{-- @endif --}}
+            @if (auth()->user()->hasPermission('read_users'))
+            <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.users.index') }}" class="nav-link">
+                    <i class="feather icon-users"></i>
+                    <span class="title">@lang('admin.users_management')</span>
+                </a>
+            </li>
+            @endif
             {{-- @if (auth()->user()->hasPermission('read_settings')) --}}
             <li {{ request()->route()->getName() === 'admin.settings.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">
@@ -101,28 +101,6 @@
                 </a>
             </li>
             {{-- @endif --}}
-            <li class="nav-item">
-                <a href="#">
-                    <i class="feather icon-users"></i>
-                    <span class="menu-title">@lang('admin.clients')</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="#">
-                            <i class="feather icon-user"></i>
-                            <span class="menu-item">@lang('admin.clint')</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            @if (auth()->user()->hasPermission('read_products'))
-            <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
-                <a href="/admin/products" class="nav-link">
-                    <i class="fa fa-product-hunt"></i>
-                    <span class="title">@lang('admin.products')</span>
-                </a>
-            </li>
-            @endif
         </ul>
     </div>
 </div>

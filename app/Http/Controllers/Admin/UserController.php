@@ -36,7 +36,8 @@ class UserController extends Controller
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_users')) {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
+                        // $button .= '<a type="button" name="delete" id="' . $data->id . '" onclick="deleteItem()" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" name="delete" id="' . $data->id . '"  class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
                         $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
                     }
@@ -56,8 +57,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'    => 'required',
-            'last_name'     => 'required',
+            'name'          => 'required',
+            'username'      => 'required|unique:users',
             'email'         => 'required|unique:users',
             'image'         => 'image',
             'password'      => 'required|confirmed',
@@ -92,8 +93,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'first_name'    => 'required',
-            'last_name'     => 'required',
+            'name'          => 'required',
+            'username'      => ['required', Rule::unique('users')->ignore($user->id),],
             'email'         => ['required', Rule::unique('users')->ignore($user->id),],
             'image'         => 'image',
             'permissions'   => 'required|min:1'

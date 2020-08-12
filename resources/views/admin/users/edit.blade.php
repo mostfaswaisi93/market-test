@@ -43,7 +43,12 @@
                                     <h4 class="card-title"><i class="feather icon-edit mr-25"></i>
                                         @lang('admin.edit_user')</h4>
                                     <div class="col-4 d-flex mt-1 px-0">
-                                        <input type="file" class="form-control-file image" name="image" id="image">
+                                        <input type="file" class="form-control-file image" name="image" id="image"
+                                            style="display:none;">
+                                        <button class="btn btn-primary" onclick="FileUpload();">
+                                            <i class="fa fa-plus"></i>
+                                            @lang('admin.file_upload')
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -51,18 +56,18 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('admin.first_name')</label>
-                                    <input id="first_name" type="text" name="first_name" class="form-control"
-                                        value="{{ $user->first_name }}" placeholder="@lang('admin.first_name')">
+                                    <label>@lang('admin.name')</label>
+                                    <input id="name" type="text" name="name" class="form-control"
+                                        value="{{ $user->name }}" placeholder="@lang('admin.name')">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('admin.last_name')</label>
-                                    <input id="last_name" type="text" name="last_name" class="form-control"
-                                        value="{{ $user->last_name }}" placeholder="@lang('admin.last_name')">
+                                    <label>@lang('admin.username')</label>
+                                    <input id="username" type="text" name="username" class="form-control"
+                                        value="{{ $user->username }}" placeholder="@lang('admin.username')">
                                 </div>
                             </div>
                         </div>

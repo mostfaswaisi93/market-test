@@ -63,6 +63,11 @@
             n.show();
         });        
     });
+
+    function FileUpload() {
+        event.preventDefault();
+        document.getElementById("image").click();
+    };
 </script>
 
 @include('sweetalert::alert')

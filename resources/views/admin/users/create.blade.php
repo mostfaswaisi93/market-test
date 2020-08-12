@@ -36,13 +36,19 @@
                             <div class="media mb-2">
                                 <a class="mr-2 my-25" href="#">
                                     <img src="{{ asset('uploads/user_images/default.png') }}" alt="users avatar"
-                                        class="users-avatar-shadow rounded image img-thumbnail" height="90" width="90">
+                                        class="users-avatar-shadow rounded image img-thumbnail image-preview"
+                                        height="90" width="90">
                                 </a>
                                 <div class="media-body mt-50">
                                     <h4 class="card-title"><i class="feather icon-user-plus mr-25"></i>
                                         @lang('admin.create_user')</h4>
                                     <div class="col-4 d-flex mt-1 px-0">
-                                        <input type="file" class="form-control-file image" name="image" id="image">
+                                        <input type="file" class="form-control-file image" name="image" id="image"
+                                            style="display:none;">
+                                        <button class="btn btn-primary" onclick="FileUpload();">
+                                            <i class="fa fa-plus"></i>
+                                            @lang('admin.file_upload')
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -50,18 +56,18 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('admin.first_name')</label>
-                                    <input id="first_name" type="text" name="first_name" class="form-control"
-                                        value="{{ old('first_name') }}" placeholder="@lang('admin.first_name')">
+                                    <label>@lang('admin.name')</label>
+                                    <input id="name" type="text" name="name" class="form-control"
+                                        value="{{ old('name') }}" placeholder="@lang('admin.name')">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <div class="controls">
-                                    <label>@lang('admin.last_name')</label>
-                                    <input id="last_name" type="text" name="last_name" class="form-control"
-                                        value="{{ old('last_name') }}" placeholder="@lang('admin.last_name')">
+                                    <label>@lang('admin.username')</label>
+                                    <input id="username" type="text" name="username" class="form-control"
+                                        value="{{ old('username') }}" placeholder="@lang('admin.username')">
                                 </div>
                             </div>
                         </div>
@@ -75,14 +81,6 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
-                            {{-- <div class="form-group">
-                                    <label>@lang('admin.status')</label>
-                                    <select class="form-control">
-                                        <option>Active</option>
-                                        <option>Blocked</option>
-                                        <option>deactivated</option>
-                                    </select>
-                                </div> --}}
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">

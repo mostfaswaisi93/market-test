@@ -51,8 +51,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('admin.image')</th>
-                                    <th>@lang('admin.first_name')</th>
-                                    <th>@lang('admin.last_name')</th>
+                                    <th>@lang('admin.name')</th>
+                                    <th>@lang('admin.username')</th>
                                     <th>@lang('admin.email')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
@@ -91,14 +91,40 @@
                         return "<img src=" + data + " width='70px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
-                { data: 'first_name', name: 'first_name' },
-                { data: 'last_name', name: 'last_name' },
+                { data: 'name', name: 'name' },
+                { data: 'username', name: 'username' },
                 { data: 'email', name: 'email' },
                 { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
             ]
         });
     });
+
+// function deleteItem(item, path="banners"){
+//     swal({
+//         title: 'هل أنت متأكد من ذلك؟',
+//         type: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'نعم',
+//         cancelButtonText:'إلغاء'
+//     }).then(function(result){
+//         if(result.value){
+//             $.ajax({
+//                 type: "delete",
+//                 dataType : 'json',
+//                 url: "https://1stt.app/1teacher/admin/" + path + '/' + item,
+//                 data: { _token: 'aZFjVakfkWsSmwC8GLch1v5WKihqXxCVc2Uk04Jz' ,id: item},
+//                 success: function(data){
+//                     console.log(data);
+//                     toastr.success('تم حذف العنصر بنجاح', {timeOut: 5000});
+//                     $('#' + path + '-table').DataTable().ajax.reload( null, false);
+//                 }
+//             });
+//         }
+//     });
+// }
 </script>
 
 @endpush

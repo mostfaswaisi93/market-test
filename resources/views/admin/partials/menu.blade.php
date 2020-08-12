@@ -14,7 +14,6 @@
                 </div>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-language nav-item">
-
                         @if (app()->getLocale() == 'en')
                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -24,9 +23,7 @@
                             aria-haspopup="true" aria-expanded="false">
                             <i class="flag-icon flag-icon-sa"></i><span class="selected-language">العربية</span></a>
                         @endif
-
                         <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             @if($localeCode == LaravelLocalization::getCurrentLocale())
                             <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
@@ -39,7 +36,6 @@
                                 {{ $properties['native'] }}
                             </a>
                             @elseif($url = LaravelLocalization::getLocalizedURL($localeCode))
-
                             <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                 @if (app()->getLocale() == 'en')
@@ -51,7 +47,6 @@
                             </a>
                             @endif
                             @endforeach
-
                         </div>
                     </li>
                     <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
@@ -98,14 +93,15 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name text-bold-600">
-                                    {{ auth()->user()->username }}
+                                    {{ auth()->user()->name }}
                                 </span>
                                 <span class="user-status">@lang('admin.available')</span>
                             </div>
-                            <span>
+                            <span class="avatar">
                                 <img class="round"
                                     src="{{ url('admin_files/app-assets/images/portrait/small/avatar-s-11.jpg') }}"
                                     alt="avatar" height="40" width="40">
+                                <span class="avatar-status-online avatar-status-lg"></span>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
