@@ -95,7 +95,7 @@
             {{-- @endif --}}
             {{-- @if (auth()->user()->hasPermission('read_settings')) --}}
             <li {{ request()->route()->getName() === 'admin.settings.index' ? ' class=active' : '' }}>
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.settings.index') }}" class="nav-link">
                     <i class="feather icon-settings"></i>
                     <span class="title">@lang('admin.settings')</span>
                 </a>

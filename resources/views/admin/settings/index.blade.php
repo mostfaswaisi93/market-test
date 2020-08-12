@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.settings') @endsection
 
 @section('content')
 
@@ -6,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.categories_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.update_settings')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.categories_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.update_settings')</li>
                     </ol>
                 </div>
             </div>
@@ -21,44 +22,92 @@
 </div>
 
 <div class="content-body">
-    <section>
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">@lang('admin.categories_management')</h4>
-            </div>
-            <div class="card-content">
-                <div class="card-body">
-                    <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_categories'))
-                        <a href="{{ route('admin.categories.create') }}">
-                            <button class="btn btn-primary mb-2">
-                                <i class="feather icon-plus mr-25"></i>
-                                @lang('admin.create_category')
-                            </button>
-                        </a>
-                        @else
-                        <a href="#">
-                            <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_category')
-                            </button>
-                        </a>
-                        @endif
+    <section class="settings">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"><i class="fa fa-file-text"></i> @lang('admin.update_settings')</h4>
                     </div>
-                    <div class="table-responsive">
-                        <table id="data-table" class="table table-striped table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>@lang('admin.name')</th>
-                                    <th>@lang('admin.1')</th>
-                                    <th>@lang('admin.2')</th>
-                                    <th>@lang('admin.created_at')</th>
-                                    <th>@lang('admin.action')</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                    <div class="card-content">
+                        <div class="card-body ">
+                            @include('partials._errors')
+                            <form action="{{ route('admin.settings.update') }}" method="post" role="form">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $settings->id }}">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label>@lang('admin.name')</label>
+                                                    <input id="name" type="text" name="name" class="form-control"
+                                                        value="{{ $settings->name }}" placeholder="@lang('admin.name')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label>@lang('admin.title')</label>
+                                                    <input id="title" type="text" name="title" class="form-control"
+                                                        value="{{ $settings->title }}"
+                                                        placeholder="@lang('admin.title')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label>@lang('admin.value')</label>
+                                                    <input id="value" type="text" name="value" class="form-control"
+                                                        value="{{ $settings->value }}"
+                                                        placeholder="@lang('admin.value')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label>@lang('admin.type')</label>
+                                                    <input id="type" type="text" name="type" class="form-control"
+                                                        value="{{ $settings->type }}" placeholder="@lang('admin.type')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label>@lang('admin.options')</label>
+                                                    <input id="options" type="text" name="options" class="form-control"
+                                                        value="{{ $settings->options }}"
+                                                        placeholder="@lang('admin.options')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label>@lang('admin.sorting_number')</label>
+                                                    <input id="sorting_number" type="text" name="sorting_number"
+                                                        class="form-control" value="{{ $settings->sorting_number }}"
+                                                        placeholder="@lang('admin.sorting_number')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        @lang('admin.update')
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,32 +116,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            responsive: true,
-            order: [[ 2, "desc" ]],
-            ajax: {
-                url: "{{ route('admin.categories.index') }}",
-            },
-            columns: [{
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }, searchable: false, orderable: false
-                },
-                { data: 'name', name: 'name' },
-                { data: 'last_name', name: 'last_name' },
-                { data: 'email', name: 'email' },
-                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
-                { data: 'action', name: 'action', orderable: false }
-            ]
-        });
-    });
-</script>
-
-@endpush

@@ -1,14 +1,16 @@
 <?php
 
 return [
+    'halal_market'              => 'حلال ماركت',
     'home'                      => 'الرئيسية',
     'logout'                    => 'تسجيل الخروج',
+    'available'                 => 'متصل',
 
     'add'                       => 'أضف',
     'create'                    => 'إضافة',
     'read'                      => 'عرض',
     'edit'                      => 'تعديل',
-    'update'                    => 'تعديل',
+    'update'                    => 'تحديث',
     'delete'                    => 'حذف',
     'search'                    => 'بحث',
     'reset'                     => 'تفريغ',
@@ -27,7 +29,7 @@ return [
     'password_confirmation'     => 'تأكيد كلمة المرور',
 
     'added_successfully'        => 'تم إضافة البيانات بنجاح',
-    'updated_successfully'      => 'تم تعديل البيانات بنجاح',
+    'updated_successfully'      => 'تم تحديث البيانات بنجاح',
     'deleted_successfully'      => 'تم حذف البيانات بنجاح',
 
     'no_data_found'             => 'لا يوجد أي سجلات',
@@ -60,7 +62,8 @@ return [
     'promo_code'                => 'البرومو كود',
     'sliders'                   => 'السلايدر',
     'messages'                  => 'الرسائل',
-    'settings'                  => 'الإعدادات',
+    'settings'                  => 'إعدادات النظام',
+    'update_settings'           => 'تعديل إعدادات النظام',
     'user'                      => 'مستخدم',
     'first_name'                => 'الاسم الأول',
     'last_name'                 => 'الاسم الأخير',
@@ -72,6 +75,7 @@ return [
     'categories'                => 'الأقسام',
     'all_categories'            => 'كل الأقسام',
     'name'                      => 'الاسم',
+    'title'                     => 'العنوان',
     'description'               => 'الوصف',
     'products_count'            => 'عدد المنتجات',
     'related_products'          => 'المنتجات المرتبطة',

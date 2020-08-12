@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -12,9 +13,12 @@ class User extends Authenticatable
 {
     use LaratrustUserTrait;
     use Notifiable;
+    use SoftDeletes;
+
+    protected $table = 'users';
 
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'image'
+        'name', 'username', 'email', 'image', 'active', 'password'
     ];
 
     protected $appends = ['image_path'];
@@ -28,14 +32,16 @@ class User extends Authenticatable
         'created_at'            => 'date:Y-m-d',
     ];
 
-    public function getFirstNameAttribute($value)
-    {
-        return ucfirst($value);
-    }
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
-    public function getLastNameAttribute($value)
+    public function getUserNameAttribute($value)
     {
-        return ucfirst($value);
+        $key = ucfirst($value);
+        return ucwords(str_replace('_', ' ', $key));
     }
 
     public function getImagePathAttribute()

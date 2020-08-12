@@ -6,3 +6,12 @@
     background-color: #6d63e6;
     color: #fff;
 }
+
+.settings .card-header {
+    background-color: #5c54c5;
+    padding-bottom: 15px;
+}
+
+.settings .card-title {
+    color: #fff;
+}

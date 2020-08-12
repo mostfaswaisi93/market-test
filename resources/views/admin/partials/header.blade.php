@@ -9,7 +9,7 @@
     <meta name="description" content="Halal Market - Laravel Project">
     <meta name="keywords" content="Halal Market - Laravel Project">
     <meta name="author" content="PIXINVENT">
-    <title>Halal Market</title>
+    <title>@lang('admin.halal_market') | @yield('title')</title>
 
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/app-assets/images/ico/favicon.ico') }}">
@@ -38,7 +38,6 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
-
 
     @else
 
