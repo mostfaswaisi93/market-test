@@ -51,6 +51,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('admin.name')</th>
+                                    <th>@lang('admin.products_count')</th>
+                                    <th>@lang('admin.related_products')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>

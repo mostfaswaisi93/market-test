@@ -68,11 +68,8 @@
 
     @endif
 
-    {{-- Noty JS --}}
+    {{-- CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
-
-    {{-- Toastr JS --}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     <link rel="stylesheet" type="text/css" href="{{url('/css/styles.css')}}">

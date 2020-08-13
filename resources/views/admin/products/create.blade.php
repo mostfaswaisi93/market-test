@@ -39,8 +39,22 @@
                                 @csrf
                                 @method('POST')
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>@lang('admin.categories')</label>
+                                            <select name="category_id" class="form-control">
+                                                <option value="">@lang('admin.all_categories')</option>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-12">
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.name')</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
@@ -48,7 +62,61 @@
                                                 placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>@lang('admin.' . $locale . '.description')</label>
+                                            <textarea name="{{ $locale }}[description]" id="description"
+                                                class="form-control ckeditor">{{ old($locale . '.description') }}</textarea>
+                                        </div>
+                                    </div>
                                     @endforeach
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.purchase_price')</label>
+                                                <input type="number" name="purchase_price" class="form-control"
+                                                    value="{{ old('purchase_price') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.sale_price')</label>
+                                                <input type="number" name="sale_price" class="form-control"
+                                                    value="{{ old('sale_price') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="media mb-2">
+                                            <a class="mr-2 my-25" href="#">
+                                                <img src="{{ asset('uploads/product_images/default.png') }}"
+                                                    alt="users avatar"
+                                                    class="users-avatar-shadow rounded image img-thumbnail image-preview"
+                                                    height="100px" width="100px">
+                                            </a>
+                                            <div class="media-body mt-50">
+                                                <div class="col-4 d-flex mt-1 px-0">
+                                                    <input type="file" class="form-control-file image" name="image"
+                                                        id="image" style="display:none;">
+                                                    <button class="btn btn-primary" onclick="FileUpload();">
+                                                        <i class="fa fa-plus"></i>
+                                                        @lang('admin.file_upload')
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.stock')</label>
+                                                <input type="number" name="stock" class="form-control"
+                                                    value="{{ old('stock') }}">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">

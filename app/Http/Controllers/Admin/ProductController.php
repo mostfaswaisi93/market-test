@@ -39,7 +39,8 @@ class ProductController extends Controller
                 ->make(true);
         }
 
-        return view('admin.products.index');
+        return view('admin.products.index')
+            ->with('categories', $categories);
     }
 
     public function create()

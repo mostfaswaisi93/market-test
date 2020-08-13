@@ -21,62 +21,62 @@
                     <span class="title">@lang('admin.home')</span>
                 </a>
             </li>
-            {{-- @if (auth()->user()->hasPermission('read_categories')) --}}
+            @if (auth()->user()->hasPermission('read_categories'))
             <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.categories.index') }}" class="nav-link">
                     <i class="fa fa-list"></i>
                     <span class="title">@lang('admin.categories_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_products')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_products'))
             <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.products.index') }}" class="nav-link">
                     <i class="fa fa-product-hunt"></i>
                     <span class="title">@lang('admin.products_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_locations')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_locations'))
             <li {{ request()->route()->getName() === 'admin.locations.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.locations.index') }}" class="nav-link">
                     <i class="fa fa-map"></i>
                     <span class="title">@lang('admin.locations_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_countries')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_countries'))
             <li {{ request()->route()->getName() === 'admin.countries.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.countries.index') }}" class="nav-link">
                     <i class="fa fa-flag"></i>
                     <span class="title">@lang('admin.countries_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_notifications')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_notifications'))
             <li {{ request()->route()->getName() === 'admin.notifications.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
                     <i class="fa fa-bell"></i>
                     <span class="title">@lang('admin.notifications_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_orders')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_orders'))
             <li {{ request()->route()->getName() === 'admin.orders.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.orders.index') }}" class="nav-link">
                     <i class="fa fa-tasks"></i>
                     <span class="title">@lang('admin.orders_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_customers')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_customers'))
             <li {{ request()->route()->getName() === 'admin.customers.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.customers.index') }}" class="nav-link">
                     <i class="feather icon-users"></i>
                     <span class="title">@lang('admin.customers_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
+            @endif
             {{-- @if (auth()->user()->hasPermission('read_promo_code')) --}}
             <li {{ request()->route()->getName() === 'admin.promo_code.index' ? ' class=active' : '' }}>
                 <a href="#" class="nav-link">
@@ -109,14 +109,14 @@
                 </a>
             </li>
             @endif
-            {{-- @if (auth()->user()->hasPermission('read_settings')) --}}
+            @if (auth()->user()->hasPermission('read_settings'))
             <li {{ request()->route()->getName() === 'admin.settings.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">
                     <i class="feather icon-settings"></i>
                     <span class="title">@lang('admin.settings')</span>
                 </a>
             </li>
-            {{-- @endif --}}
+            @endif
         </ul>
     </div>
 </div>

@@ -37,10 +37,12 @@
 {{-- Custom js --}}
 <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
 
-{{-- Toastr js --}}
+{{-- CDN --}}
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-{!! Toastr::message() !!}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
 
+{!! Toastr::message() !!}
 <script>
     $(document).ready(function () {
         //Delete
@@ -61,7 +63,8 @@
                 ]
             });
             n.show();
-        });        
+        });
+        CKEDITOR.config.language =  "{{ app()->getLocale() }}";
     });
 
     function FileUpload() {
