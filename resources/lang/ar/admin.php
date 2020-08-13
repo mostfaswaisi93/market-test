@@ -5,7 +5,6 @@ return [
     'home'                      => 'الرئيسية',
     'logout'                    => 'تسجيل الخروج',
     'available'                 => 'متصل',
-
     'add'                       => 'أضف',
     'create'                    => 'إضافة',
     'read'                      => 'عرض',
@@ -18,15 +17,14 @@ return [
     'loading'                   => 'جاري التحميل',
     'print'                     => 'طباعة',
     'close'                     => 'أغلق',
-
-    'confirm_delete'            => 'تأكيد الحذف',
-    'yes'                       => 'نعم',
-    'no'                        => 'لا',
-
     'login'                     => 'تسجيل الدخول',
     'remember_me'               => 'تذكرني',
     'password'                  => 'كلمة المرور',
     'password_confirmation'     => 'تأكيد كلمة المرور',
+
+    'confirm_delete'            => 'تأكيد الحذف',
+    'yes'                       => 'نعم',
+    'no'                        => 'لا',
 
     'added_successfully'        => 'تم إضافة البيانات بنجاح',
     'updated_successfully'      => 'تم تحديث البيانات بنجاح',
@@ -36,6 +34,12 @@ return [
     'no_records'                => 'لا يوجد أي سجلات',
     'no_products'               => 'لا يوجد منتجات لهذا القسم',
 
+    'users'                     => 'المستخدمين',
+    'customers'                 => 'الزبائن',
+    'orders'                    => 'الطلبات/ الكاشير',
+    'customer'                  => 'زبون',
+    'customer_name'             => 'اسم الزبون',
+    'choose_customer'           => 'اختر زبون',
     'clients'                   => 'الزبائن',
     'client'                    => 'زبون',
     'client_name'               => 'اسم الزبون',
@@ -44,21 +48,21 @@ return [
     'address'                   => 'العنوان',
     'previous_orders'           => 'الطلبات السابقة',
 
-    'orders'                    => 'الطلبات/ الكاشير',
     'add_order'                 => 'أضف طلب',
     'edit_order'                => 'تعديل طلب',
 
-    'users'                     => 'المستخدمين',
     'create_user'               => 'إضافة مستخدم جديد',
     'create_category'           => 'إضافة قسم جديد',
     'create_product'            => 'إضافة منتج جديد',
     'create_location'           => 'إضافة منطقة جديدة',
     'create_country'            => 'إضافة دولة جديدة',
+    'create_customer'           => 'إضافة زبون جديد',
     'edit_user'                 => 'تعديل مستخدم',
     'edit_category'             => 'تعديل قسم',
     'edit_product'              => 'تعديل منتج',
     'edit_location'             => 'تعديل منطقة',
     'edit_country'              => 'تعديل دولة',
+    'edit_customer'             => 'تعديل زبون',
     'status'                    => 'الحالة',
 
     'users_management'          => 'إدارة المستخدمين',
@@ -88,6 +92,8 @@ return [
     'name'                      => 'الاسم',
     'username'                  => 'اسم المستخدم',
     'title'                     => 'العنوان',
+    'intro_state'               => 'مقدمة الدولة',
+    'currency'                  => 'العملة',
     'description'               => 'الوصف',
     'products_count'            => 'عدد المنتجات',
     'related_products'          => 'المنتجات المرتبطة',
@@ -116,10 +122,12 @@ return [
     'ar'                        => [
         'name'          => 'الاسم باللغة العربية',
         'description'   => 'الوصف باللغة العربية',
+        'currency'      => 'العملة باللغة العربية',
     ],
     'en'                        => [
         'name'          => 'الاسم باللغة الإنجليزية',
         'description'   => 'الوصف باللغة الإنجليزية',
+        'currency'      => 'العملة باللغة الإنجليزية',
     ],
 
 ];

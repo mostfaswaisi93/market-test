@@ -39,6 +39,16 @@
                                 @csrf
                                 @method('POST')
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.intro_state')</label>
+                                                <input id="intro_state" type="text" name="intro_state"
+                                                    class="form-control" value="{{ old('intro_state') }}"
+                                                    placeholder="@lang('admin.intro_state')">
+                                            </div>
+                                        </div>
+                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -46,6 +56,12 @@
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
                                                 value="{{ old($locale . '.name') }}"
                                                 placeholder="@lang('admin.' . $locale . '.name')">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>@lang('admin.' . $locale . '.currency')</label>
+                                            <input id="currency" type="text" name="{{ $locale }}[currency]"
+                                                class="form-control" value="{{ old($locale . '.currency') }}"
+                                                placeholder="@lang('admin.' . $locale . '.currency')">
                                         </div>
                                     </div>
                                     @endforeach

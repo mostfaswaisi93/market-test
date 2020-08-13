@@ -50,7 +50,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>@lang('admin.intro_state')</th>
                                     <th>@lang('admin.name')</th>
+                                    <th>@lang('admin.currency')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
@@ -83,7 +85,9 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
                 },
+                { data: 'intro_state', name: 'intro_state' },
                 { data: 'name', name: 'name' },
+                { data: 'currency', name: 'currency' },
                 { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
             ]

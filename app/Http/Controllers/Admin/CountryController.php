@@ -42,10 +42,13 @@ class CountryController extends Controller
 
     public function store(Request $request)
     {
-        $rules = [];
+        $rules = [
+            'intro_state'   => 'required'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('country_translations', 'name')]];
+            $rules += [$locale . '.name'        => 'required|unique:country_translations,name'];
+            $rules += [$locale . '.currency'    => 'required|unique:country_translations,currency'];
         }
 
         $request->validate($rules);
@@ -62,11 +65,13 @@ class CountryController extends Controller
 
     public function update(Request $request, Country $country)
     {
-        $rules = [];
+        $rules = [
+            'intro_state'   => 'required'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
-
-            $rules += [$locale . '.name' => ['required', Rule::unique('country_translations', 'name')->ignore($country->id, 'country_id')]];
+            $rules += [$locale . '.name'        => ['required', Rule::unique('country_translations', 'name')->ignore($country->id, 'country_id')]];
+            $rules += [$locale . '.currency'    => ['required', Rule::unique('country_translations', 'currency')->ignore($country->id, 'country_id')]];
         }
 
         $request->validate($rules);
