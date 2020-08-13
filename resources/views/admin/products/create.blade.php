@@ -6,13 +6,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_user')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_product')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.users.index') }}">@lang('admin.users')</a>
+                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_user')</li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('admin.products.index') }}">@lang('admin.products_management')</a>
+                        </li>
+                        <li class="breadcrumb-item active">@lang('admin.create_product')</li>
                     </ol>
                 </div>
             </div>
@@ -20,128 +23,49 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
+<div class="content-body">
+    <section class="portlet">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <header class="panel-heading panel-heading-blue"><i class="fa fa-plus"></i>
-                        @lang('admin.create_user')</header>
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <div class="btn-group">
-                                    <a href="{{ route('admin.users.index') }}">
-                                        <button class="btn btn-info">
-                                            <i class="fa fa-arrow-left"></i> @lang('admin.back')
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        @include('partials._errors')
-                        <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            @method('post')
-                            <div class="form-body">
+                    <div class="card-header">
+                        <h4 class="card-title"> @lang('admin.create_product')</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            @include('partials._errors')
+                            <form action="{{ route('admin.products.store') }}" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('POST')
                                 <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <label for="name"
-                                            class="control-label col-md-3">@lang('admin.first_name')</label>
-                                        <div class="col-md-6">
-                                            <input type="text" name="first_name" class="form-control"
-                                                value="{{ old('first_name') }}">
+                                    @foreach (config('translatable.locales') as $locale)
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label>@lang('admin.' . $locale . '.name')</label>
+                                            <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
+                                                value="{{ old($locale . '.name') }}"
+                                                placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('admin.last_name')</label>
-                                        <div class="col-md-6">
-                                            <input type="text" name="last_name" class="form-control"
-                                                value="{{ old('last_name') }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('admin.email')</label>
-                                        <div class="col-md-6">
-                                            <input type="email" name="email" class="form-control"
-                                                value="{{ old('email') }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('admin.image')</label>
-                                        <div class="col-md-6">
-                                            <input type="file" name="image" class="form-control image">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-6">
-                                            <img src="{{ asset('uploads/user_images/default.png') }}"
-                                                style="width: 100px" class="img-thumbnail image-preview" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="name" class="control-label col-md-3">@lang('admin.password')</label>
-                                        <div class="col-md-6">
-                                            <input type="password" name="password" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="name"
-                                            class="control-label col-md-3">@lang('admin.password_confirmation')</label>
-                                        <div class="col-md-6">
-                                            <input type="password" name="password_confirmation" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="control-label col-md-3">@lang('admin.permissions')</label>
-                                    </div>
-                                    <div class="form-group col-md-12">
-
-                                        <div class="nav nav-tabs">
-                                            @php
-                                            $models = ['users', 'doctors', 'secretaries'];
-                                            $maps = ['create', 'read', 'update', 'delete'];
-                                            @endphp
-                                            <header class="panel-heading-gray custom-tab">
-                                                <ul class="nav nav-tabs">
-                                                    @foreach ($models as $index=>$model)
-                                                    <li class="{{ $index == 0 ? 'active' : '' }}"><a
-                                                            href="#{{ $model }}" data-toggle="tab">@lang('admin.' .
-                                                            $model)</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </header>
-                                            <div class="tab-content">
-                                                @foreach ($models as $index=>$model)
-                                                <div class="tab-pane fade {{ $index == 0 ? 'active in' : '' }}"
-                                                    id="{{ $model }}">
-                                                    @foreach ($maps as $map)
-                                                    <label><input type="checkbox" name="permissions[]" class="icheck"
-                                                            value="{{ $map . '_' . $model }}">
-                                                        @lang('admin.' . $map)</label>
-                                                    @endforeach
-                                                </div>
-                                                @endforeach
+                                    @endforeach
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <button type="submit" class="btn btn-primary">
+                                                    @lang('admin.add')
+                                                </button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <div class="btn-set pull-left">
-                                    <button type="submit" class="btn blue"><i class="fa fa-plus"></i>
-                                        @lang('admin.add')</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
 @endsection

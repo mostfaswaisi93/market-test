@@ -29,11 +29,27 @@
                 </a>
             </li>
             {{-- @endif --}}
+            {{-- @if (auth()->user()->hasPermission('read_products')) --}}
+            <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.products.index') }}" class="nav-link">
+                    <i class="fa fa-product-hunt"></i>
+                    <span class="title">@lang('admin.products_management')</span>
+                </a>
+            </li>
+            {{-- @endif --}}
             {{-- @if (auth()->user()->hasPermission('read_locations')) --}}
             <li {{ request()->route()->getName() === 'admin.locations.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.locations.index') }}" class="nav-link">
                     <i class="fa fa-map"></i>
                     <span class="title">@lang('admin.locations_management')</span>
+                </a>
+            </li>
+            {{-- @endif --}}
+            {{-- @if (auth()->user()->hasPermission('read_countries')) --}}
+            <li {{ request()->route()->getName() === 'admin.countries.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.countries.index') }}" class="nav-link">
+                    <i class="fa fa-flag"></i>
+                    <span class="title">@lang('admin.countries_management')</span>
                 </a>
             </li>
             {{-- @endif --}}

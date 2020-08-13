@@ -21,7 +21,7 @@
 </div>
 
 <div class="content-body">
-    <section class="users-list-wrapper">
+    <section>
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">@lang('admin.categories_management')</h4>
@@ -32,14 +32,14 @@
                         @if (auth()->user()->hasPermission('create_categories'))
                         <a href="{{ route('admin.categories.create') }}">
                             <button class="btn btn-primary mb-2">
-                                <i class="feather icon-user-plus mr-25"></i>
-                                @lang('admin.create_user')
+                                <i class="feather icon-plus mr-25"></i>
+                                @lang('admin.create_category')
                             </button>
                         </a>
                         @else
                         <a href="#">
                             <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_user')
+                                <i class="feather icon-plus"></i> @lang('admin.create_category')
                             </button>
                         </a>
                         @endif
@@ -50,10 +50,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.image')</th>
-                                    <th>@lang('admin.first_name')</th>
-                                    <th>@lang('admin.last_name')</th>
-                                    <th>@lang('admin.email')</th>
+                                    <th>@lang('admin.name')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
@@ -86,15 +83,8 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
                 },
-                { data: 'image_path', name: 'image_path',
-                    render: function(data, type, full, meta) {
-                        return "<img src=" + data + " width='70px' class='img-thumbnail' />";
-                    }, orderable: false , searchable: false
-                },
-                { data: 'first_name', name: 'first_name' },
-                { data: 'last_name', name: 'last_name' },
-                { data: 'email', name: 'email' },
-                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY', },
+                { data: 'name', name: 'name' },
+                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
             ]
         });

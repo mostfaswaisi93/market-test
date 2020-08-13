@@ -10,7 +10,6 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
-
     public function index()
     {
         $categories = Category::get();
