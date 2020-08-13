@@ -136,5 +136,13 @@ class UserController extends Controller
         $data = User::findOrFail($id);
         $data->delete();
         Toastr::success(__('admin.deleted_successfully'), 'Success');
+        return redirect()->route('admin.users.index');
     }
+
+    // public function destroy($id)
+    // {
+    //     $data = Task::findOrFail($id);
+    //     $data->delete();
+    //     $data->employees()->detach();
+    // }
 }

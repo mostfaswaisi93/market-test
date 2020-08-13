@@ -51,8 +51,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('admin.name')</th>
-                                    <th>@lang('admin.1')</th>
-                                    <th>@lang('admin.2')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
@@ -86,8 +84,6 @@
                     }, searchable: false, orderable: false
                 },
                 { data: 'name', name: 'name' },
-                { data: 'last_name', name: 'last_name' },
-                { data: 'email', name: 'email' },
                 { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
             ]

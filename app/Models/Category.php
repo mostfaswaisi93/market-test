@@ -3,16 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 
 class Category extends Model
 {
-    // use \Dimsav\Translatable\Translatable;
+    use Translatable;
 
-    // protected $guarded = [];
-    // public $translatedAttributes = ['name'];
+    protected $guarded = [];
+    public $translatedAttributes    = ['name'];
 
-    // public function products()
-    // {
-    //     return $this->hasMany(Product::class);
-    // }
+    protected $casts = [
+        'created_at'                => 'date:Y-m-d',
+    ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

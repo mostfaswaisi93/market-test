@@ -50,7 +50,9 @@ return [
 
     'users'                     => 'المستخدمين',
     'create_user'               => 'إضافة مستخدم جديد',
+    'create_category'           => 'إضافة قسم جديد',
     'edit_user'                 => 'تعديل مستخدم',
+    'edit_category'             => 'تعديل قسم',
     'status'                    => 'الحالة',
 
     'users_management'          => 'إدارة المستخدمين',

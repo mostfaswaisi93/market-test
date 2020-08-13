@@ -6,25 +6,16 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
-    public function index1(Request $request)
-    {
-        $categories = Category::when($request->search, function ($q) use ($request) {
-
-            return $q->where('name', 'like', '%' . $request->search . '%');
-        })->latest()->paginate(5);
-
-        return view('admin.categories.index', compact('categories'));
-    }
 
     public function index()
     {
-        $categories = Category::OrderBy('created_at', 'desc');
+        $categories = Category::get();
 
         if (request()->ajax()) {
-
             return datatables()->of($categories)
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_categories')) {
@@ -60,10 +51,9 @@ class CategoryController extends Controller
         }
 
         $request->validate($rules);
-
         Category::create($request->all());
-        session()->flash('success', __('admin.added_successfully'));
 
+        Toastr::success(__('admin.added_successfully'), 'Success');
         return redirect()->route('admin.categories.index');
     }
 
@@ -83,15 +73,15 @@ class CategoryController extends Controller
 
         $request->validate($rules);
         $category->update($request->all());
-        session()->flash('success', __('admin.updated_successfully'));
 
+        Toastr::success(__('admin.updated_successfully'), 'Success');
         return redirect()->route('admin.categories.index');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        session()->flash('success', __('admin.deleted_successfully'));
+        Toastr::success(__('admin.deleted_successfully'), 'Success');
         return redirect()->route('admin.categories.index');
     }
 }
