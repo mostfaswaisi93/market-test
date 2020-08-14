@@ -22,4 +22,9 @@ class Country extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

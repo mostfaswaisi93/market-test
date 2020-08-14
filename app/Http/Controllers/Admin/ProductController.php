@@ -16,7 +16,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
-
         $products = Product::get();
 
         if (request()->ajax()) {
@@ -39,14 +38,13 @@ class ProductController extends Controller
                 ->make(true);
         }
 
-        return view('admin.products.index')
-            ->with('categories', $categories);
+        return view('admin.products.index')->with('categories', $categories);
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create')->with('categories', $categories);
     }
 
     public function store(Request $request)
@@ -56,7 +54,6 @@ class ProductController extends Controller
         ];
 
         foreach (config('translatable.locales') as $locale) {
-
             $rules += [$locale . '.name'        => 'required|unique:product_translations,name'];
             $rules += [$locale . '.description' => 'required'];
         }

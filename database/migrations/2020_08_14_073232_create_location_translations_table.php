@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryTranslationsTable extends Migration
+class CreateLocationTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCategoryTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_translations', function (Blueprint $table) {
+        Schema::create('location_translations', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id')->unsigned()->onDelete('cascade');
+            $table->integer('location_id')->unsigned()->onDelete('cascade');
             $table->string('name');
             $table->string('locale')->index();
 
-            $table->unique(['category_id', 'locale']);
+            $table->unique(['location_id', 'locale']);
         });
     }
 
@@ -30,6 +30,6 @@ class CreateCategoryTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_translations');
+        Schema::dropIfExists('location_translations');
     }
 }

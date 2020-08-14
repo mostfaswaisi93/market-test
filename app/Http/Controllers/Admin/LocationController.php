@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Location;
+use App\Models\Country;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -12,6 +13,7 @@ class LocationController extends Controller
 {
     public function index()
     {
+        $countries = Country::all();
         $locations = Location::get();
 
         if (request()->ajax()) {
@@ -33,19 +35,23 @@ class LocationController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.locations.index');
+        return view('admin.locations.index')->with('countries', $countries);
     }
+
     public function create()
     {
-        return view('admin.locations.create');
+        $countries = Country::all();
+        return view('admin.locations.create')->with('countries', $countries);
     }
 
     public function store(Request $request)
     {
-        $rules = [];
+        $rules = [
+            'country_id'   => 'required'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('location_translations', 'name')]];
+            $rules += [$locale . '.name'        => 'required|unique:product_translations,name'];
         }
 
         $request->validate($rules);
@@ -62,10 +68,11 @@ class LocationController extends Controller
 
     public function update(Request $request, Location $location)
     {
-        $rules = [];
+        $rules = [
+            'country_id'   => 'required'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
-
             $rules += [$locale . '.name' => ['required', Rule::unique('location_translations', 'name')->ignore($location->id, 'location_id')]];
         }
 

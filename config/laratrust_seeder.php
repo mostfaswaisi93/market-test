@@ -11,6 +11,7 @@ return [
             'products'          => 'c,r,u,d',
             'items'             => 'c,r,u,d',
             'countries'         => 'c,r,u,d',
+            'languages'         => 'c,r,u,d',
             'users'             => 'c,r,u,d',
             'settings'          => 'c,r,u,d',
         ],

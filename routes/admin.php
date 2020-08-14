@@ -14,6 +14,7 @@ Route::group(
             Route::resource('notifications', 'NotificationController')->except(['show']);
             Route::resource('orders', 'OrderController')->except(['show']);
             Route::resource('countries', 'CountryController')->except(['show']);
+            Route::resource('languages', 'LanguageController')->except(['show']);
 
             Route::get('settings', 'SettingController@index')->name('settings.index');
             Route::post('settings', 'SettingController@update')->name('settings.update');

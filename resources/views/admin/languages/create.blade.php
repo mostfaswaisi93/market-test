@@ -6,16 +6,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_location')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_category')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.locations.index') }}">@lang('admin.locations_management')</a>
+                            <a href="{{ route('admin.categories.index') }}">@lang('admin.categories_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_location')</li>
+                        <li class="breadcrumb-item active">@lang('admin.create_category')</li>
                     </ol>
                 </div>
             </div>
@@ -29,30 +29,16 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.create_location')</h4>
+                        <h4 class="card-title"> @lang('admin.create_category')</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.locations.store') }}" method="post"
+                            <form action="{{ route('admin.categories.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>@lang('admin.countries')</label>
-                                            <select name="category_id" class="form-control">
-                                                <option value="">@lang('admin.all_countries')</option>
-                                                @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}"
-                                                    {{ old('country_id') == $country->id ? 'selected' : '' }}>
-                                                    {{ $country->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
