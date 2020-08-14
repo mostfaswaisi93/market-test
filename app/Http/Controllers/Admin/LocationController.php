@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Location;
+use App\Models\CountryTranslation;
 use App\Models\Country;
+use App\Models\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -13,11 +14,14 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $countries = Country::all();
-        $locations = Location::get();
+        $countries = CountryTranslation::get(['id', 'name']);
+        $locations = Location::with(['country'])->get();
 
         if (request()->ajax()) {
             return datatables()->of($locations)
+                ->addColumn('country', function ($data) {
+                    return $data->country->name;
+                })
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_locations')) {
                         $button = '<a type="button" name="edit" href="locations/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
@@ -51,7 +55,7 @@ class LocationController extends Controller
         ];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name'        => 'required|unique:product_translations,name'];
+            $rules += [$locale . '.name'        => 'required|unique:location_translations,name'];
         }
 
         $request->validate($rules);
@@ -63,7 +67,8 @@ class LocationController extends Controller
 
     public function edit(Location $location)
     {
-        return view('admin.locations.edit', compact('location'));
+        $countries = Country::all();
+        return view('admin.locations.edit', compact('countries', 'location'));
     }
 
     public function update(Request $request, Location $location)

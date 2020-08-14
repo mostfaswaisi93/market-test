@@ -42,7 +42,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>@lang('admin.countries')</label>
-                                            <select name="category_id" class="form-control">
+                                            <select name="country_id" class="form-control">
                                                 <option value="">@lang('admin.all_countries')</option>
                                                 @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}"

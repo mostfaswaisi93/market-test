@@ -67,6 +67,7 @@ return [
     'edit_language'             => 'تعديل اللغة',
     'status'                    => 'الحالة',
     'language'                  => 'اللغة',
+    'country'                   => 'الدولة',
 
     'users_management'          => 'إدارة المستخدمين',
     'categories_management'     => 'إدارة الأقسام',

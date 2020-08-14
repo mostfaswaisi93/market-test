@@ -39,6 +39,19 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>@lang('admin.countries')</label>
+                                            <select name="country_id" class="form-control">
+                                                <option value="">@lang('admin.all_countries')</option>
+                                                @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ $location->country_id == $country->id ? 'selected' : '' }}>{{ $country->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
