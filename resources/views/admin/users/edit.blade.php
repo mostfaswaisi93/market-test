@@ -94,7 +94,7 @@
                                                 @lang('admin.permissions')
                                             </h6> <br>
                                             @php
-                                            $models = ['users', 'categories', 'products'];
+                                            $models = ['users', 'categories', 'items'];
                                             $maps = ['create', 'read', 'update', 'delete'];
                                             @endphp
                                             <ul class="nav nav-tabs">

@@ -15,7 +15,13 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->integer('category_id')->unsigned()->onDelete('cascade');
+            $table->string('image')->default('default.png');
+            $table->double('purchase_price', 8, 2);
+            $table->double('sale_price', 8, 2);
+            $table->integer('stock');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 14, 2020 at 08:21 AM
+-- Generation Time: Aug 14, 2020 at 11:37 AM
 -- Server version: 10.5.4-MariaDB-log
 -- PHP Version: 7.4.8
 
@@ -41,8 +41,11 @@ CREATE TABLE `brands` (
 
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `active` int(11) NOT NULL DEFAULT 1,
+  `ordered` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -55,6 +58,8 @@ CREATE TABLE `category_translations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default.png',
+  `image_sm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default_sm.png',
   `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -136,8 +141,28 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `items` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default.png',
+  `purchase_price` double(8,2) NOT NULL,
+  `sale_price` double(8,2) NOT NULL,
+  `stock` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item_translations`
+--
+
+CREATE TABLE `item_translations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `item_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -218,25 +243,24 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_08_06_123741_laratrust_setup_tables', 1),
-(5, '2020_08_08_135848_create_products_table', 1),
-(6, '2020_08_08_135914_create_categories_table', 1),
-(7, '2020_08_10_223649_create_customers_table', 1),
-(8, '2020_08_10_223701_create_locations_table', 1),
-(9, '2020_08_10_223715_create_notifications_table', 1),
-(10, '2020_08_10_223732_create_orders_table', 1),
-(11, '2020_08_11_095631_create_countries_table', 1),
-(12, '2020_08_11_104322_create_settings_table', 1),
-(13, '2020_08_12_152149_create_sliders_table', 1),
-(14, '2020_08_12_152204_create_menus_table', 1),
-(15, '2020_08_12_152215_create_brands_table', 1),
-(16, '2020_08_12_152228_create_pages_table', 1),
-(17, '2020_08_12_152240_create_contacts_table', 1),
-(18, '2020_08_13_000501_create_category_translations_table', 1),
-(19, '2020_08_13_004202_create_items_table', 1),
-(20, '2020_08_13_004623_create_product_translations_table', 1),
-(21, '2020_08_13_153130_create_country_translations_table', 1),
-(22, '2020_08_13_170232_create_languages_table', 1),
-(23, '2020_08_14_073232_create_location_translations_table', 1);
+(5, '2020_08_08_135914_create_categories_table', 1),
+(6, '2020_08_10_223649_create_customers_table', 1),
+(7, '2020_08_10_223701_create_locations_table', 1),
+(8, '2020_08_10_223715_create_notifications_table', 1),
+(9, '2020_08_10_223732_create_orders_table', 1),
+(10, '2020_08_11_095631_create_countries_table', 1),
+(11, '2020_08_11_104322_create_settings_table', 1),
+(12, '2020_08_12_152149_create_sliders_table', 1),
+(13, '2020_08_12_152204_create_menus_table', 1),
+(14, '2020_08_12_152215_create_brands_table', 1),
+(15, '2020_08_12_152228_create_pages_table', 1),
+(16, '2020_08_12_152240_create_contacts_table', 1),
+(17, '2020_08_13_000501_create_category_translations_table', 1),
+(18, '2020_08_13_004202_create_items_table', 1),
+(19, '2020_08_13_153130_create_country_translations_table', 1),
+(20, '2020_08_13_170232_create_languages_table', 1),
+(21, '2020_08_14_073232_create_location_translations_table', 1),
+(22, '2020_08_14_110648_create_item_translations_table', 1);
 
 -- --------------------------------------------------------
 
@@ -306,50 +330,46 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'create_categories', 'Create Categories', 'Create Categories', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(2, 'read_categories', 'Read Categories', 'Read Categories', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(3, 'update_categories', 'Update Categories', 'Update Categories', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(4, 'delete_categories', 'Delete Categories', 'Delete Categories', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(5, 'create_locations', 'Create Locations', 'Create Locations', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(6, 'read_locations', 'Read Locations', 'Read Locations', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(7, 'update_locations', 'Update Locations', 'Update Locations', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(8, 'delete_locations', 'Delete Locations', 'Delete Locations', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(9, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(10, 'read_notifications', 'Read Notifications', 'Read Notifications', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(11, 'update_notifications', 'Update Notifications', 'Update Notifications', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(12, 'delete_notifications', 'Delete Notifications', 'Delete Notifications', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(13, 'create_orders', 'Create Orders', 'Create Orders', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(14, 'read_orders', 'Read Orders', 'Read Orders', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(15, 'update_orders', 'Update Orders', 'Update Orders', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(16, 'delete_orders', 'Delete Orders', 'Delete Orders', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(17, 'create_customers', 'Create Customers', 'Create Customers', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(18, 'read_customers', 'Read Customers', 'Read Customers', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(19, 'update_customers', 'Update Customers', 'Update Customers', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(20, 'delete_customers', 'Delete Customers', 'Delete Customers', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(21, 'create_products', 'Create Products', 'Create Products', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(22, 'read_products', 'Read Products', 'Read Products', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(23, 'update_products', 'Update Products', 'Update Products', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(24, 'delete_products', 'Delete Products', 'Delete Products', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(25, 'create_items', 'Create Items', 'Create Items', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(26, 'read_items', 'Read Items', 'Read Items', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(27, 'update_items', 'Update Items', 'Update Items', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(28, 'delete_items', 'Delete Items', 'Delete Items', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(29, 'create_countries', 'Create Countries', 'Create Countries', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(30, 'read_countries', 'Read Countries', 'Read Countries', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(31, 'update_countries', 'Update Countries', 'Update Countries', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(32, 'delete_countries', 'Delete Countries', 'Delete Countries', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(33, 'create_languages', 'Create Languages', 'Create Languages', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(34, 'read_languages', 'Read Languages', 'Read Languages', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(35, 'update_languages', 'Update Languages', 'Update Languages', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(36, 'delete_languages', 'Delete Languages', 'Delete Languages', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(37, 'create_users', 'Create Users', 'Create Users', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(38, 'read_users', 'Read Users', 'Read Users', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(39, 'update_users', 'Update Users', 'Update Users', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(40, 'delete_users', 'Delete Users', 'Delete Users', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(41, 'create_settings', 'Create Settings', 'Create Settings', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(42, 'read_settings', 'Read Settings', 'Read Settings', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(43, 'update_settings', 'Update Settings', 'Update Settings', '2020-08-14 05:21:19', '2020-08-14 05:21:19'),
-(44, 'delete_settings', 'Delete Settings', 'Delete Settings', '2020-08-14 05:21:19', '2020-08-14 05:21:19');
+(1, 'create_categories', 'Create Categories', 'Create Categories', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(2, 'read_categories', 'Read Categories', 'Read Categories', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(3, 'update_categories', 'Update Categories', 'Update Categories', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(4, 'delete_categories', 'Delete Categories', 'Delete Categories', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(5, 'create_locations', 'Create Locations', 'Create Locations', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(6, 'read_locations', 'Read Locations', 'Read Locations', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(7, 'update_locations', 'Update Locations', 'Update Locations', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(8, 'delete_locations', 'Delete Locations', 'Delete Locations', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(9, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(10, 'read_notifications', 'Read Notifications', 'Read Notifications', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(11, 'update_notifications', 'Update Notifications', 'Update Notifications', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(12, 'delete_notifications', 'Delete Notifications', 'Delete Notifications', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(13, 'create_orders', 'Create Orders', 'Create Orders', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(14, 'read_orders', 'Read Orders', 'Read Orders', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(15, 'update_orders', 'Update Orders', 'Update Orders', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(16, 'delete_orders', 'Delete Orders', 'Delete Orders', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(17, 'create_customers', 'Create Customers', 'Create Customers', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(18, 'read_customers', 'Read Customers', 'Read Customers', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(19, 'update_customers', 'Update Customers', 'Update Customers', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(20, 'delete_customers', 'Delete Customers', 'Delete Customers', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(21, 'create_items', 'Create Items', 'Create Items', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(22, 'read_items', 'Read Items', 'Read Items', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(23, 'update_items', 'Update Items', 'Update Items', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(24, 'delete_items', 'Delete Items', 'Delete Items', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(25, 'create_countries', 'Create Countries', 'Create Countries', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(26, 'read_countries', 'Read Countries', 'Read Countries', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(27, 'update_countries', 'Update Countries', 'Update Countries', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(28, 'delete_countries', 'Delete Countries', 'Delete Countries', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(29, 'create_languages', 'Create Languages', 'Create Languages', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(30, 'read_languages', 'Read Languages', 'Read Languages', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(31, 'update_languages', 'Update Languages', 'Update Languages', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(32, 'delete_languages', 'Delete Languages', 'Delete Languages', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(33, 'create_users', 'Create Users', 'Create Users', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(34, 'read_users', 'Read Users', 'Read Users', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(35, 'update_users', 'Update Users', 'Update Users', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(36, 'delete_users', 'Delete Users', 'Delete Users', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(37, 'create_settings', 'Create Settings', 'Create Settings', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(38, 'read_settings', 'Read Settings', 'Read Settings', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(39, 'update_settings', 'Update Settings', 'Update Settings', '2020-08-14 08:37:03', '2020-08-14 08:37:03'),
+(40, 'delete_settings', 'Delete Settings', 'Delete Settings', '2020-08-14 08:37:04', '2020-08-14 08:37:04');
 
 -- --------------------------------------------------------
 
@@ -406,11 +426,7 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (37, 1),
 (38, 1),
 (39, 1),
-(40, 1),
-(41, 1),
-(42, 1),
-(43, 1),
-(44, 1);
+(40, 1);
 
 -- --------------------------------------------------------
 
@@ -422,37 +438,6 @@ CREATE TABLE `permission_user` (
   `permission_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `user_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
-
-CREATE TABLE `products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default.png',
-  `purchase_price` double(8,2) NOT NULL,
-  `sale_price` double(8,2) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product_translations`
---
-
-CREATE TABLE `product_translations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -475,8 +460,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'super_admin', 'Super Admin', 'Super Admin', '2020-08-14 05:21:18', '2020-08-14 05:21:18'),
-(2, 'admin', 'Admin', 'Admin', '2020-08-14 05:21:20', '2020-08-14 05:21:20');
+(1, 'super_admin', 'Super Admin', 'Super Admin', '2020-08-14 08:37:02', '2020-08-14 08:37:02'),
+(2, 'admin', 'Admin', 'Admin', '2020-08-14 08:37:05', '2020-08-14 08:37:05');
 
 -- --------------------------------------------------------
 
@@ -554,7 +539,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `image`, `active`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'super', 'super_admin', 'super@admin.com', 'default.png', 1, NULL, '$2y$10$PuI2MKUdVlJWu74jwyoK.uZMqG9Dg9Wg8vFK8Mr7DzrRtZ2rO0JaC', NULL, '2020-08-13 21:00:00', '2020-08-13 21:00:00', NULL);
+(1, 'super', 'super_admin', 'super@admin.com', 'default.png', 1, NULL, '$2y$10$Fixo4vU1HdPQHBEPUfH65.FVelPCh2Vy4S40LQj5AvoBY49agbuta', NULL, '2020-08-13 21:00:00', '2020-08-13 21:00:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -617,6 +602,14 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `item_translations`
+--
+ALTER TABLE `item_translations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `item_translations_item_id_locale_unique` (`item_id`,`locale`),
+  ADD KEY `item_translations_locale_index` (`locale`);
 
 --
 -- Indexes for table `languages`
@@ -694,20 +687,6 @@ ALTER TABLE `permission_role`
 ALTER TABLE `permission_user`
   ADD PRIMARY KEY (`user_id`,`permission_id`,`user_type`),
   ADD KEY `permission_user_permission_id_foreign` (`permission_id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `product_translations`
---
-ALTER TABLE `product_translations`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `product_translations_product_id_locale_unique` (`product_id`,`locale`),
-  ADD KEY `product_translations_locale_index` (`locale`);
 
 --
 -- Indexes for table `roles`
@@ -802,6 +781,12 @@ ALTER TABLE `items`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `item_translations`
+--
+ALTER TABLE `item_translations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
@@ -829,7 +814,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -853,19 +838,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `product_translations`
---
-ALTER TABLE `product_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `roles`

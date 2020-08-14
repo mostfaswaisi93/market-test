@@ -6,13 +6,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.categories_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.items_management')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.categories_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.items_management')</li>
                     </ol>
                 </div>
             </div>
@@ -24,22 +24,22 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.categories_management')</h4>
+                <h4 class="card-title">@lang('admin.items_management')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
                     <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_categories'))
-                        <a href="{{ route('admin.categories.create') }}">
+                        @if (auth()->user()->hasPermission('create_items'))
+                        <a href="{{ route('admin.items.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
-                                @lang('admin.create_category')
+                                @lang('admin.create_item')
                             </button>
                         </a>
                         @else
                         <a href="#">
                             <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_category')
+                                <i class="feather icon-plus"></i> @lang('admin.create_item')
                             </button>
                         </a>
                         @endif
@@ -51,7 +51,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('admin.name')</th>
-                                    <th>@lang('admin.created_at')</th>
+                                    <th>@lang('admin.description')</th>
+                                    <th>@lang('admin.category')</th>
+                                    <th>@lang('admin.image')</th>
+                                    <th>@lang('admin.purchase_price')</th>
+                                    <th>@lang('admin.sale_price')</th>
+                                    <th>@lang('admin.profit_percent') %</th>
+                                    <th>@lang('admin.stock')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -76,7 +82,7 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.categories.index') }}",
+                url: "{{ route('admin.items.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {

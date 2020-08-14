@@ -29,11 +29,11 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_products'))
-            <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.products.index') }}" class="nav-link">
-                    <i class="fa fa-product-hunt"></i>
-                    <span class="title">@lang('admin.products_management')</span>
+            @if (auth()->user()->hasPermission('read_items'))
+            <li {{ request()->route()->getName() === 'admin.items.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.items.index') }}" class="nav-link">
+                    <i class="feather icon-layers"></i>
+                    <span class="title">@lang('admin.items_management')</span>
                 </a>
             </li>
             @endif

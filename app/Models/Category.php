@@ -28,8 +28,8 @@ class Category extends Model
         return asset('uploads/category_images/' . $this->image);
     }
 
-    public function products()
+    public function items()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Item::class);
     }
 }

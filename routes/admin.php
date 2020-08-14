@@ -7,7 +7,6 @@ Route::group(
             Route::get('/', 'AdminController@index')->name('index');
 
             Route::resource('categories', 'CategoryController')->except(['show']);
-            Route::resource('products', 'ProductController')->except(['show']);
             Route::resource('items', 'ItemController')->except(['show']);
             Route::resource('customers', 'CustomerController')->except(['show']);
             Route::resource('locations', 'LocationController')->except(['show']);

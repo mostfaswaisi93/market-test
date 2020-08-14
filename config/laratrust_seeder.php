@@ -8,7 +8,6 @@ return [
             'notifications'     => 'c,r,u,d',
             'orders'            => 'c,r,u,d',
             'customers'         => 'c,r,u,d',
-            'products'          => 'c,r,u,d',
             'items'             => 'c,r,u,d',
             'countries'         => 'c,r,u,d',
             'languages'         => 'c,r,u,d',
