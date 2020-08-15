@@ -77,38 +77,38 @@
                 </a>
             </li>
             @endif
-            {{-- @if (auth()->user()->hasPermission('read_promo_code')) --}}
+            @if (auth()->user()->hasPermission('read_promo_code'))
             <li {{ request()->route()->getName() === 'admin.promo_code.index' ? ' class=active' : '' }}>
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.promo_code.index') }}" class="nav-link">
                     <i class="feather icon-tag"></i>
                     <span class="title">@lang('admin.promo_code')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_sliders')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_sliders'))
             <li {{ request()->route()->getName() === 'admin.sliders.index' ? ' class=active' : '' }}>
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.sliders.index') }}" class="nav-link">
                     <i class="feather icon-sliders"></i>
                     <span class="title">@lang('admin.sliders')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_messages')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_messages'))
             <li {{ request()->route()->getName() === 'admin.messages.index' ? ' class=active' : '' }}>
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.messages.index') }}" class="nav-link">
                     <i class="ficon feather icon-mail"></i>
                     <span class="title">@lang('admin.messages')</span>
                 </a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->hasPermission('read_languages')) --}}
+            @endif
+            @if (auth()->user()->hasPermission('read_languages'))
             <li {{ request()->route()->getName() === 'admin.languages.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.languages.index') }}" class="nav-link">
                     <i class="fa fa-language"></i>
                     <span class="title">@lang('admin.languages_management')</span>
                 </a>
             </li>
-            {{-- @endif --}}
+            @endif
             @if (auth()->user()->hasPermission('read_users'))
             <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.users.index') }}" class="nav-link">

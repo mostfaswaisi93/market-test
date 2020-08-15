@@ -10,8 +10,8 @@ class Category extends Model
 {
     use Translatable, SoftDeletes;
 
-    protected $guarded = [];
-    public $translatedAttributes    = ['name', 'image', 'image_sm'];
+    protected $guarded              = [];
+    public $translatedAttributes    = ['name'];
 
     protected $casts = [
         'created_at'                => 'date:Y-m-d',
@@ -26,6 +26,10 @@ class Category extends Model
     public function getImagePathAttribute()
     {
         return asset('uploads/category_images/' . $this->image);
+    }
+    public function getImageSmallPathAttribute()
+    {
+        return asset('uploads/category_sm_images/' . $this->image_sm);
     }
 
     public function items()

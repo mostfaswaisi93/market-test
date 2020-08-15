@@ -17,7 +17,7 @@ class CreateItemTranslationsTable extends Migration
             $table->id();
             $table->integer('item_id')->unsigned()->onDelete('cascade');
             $table->string('name');
-            $table->text('description');
+            $table->text('details');
             $table->string('locale')->index();
 
             $table->unique(['item_id', 'locale']);

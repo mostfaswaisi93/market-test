@@ -6,16 +6,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_category')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_language')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.categories.index') }}">@lang('admin.categories_management')</a>
+                            <a href="{{ route('admin.languages.index') }}">@lang('admin.languages_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_category')</li>
+                        <li class="breadcrumb-item active">@lang('admin.create_language')</li>
                     </ol>
                 </div>
             </div>
@@ -29,12 +29,12 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.create_category')</h4>
+                        <h4 class="card-title"> @lang('admin.create_language')</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.categories.store') }}" method="post"
+                            <form action="{{ route('admin.languages.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')

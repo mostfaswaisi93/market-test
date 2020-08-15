@@ -17,8 +17,6 @@ class CreateCategoryTranslationsTable extends Migration
             $table->id();
             $table->integer('category_id')->unsigned()->onDelete('cascade');
             $table->string('name');
-            $table->string('image')->default('default.png');
-            $table->string('image_sm')->default('default_sm.png');
             $table->string('locale')->index();
 
             $table->unique(['category_id', 'locale']);
