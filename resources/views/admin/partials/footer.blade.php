@@ -72,6 +72,16 @@
         document.getElementById("image").click();
     };
 
+    function ImgArUpload() {
+        event.preventDefault();
+        document.getElementById("image_ar").click();
+    };
+
+    function ImgEnUpload() {
+        event.preventDefault();
+        document.getElementById("image_en").click();
+    };
+
     function IconUpload() {
         event.preventDefault();
         document.getElementById("icon").click();

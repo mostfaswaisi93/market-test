@@ -13,13 +13,13 @@ $(".image").change(function() {
 
 });
 
-$(".img_ar").change(function() {
+$(".image_ar").change(function() {
 
     if (this.files && this.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function(e) {
-            $('.img_ar-preview').attr('src', e.target.result);
+            $('.image-ar-preview').attr('src', e.target.result);
         }
 
         reader.readAsDataURL(this.files[0]);
@@ -27,13 +27,13 @@ $(".img_ar").change(function() {
 
 });
 
-$(".img_en").change(function() {
+$(".image_en").change(function() {
 
     if (this.files && this.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function(e) {
-            $('.img_en-preview').attr('src', e.target.result);
+            $('.image-en-preview').attr('src', e.target.result);
         }
 
         reader.readAsDataURL(this.files[0]);

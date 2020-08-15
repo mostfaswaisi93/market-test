@@ -28,20 +28,15 @@ class Category extends Model
     public function getImagePathAttribute()
     {
         if (App::isLocale('ar')) {
-            return asset('uploads/category_images/ar/' . $this->image);
-        } else {
-            return asset('uploads/category_images/en/' . $this->image);
+            return asset('uploads/category_images/ar/' . $this->image_ar);
+        } elseif (App::isLocale('en')) {
+            return asset('uploads/category_images/en/' . $this->image_en);
         }
     }
 
     public function getIconPathAttribute()
     {
         return asset('uploads/category_icons/' . $this->icon);
-    }
-
-    public function getImageSmallPathAttribute()
-    {
-        return asset('uploads/category_sm_images/' . $this->image_sm);
     }
 
     public function items()

@@ -14,7 +14,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-
         if (request()->ajax()) {
             return datatables()->of($categories)
                 ->addColumn('action', function ($data) {
@@ -53,14 +52,23 @@ class CategoryController extends Controller
         $request->validate($rules);
         $request_data = $request->all();
 
-        if ($request->image) {
-            Image::make($request->image)
+        if ($request->image_ar) {
+            Image::make($request->image_ar)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/category_images/' . $request->image->hashName()));
+                ->save(public_path('uploads/category_images/ar/' . $request->image_ar->hashName()));
 
-            $request_data['image'] = $request->image->hashName();
+            $request_data['image_ar'] = $request->image_ar->hashName();
+        }
+        if ($request->image_en) {
+            Image::make($request->image_en)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/category_images/en/' . $request->image_en->hashName()));
+
+            $request_data['image_en'] = $request->image_en->hashName();
         }
         if ($request->icon) {
             Image::make($request->icon)
@@ -79,7 +87,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     public function update(Request $request, Category $category)
@@ -91,7 +99,26 @@ class CategoryController extends Controller
         }
 
         $request->validate($rules);
-        $category->update($request->all());
+
+        $request_data = $request->all();
+
+        if ($request->image) {
+
+            if ($category->image != 'default.png') {
+
+                Storage::disk('public_uploads')->delete('/category_images/' . $category->image);
+            }
+
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/category_images/' . $request->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+        }
+
+        $category->update($request_data);
 
         Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.categories.index');
