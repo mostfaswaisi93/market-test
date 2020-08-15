@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.edit_category') @endsection
+@section('title') @lang('admin.create_category') @endsection
 
 @section('content')
 
@@ -7,7 +7,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_category')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_category')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.categories.index') }}">@lang('admin.categories_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.edit_category')</li>
+                        <li class="breadcrumb-item active">@lang('admin.create_category')</li>
                     </ol>
                 </div>
             </div>
@@ -30,22 +30,22 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.edit_category')</h4>
+                        <h4 class="card-title"> @lang('admin.create_category')</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.categories.update', $category->id) }}" method="post"
+                            <form action="{{ route('admin.categories.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
+                                @method('POST')
                                 <div class="row">
                                     @foreach (config('translatable.locales') as $locale)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.name')</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
-                                                value="{{ $category->translate($locale)->name }}"
+                                                value="{{ old($locale . '.name') }}"
                                                 placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
                                     </div>
@@ -53,7 +53,8 @@
                                     <div class="col-md-6 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ $category->image_path_ar }}" alt="users avatar"
+                                                <img src="{{ asset('uploads/category_images/ar/default.png') }}"
+                                                    alt="users avatar"
                                                     class="users-avatar-shadow rounded image_ar img-thumbnail image-ar-preview"
                                                     height="90" width="90">
                                             </a>
@@ -73,7 +74,8 @@
                                     <div class="col-md-6 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ $category->image_path_en }}" alt="users avatar"
+                                                <img src="{{ asset('uploads/category_images/en/default.png') }}"
+                                                    alt="users avatar"
                                                     class="users-avatar-shadow rounded image_en img-thumbnail image-en-preview"
                                                     height="90" width="90">
                                             </a>
@@ -93,7 +95,8 @@
                                     <div class="col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ $category->icon_path }}" alt="users avatar"
+                                                <img src="{{ asset('uploads/category_icons/default.png') }}"
+                                                    alt="users avatar"
                                                     class="users-avatar-shadow rounded icon img-thumbnail icon-preview"
                                                     height="50" width="50">
                                             </a>
@@ -114,7 +117,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <button type="submit" class="btn btn-primary">
-                                                    @lang('admin.update')
+                                                    @lang('admin.add')
                                                 </button>
                                             </div>
                                         </div>

@@ -11,9 +11,10 @@ class Category extends Model
 {
     use Translatable, SoftDeletes;
 
+    protected $table = 'categories';
     protected $guarded              = [];
     public $translatedAttributes    = ['name'];
-    protected $appends = ['image_path', 'icon_path'];
+    protected $appends = ['image_path', 'icon_path', 'image_path_ar', 'image_path_en'];
 
     protected $casts = [
         'created_at'                => 'date:Y-m-d',
@@ -31,7 +32,21 @@ class Category extends Model
             return asset('uploads/category_images/ar/' . $this->image_ar);
         } elseif (App::isLocale('en')) {
             return asset('uploads/category_images/en/' . $this->image_en);
+        } elseif (App::isLocale('tr')) {
+            return asset('uploads/category_images/tr/' . $this->image_tr);
+        } elseif (App::isLocale('fr')) {
+            return asset('uploads/category_images/fr/' . $this->image_fr);
         }
+    }
+
+    public function getImagePathArAttribute()
+    {
+        return asset('uploads/category_images/ar/' . $this->image_ar);
+    }
+
+    public function getImagePathEnAttribute()
+    {
+        return asset('uploads/category_images/en/' . $this->image_en);
     }
 
     public function getIconPathAttribute()

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use Brian2694\Toastr\Facades\Toastr;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -58,25 +60,24 @@ class CategoryController extends Controller
                     $constraint->aspectRatio();
                 })
                 ->save(public_path('uploads/category_images/ar/' . $request->image_ar->hashName()));
-
             $request_data['image_ar'] = $request->image_ar->hashName();
         }
+
         if ($request->image_en) {
             Image::make($request->image_en)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
                 ->save(public_path('uploads/category_images/en/' . $request->image_en->hashName()));
-
             $request_data['image_en'] = $request->image_en->hashName();
         }
+
         if ($request->icon) {
             Image::make($request->icon)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
                 ->save(public_path('uploads/category_icons/' . $request->icon->hashName()));
-
             $request_data['icon'] = $request->icon->hashName();
         }
 
@@ -99,35 +100,60 @@ class CategoryController extends Controller
         }
 
         $request->validate($rules);
-
         $request_data = $request->all();
 
-        if ($request->image) {
-
-            if ($category->image != 'default.png') {
-
-                Storage::disk('public_uploads')->delete('/category_images/' . $category->image);
+        if ($request->image_ar) {
+            if ($category->image_ar != 'default.png') {
+                Storage::disk('public_uploads')->delete('/category_images/ar/' . $category->image_ar);
             }
-
-            Image::make($request->image)
+            Image::make($request->image_ar)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/category_images/' . $request->image->hashName()));
+                ->save(public_path('uploads/category_images/ar/' . $request->image_ar->hashName()));
+            $request_data['image_ar'] = $request->image_ar->hashName();
+        }
 
-            $request_data['image'] = $request->image->hashName();
+        if ($request->image_en) {
+            if ($category->image_en != 'default.png') {
+                Storage::disk('public_uploads')->delete('/category_images/en/' . $category->image_en);
+            }
+            Image::make($request->image_en)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/category_images/en/' . $request->image_en->hashName()));
+            $request_data['image_en'] = $request->image_en->hashName();
+        }
+
+        if ($request->icon) {
+            if ($category->icon != 'default.png') {
+                Storage::disk('public_uploads')->delete('/category_icons/' . $category->icon);
+            }
+            Image::make($request->icon)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/category_icons/' . $request->icon->hashName()));
+            $request_data['icon'] = $request->icon->hashName();
         }
 
         $category->update($request_data);
-
         Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.categories.index');
     }
 
-    public function destroy(Category $category)
+    public function Deletecategory($id)
     {
-        $category->delete();
+        DB::table('categories')->where('id', $id)->delete();
         Toastr::success(__('admin.deleted_successfully'));
         return redirect()->route('admin.categories.index');
+    }
+
+    public function destroy($id)
+    {
+        $data = Category::findOrFail($id);
+        $data->delete();
+        Toastr::success(__('admin.deleted_successfully'));
     }
 }
