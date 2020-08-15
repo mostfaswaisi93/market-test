@@ -71,6 +71,11 @@
         event.preventDefault();
         document.getElementById("image").click();
     };
+
+    function IconUpload() {
+        event.preventDefault();
+        document.getElementById("icon").click();
+    };
 </script>
 
 @include('sweetalert::alert')

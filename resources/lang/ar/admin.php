@@ -89,7 +89,9 @@ return [
     'last_name'                 => 'الاسم الأخير',
     'email'                     => 'البريد الإلكتروني',
     'image'                     => 'صورة',
+    'icon'                      => 'أيقونة',
     'file_upload'               => 'استعراض...',
+    'icon_upload'               => 'إضافة أيقونة',
     'action'                    => 'خيارات',
 
     'permissions'               => 'الصلاحيات',

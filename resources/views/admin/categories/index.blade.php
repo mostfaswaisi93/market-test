@@ -50,10 +50,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>@lang('admin.icon')</th>
                                     <th>@lang('admin.image')</th>
                                     <th>@lang('admin.name')</th>
-                                    <th>@lang('admin.items_count')</th>
-                                    <th>@lang('admin.related_items')</th>
+                                    {{-- <th>@lang('admin.items_count')</th>
+                                    <th>@lang('admin.related_items')</th> --}}
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
@@ -85,6 +86,11 @@
                     render: function(data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
+                },
+                { data: 'icon_path', name: 'icon_path',
+                    render: function(data, type, full, meta) {
+                        return "<img src=" + data + " width='40px' class='img-thumbnail' />";
+                    }, orderable: false , searchable: false
                 },
                 { data: 'image_path', name: 'image_path',
                     render: function(data, type, full, meta) {

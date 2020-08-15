@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use Brian2694\Toastr\Facades\Toastr;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -46,13 +47,33 @@ class CategoryController extends Controller
         $rules = [];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('category_translations', 'name')]];
+            $rules += [$locale . '.name'  => 'required|unique:category_translations,name'];
         }
 
         $request->validate($rules);
-        Category::create($request->all());
+        $request_data = $request->all();
 
-        Toastr::success(__('admin.added_successfully'), 'Success');
+        if ($request->image) {
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/category_images/' . $request->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+        }
+        if ($request->icon) {
+            Image::make($request->icon)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/category_icons/' . $request->icon->hashName()));
+
+            $request_data['icon'] = $request->icon->hashName();
+        }
+
+        Category::create($request_data);
+        Toastr::success(__('admin.added_successfully'));
         return redirect()->route('admin.categories.index');
     }
 
@@ -66,21 +87,20 @@ class CategoryController extends Controller
         $rules = [];
 
         foreach (config('translatable.locales') as $locale) {
-
             $rules += [$locale . '.name' => ['required', Rule::unique('category_translations', 'name')->ignore($category->id, 'category_id')]];
         }
 
         $request->validate($rules);
         $category->update($request->all());
 
-        Toastr::success(__('admin.updated_successfully'), 'Success');
+        Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.categories.index');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        Toastr::success(__('admin.deleted_successfully'), 'Success');
+        Toastr::success(__('admin.deleted_successfully'));
         return redirect()->route('admin.categories.index');
     }
 }

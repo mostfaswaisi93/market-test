@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
             'name'          => 'super',
             'username'      => 'super_admin',
             'email'         => 'super@admin.com',
-            'password'      => bcrypt('123123'),
+            'password'      => bcrypt('password'),
             'created_at'    => date('Y-m-d'),
             'updated_at'    => date('Y-m-d')
         ]);

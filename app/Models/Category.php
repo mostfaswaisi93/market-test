@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\App;
 
 class Category extends Model
 {
@@ -12,6 +13,7 @@ class Category extends Model
 
     protected $guarded              = [];
     public $translatedAttributes    = ['name'];
+    protected $appends = ['image_path', 'icon_path'];
 
     protected $casts = [
         'created_at'                => 'date:Y-m-d',
@@ -25,8 +27,18 @@ class Category extends Model
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/category_images/' . $this->image);
+        if (App::isLocale('ar')) {
+            return asset('uploads/category_images/ar/' . $this->image);
+        } else {
+            return asset('uploads/category_images/en/' . $this->image);
+        }
     }
+
+    public function getIconPathAttribute()
+    {
+        return asset('uploads/category_icons/' . $this->icon);
+    }
+
     public function getImageSmallPathAttribute()
     {
         return asset('uploads/category_sm_images/' . $this->image_sm);
