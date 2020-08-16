@@ -22,9 +22,11 @@ return [
     'password'                  => 'كلمة المرور',
     'password_confirmation'     => 'تأكيد كلمة المرور',
 
+    'are_sure'                  => 'هل أنت متأكد من ذلك؟',
     'confirm_delete'            => 'تأكيد الحذف',
     'yes'                       => 'نعم',
     'no'                        => 'لا',
+    'cancel'                    => 'إلغاء',
 
     'added_successfully'        => 'تم إضافة البيانات بنجاح',
     'updated_successfully'      => 'تم تحديث البيانات بنجاح',

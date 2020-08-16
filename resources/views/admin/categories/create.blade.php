@@ -30,7 +30,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.create_category')</h4>
+                        <h4 class="card-title">
+                            <i class="feather icon-plus-square mr-25"></i>
+                            @lang('admin.create_category')
+                        </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">

@@ -97,9 +97,7 @@ class UserController extends Controller
         ]);
 
         $request_data = $request->except(['permissions', 'image']);
-
         if ($request->image) {
-
             if ($user->image != 'default.png') {
                 Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
             }
@@ -113,21 +111,18 @@ class UserController extends Controller
         }
 
         $user->update($request_data);
-
         $user->syncPermissions($request->permissions);
+
         Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.users.index');
     }
 
-    public function destroy($id, User $user)
+    public function destroy($id)
     {
+        $user = User::findOrFail($id);
         if ($user->image != 'default.png') {
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
         }
         $user->delete();
-        $data = User::findOrFail($id);
-        $data->delete();
-        Toastr::success(__('admin.deleted_successfully'));
-    //     return redirect()->route('admin.users.index');
     }
 }

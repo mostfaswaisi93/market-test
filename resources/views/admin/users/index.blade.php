@@ -104,20 +104,21 @@
     $(document).on('click', '.delete', function(){
         user_id = $(this).attr('id');
         swal({
-            title   : "Are you sure?",
-            text    : "Once deleted, you will not be able to recover this imaginary file!",
-            icon    : "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((result) => {
-            if (result) {
+            title: "{{ trans('admin.are_sure') }}",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '{{ trans('admin.yes') }}',
+            cancelButtonText: '{{ trans('admin.cancel') }}'
+        }).then(function(result){
+            if(result.value){
                 $.ajax({
                     url:"users/destroy/" + user_id,
                     success: function(data){
-                        swal("Poof! Your imaginary file has been deleted!", 
-                        { icon: "success", });
+                        console.log(data);
                         $('#data-table').DataTable().ajax.reload();
-                        // toastr.success('Deleted Done!', 'Success!');
+                        toastr.success('{{ trans('admin.deleted_successfully') }}!');
                     }
                 });
             }

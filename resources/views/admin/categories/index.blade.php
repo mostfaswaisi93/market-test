@@ -103,62 +103,29 @@
                 { data: 'action', name: 'action', orderable: false }
             ]
         });
+    });
 
-        // $(document).on('click', '.delete', function(){
-        //     department_id = $(this).attr('id');
-        //     $('#confirmModal').modal('show');
-        // });
-
-        // $('#ok_button').click(function(){
-        //     $.ajax({
-        //         url:"categories/destroy/"+department_id,
-        //         beforeSend:function(){
-        //             $('#ok_button').text('Deleting...');
-        //         },
-        //         success: function (data) {
-        //                 $('#confirmModal').modal('hide');
-        //                 $('#data-table').DataTable().ajax.reload();
-        //                 $('#ok_button').html('<i class="fa fa-check" aria-hidden="true"></i> Delete');
-        //                 toastr.success('Deleted Done!', 'Success!');
-        //             },
-        //             error: function (data) {
-        //                 console.log('error:', data);
-        //                 $('#ok_button').html('<i class="fa fa-check" aria-hidden="true"></i> Delete');
-        //         }
-        //     });
-        // });
-
-        $(document).on('click', '.delete', function (e) {
-            e.preventDefault();
-            var delete_id = $(this).attr('id');
-                swal({
-                    title: "Are you sure?",
-                    text: "Once Delete, you will not be able to recover this data!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url:"categories/destroy/"+delete_id,
-                        success: function (data) {
-                            $('#data-table').DataTable().ajax.reload();
-                            swal({
-                                type: 'success',
-                                title: 'Success!',
-                                text: 'Data has been deleted!'
-                            });
-                        },
-                        error: function (xhr) {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong!'
-                            });
-                        }
-                    });
-                }
-            });
+    $(document).on('click', '.delete', function(){
+        category_id = $(this).attr('id');
+        swal({
+            title: "{{ trans('admin.are_sure') }}",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '{{ trans('admin.yes') }}',
+            cancelButtonText: '{{ trans('admin.cancel') }}'
+        }).then(function(result){
+            if(result.value){
+                $.ajax({
+                    url:"categories/destroy/" + category_id,
+                    success: function(data){
+                        console.log(data);
+                        $('#data-table').DataTable().ajax.reload();
+                        toastr.success('{{ trans('admin.deleted_successfully') }}!');
+                    }
+                });
+            }
         });
     });
 </script>

@@ -30,8 +30,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"><i class="feather icon-user-plus mr-25"></i>
-                            @lang('admin.create_user')</h4>
+                        <h4 class="card-title">
+                            <i class="feather icon-user-plus mr-25"></i>
+                            @lang('admin.create_user')
+                        </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">

@@ -9,7 +9,6 @@ use Illuminate\Validation\Rule;
 use Brian2694\Toastr\Facades\Toastr;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use DB;
 
 class CategoryController extends Controller
 {
@@ -143,17 +142,18 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index');
     }
 
-    public function Deletecategory($id)
-    {
-        DB::table('categories')->where('id', $id)->delete();
-        Toastr::success(__('admin.deleted_successfully'));
-        return redirect()->route('admin.categories.index');
-    }
-
     public function destroy($id)
     {
-        $data = Category::findOrFail($id);
-        $data->delete();
-        Toastr::success(__('admin.deleted_successfully'));
+        $category = Category::findOrFail($id);
+        if ($category->image_ar != 'default.png') {
+            Storage::disk('public_uploads')->delete('/category_images/ar/' . $category->image_ar);
+        }
+        if ($category->image_en != 'default.png') {
+            Storage::disk('public_uploads')->delete('/category_images/en/' . $category->image_en);
+        }
+        if ($category->icon != 'default.png') {
+            Storage::disk('public_uploads')->delete('/category_icons/' . $category->icon);
+        }
+        $category->delete();
     }
 }
