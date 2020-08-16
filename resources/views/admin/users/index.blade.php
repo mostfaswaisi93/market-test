@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.users_management') @endsection
 
 @section('content')
 
@@ -67,31 +68,6 @@
     </section>
 </div>
 
-<!-- Confirm Delete -->
-
-<div class="modal fade" id="confirmModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Confirmation</h4>
-            </div>
-            <div class="modal-body">
-                <h4 style="margin: 0;" class="text-center">Are you sure you want to remove this data?</h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" name="ok_button" id="ok_button">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                    Delete</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                    Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection
 
 @push('scripts')
@@ -113,7 +89,7 @@
                 },
                 { data: 'image_path', name: 'image_path',
                     render: function(data, type, full, meta) {
-                        return "<img src=" + data + " width='70px' class='img-thumbnail' />";
+                        return "<img src=" + data + " width='50px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
                 { data: 'name', name: 'name' },
@@ -126,54 +102,27 @@
     });
     
     $(document).on('click', '.delete', function(){
-        task_id = $(this).attr('id');
-        $('#confirmModal').modal('show');
-    });
-
-    $('#ok_button').click(function(){
-        $.ajax({
-            url:"tasks/destroy/"+task_id,
-            beforeSend:function(){
-                $('#ok_button').text('Deleting...');
-            },
-            success: function (data) {
-                    $('#confirmModal').modal('hide');
-                    $('#data-table').DataTable().ajax.reload();
-                    $('#ok_button').html('<i class="fa fa-check" aria-hidden="true"></i> Delete');
-                    toastr.success('Deleted Done!', 'Success!');
-                },
-                error: function (data) {
-                    console.log('error:', data);
-                    $('#ok_button').html('<i class="fa fa-check" aria-hidden="true"></i> Delete');
+        user_id = $(this).attr('id');
+        swal({
+            title   : "Are you sure?",
+            text    : "Once deleted, you will not be able to recover this imaginary file!",
+            icon    : "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url:"users/destroy/" + user_id,
+                    success: function(data){
+                        swal("Poof! Your imaginary file has been deleted!", 
+                        { icon: "success", });
+                        $('#data-table').DataTable().ajax.reload();
+                        // toastr.success('Deleted Done!', 'Success!');
+                    }
+                });
             }
         });
     });
-
-// function deleteItem(item, path="banners"){
-//     swal({
-//         title: 'هل أنت متأكد من ذلك؟',
-//         type: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#3085d6',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText: 'نعم',
-//         cancelButtonText:'إلغاء'
-//     }).then(function(result){
-//         if(result.value){
-//             $.ajax({
-//                 type: "delete",
-//                 dataType : 'json',
-//                 url: "https://1stt.app/1teacher/admin/" + path + '/' + item,
-//                 data: { _token: 'aZFjVakfkWsSmwC8GLch1v5WKihqXxCVc2Uk04Jz' ,id: item},
-//                 success: function(data){
-//                     console.log(data);
-//                     toastr.success('تم حذف العنصر بنجاح', {timeOut: 5000});
-//                     $('#' + path + '-table').DataTable().ajax.reload( null, false);
-//                 }
-//             });
-//         }
-//     });
-// }
 </script>
 
 @endpush

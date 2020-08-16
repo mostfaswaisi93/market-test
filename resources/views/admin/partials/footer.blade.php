@@ -45,25 +45,6 @@
 {!! Toastr::message() !!}
 <script>
     $(document).ready(function () {
-        //Delete
-        $('.delete').click(function (e) {
-            var that = $(this)
-            e.preventDefault();
-            var n = new Noty({
-                text: "@lang('admin.confirm_delete')",
-                type: "alert",
-                killer: true,
-                buttons: [
-                    Noty.button("@lang('admin.yes')", 'btn btn-danger mr-2', function () {
-                        that.closest('form').submit();
-                    }),
-                    Noty.button("@lang('admin.no')", 'btn btn-light mr-2', function () {
-                        n.close();
-                    })
-                ]
-            });
-            n.show();
-        });
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
     });
 

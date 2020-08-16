@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use Brian2694\Toastr\Facades\Toastr;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -24,9 +23,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::OrderBy('created_at', 'desc')->whereRoleIs('admin');
-
         if (request()->ajax()) {
-
             return datatables()->of($users)
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_users')) {
@@ -36,7 +33,6 @@ class UserController extends Controller
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_users')) {
-                        // $button .= '<a type="button" name="delete" id="' . $data->id . '" onclick="deleteItem()" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                         $button .= '<a type="button" name="delete" id="' . $data->id . '"  class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
                         $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
@@ -81,7 +77,7 @@ class UserController extends Controller
         $user->attachRole('admin');
         $user->syncPermissions($request->permissions);
 
-        Toastr::success(__('admin.added_successfully'), 'Success');
+        Toastr::success(__('admin.added_successfully'));
         return redirect()->route('admin.users.index');
     }
 
@@ -105,7 +101,6 @@ class UserController extends Controller
         if ($request->image) {
 
             if ($user->image != 'default.png') {
-
                 Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
             }
 
@@ -114,35 +109,25 @@ class UserController extends Controller
                     $constraint->aspectRatio();
                 })
                 ->save(public_path('uploads/user_images/' . $request->image->hashName()));
-
             $request_data['image'] = $request->image->hashName();
         }
 
         $user->update($request_data);
 
         $user->syncPermissions($request->permissions);
-        Toastr::success(__('admin.updated_successfully'), 'Success');
+        Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.users.index');
     }
 
     public function destroy($id, User $user)
     {
         if ($user->image != 'default.png') {
-
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
         }
         $user->delete();
-
         $data = User::findOrFail($id);
         $data->delete();
-        Toastr::success(__('admin.deleted_successfully'), 'Success');
-        return redirect()->route('admin.users.index');
+        Toastr::success(__('admin.deleted_successfully'));
+    //     return redirect()->route('admin.users.index');
     }
-
-    // public function destroy($id)
-    // {
-    //     $data = Task::findOrFail($id);
-    //     $data->delete();
-    //     $data->employees()->detach();
-    // }
 }

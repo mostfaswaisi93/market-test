@@ -23,7 +23,6 @@ Route::group(
 
             Route::resource('users', 'UserController')->except(['show']);
             Route::get('users/destroy/{id}', 'UserController@destroy');
-            // Route::delete('users/{id}','UserController@destroy')->name('users.destroy');
         });
     }
 );
