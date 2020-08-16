@@ -101,6 +101,13 @@ return [
     'module'                    => 'القيمة',
     'action'                    => 'خيارات',
 
+    'active'                    => 'فعال',
+    'inactive'                  => 'غير فعال',
+
+    'change_status'             => 'تحديث الحالة',
+    'status_changed'            => 'تم تحديث الحالة',
+    'status_not_changed'        => 'الحالة لم يتم تحديثها',
+
     'permissions'               => 'الصلاحيات',
     'categories'                => 'الأقسام',
     'all_categories'            => 'كل الأقسام',

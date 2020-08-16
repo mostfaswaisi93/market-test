@@ -19,15 +19,15 @@ class CategoryController extends Controller
             return datatables()->of($categories)
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_categories')) {
-                        $button = '<a type="button" name="edit" href="categories/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" title="Edit" name="edit" href="categories/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
-                        $button = '<a type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" title="Edit" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_categories')) {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
                     }
                     return $button;
                 })
@@ -155,5 +155,17 @@ class CategoryController extends Controller
             Storage::disk('public_uploads')->delete('/category_icons/' . $category->icon);
         }
         $category->delete();
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $category           = Category::find($id);
+        $status             = $request->get('status');
+        $category->status   = $status;
+        $category           = $category->save();
+
+        if ($category) {
+            return response(['success' => TRUE, "message" => 'Done']);
+        }
     }
 }

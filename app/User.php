@@ -43,11 +43,15 @@ class User extends Authenticatable
         return ucfirst($value);
     }
 
-    // public function getUserNameAttribute($value)
-    // {
-    //     $key = ucfirst($value);
-    //     return ucwords(str_replace('_', ' ', $key));
-    // }
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('status', 0);
+    }
 
     public function getImagePathAttribute()
     {

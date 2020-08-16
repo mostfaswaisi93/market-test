@@ -54,9 +54,11 @@
                                     <th>@lang('admin.icon')</th>
                                     <th>@lang('admin.image')</th>
                                     <th>@lang('admin.name')</th>
-                                    {{-- <th>@lang('admin.items_count')</th>
-                                    <th>@lang('admin.related_items')</th> --}}
-                                    <th>@lang('admin.created_at')</th>
+                                    {{-- <th>@lang('admin.items_count')</th> --}}
+                                    {{-- <th>@lang('admin.related_items')</th> --}}
+                                    <th>@lang('admin.status')</th>
+                                    <th>@lang('admin.change_status')</th>
+                                    {{-- <th>@lang('admin.created_at')</th> --}}
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -74,6 +76,7 @@
 @push('scripts')
 
 <script type="text/javascript">
+    var status  = '';
     $(document).ready(function(){
         $('#data-table').DataTable({
             processing: true,
@@ -99,9 +102,30 @@
                     }, orderable: false , searchable: false
                 },
                 { data: 'name', name: 'name' },
-                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'status', name: 'status',
+                    render: function(data, type, full, meta) {
+                        var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
+                        var color = data ? "success" : "danger"; 
+                        return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
+                    }, orderable: false , searchable: false
+                },
+                { data: 'status', name: 'status' },
+                // { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
-            ]
+            ], "columnDefs": [ {
+                "targets": 5,
+                render: function (data, type, row, meta){
+                var $select = $(`
+                    <select class='status form-control'
+                    id='status' onchange=selectStatus(${row.id})>
+                    <option value='1'>{{ trans('admin.active') }}</option>
+                    <option value='0'>{{ trans('admin.inactive') }}</option>
+                    </select>
+                `);
+                $select.find('option[value="'+row.status+'"]').attr('selected', 'selected');
+                return $select[0].outerHTML
+                }
+            } ],
         });
     });
 
@@ -125,6 +149,51 @@
                         toastr.success('{{ trans('admin.deleted_successfully') }}!');
                     }
                 });
+            }
+        });
+    });
+
+    function selectStatus(id){
+        category_id = id;
+    }
+
+    $(document).on('change', '#status', function(e) {
+        var status_category = $(this).find("option:selected").val();
+        console.log(status_category)
+        if(status_category == "1"){
+            toastr.success('{{ trans('admin.status_changed') }}!');
+        }else if(status_category == "0"){
+            toastr.success('{{ trans('admin.status_changed') }}!');
+        } else {
+            toastr.error('{{ trans('admin.status_not_changed') }}!');
+        }
+        $.ajax({
+            url:"categories/updateStatus/"+category_id+"?status="+status_category,
+            headers: {
+                'X-CSRF-Token': "{{ csrf_token() }}"
+            },
+            method:"POST",
+            data:{},
+            contentType: false,
+            cache: false,
+            processData: false,
+            dataType:"json",
+            success:function(data)
+                {
+                var html = '';
+                if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                {
+                    html += '<p>' + data.errors[count] + '</p>';
+                }
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    $('#data-table').DataTable().ajax.reload();
+                }
             }
         });
     });

@@ -8,6 +8,7 @@ Route::group(
 
             Route::resource('categories', 'CategoryController')->except(['show']);
             Route::get('categories/destroy/{id}', 'CategoryController@destroy');
+            Route::post('categories/updateStatus/{id}', 'CategoryController@updateStatus')->name('category.status');
             // Route::resource('sub/categories', 'SubCategoryController')->except(['show']);
 
             Route::resource('items', 'ItemController')->except(['show']);
@@ -23,6 +24,7 @@ Route::group(
 
             Route::resource('users', 'UserController')->except(['show']);
             Route::get('users/destroy/{id}', 'UserController@destroy');
+            Route::post('users/updateStatus/{id}', 'UserController@updateStatus')->name('user.status');
         });
     }
 );

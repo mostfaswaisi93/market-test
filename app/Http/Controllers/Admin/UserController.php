@@ -27,15 +27,15 @@ class UserController extends Controller
             return datatables()->of($users)
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_users')) {
-                        $button = '<a type="button" name="edit" href="users/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" title="Edit" name="edit" href="users/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
-                        $button = '<a type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" title="Edit" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_users')) {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '"  class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '"  class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
                     }
                     return $button;
                 })
@@ -124,5 +124,17 @@ class UserController extends Controller
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
         }
         $user->delete();
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $user           = User::find($id);
+        $status         = $request->get('status');
+        $user->status   = $status;
+        $user           = $user->save();
+
+        if ($user) {
+            return response(['success' => TRUE, "message" => 'Done']);
+        }
     }
 }
