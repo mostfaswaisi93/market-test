@@ -46,6 +46,16 @@ class Category extends Model
         return asset('uploads/category_icons/' . $this->icon);
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('active', 0);
+    }
+
     public function items()
     {
         return $this->hasMany(Item::class);

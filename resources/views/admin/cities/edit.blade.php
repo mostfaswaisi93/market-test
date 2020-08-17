@@ -43,43 +43,32 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.countries')</label>
+                                                <select name="country_id" class="form-control">
+                                                    <option value="">@lang('admin.all_countries')</option>
+                                                    @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}"
+                                                        {{ old('country_id') == $country->id ? 'selected' : '' }}>
+                                                        {{ $country->name }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.name')</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
                                                 value="{{ $city->translate($locale)->name }}"
                                                 placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
-                                        <div class="form-group">
-                                            <label>@lang('admin.' . $locale . '.currency')</label>
-                                            <input id="currency" type="text" name="{{ $locale }}[currency]"
-                                                class="form-control"
-                                                value="{{ $city->translate($locale)->currency }}"
-                                                placeholder="@lang('admin.' . $locale . '.currency')">
-                                        </div>
                                     </div>
                                     @endforeach
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label>@lang('admin.iso_code')</label>
-                                                <input id="iso_code" type="text" name="iso_code" class="form-control"
-                                                    value="{{ $city->iso_code }}"
-                                                    placeholder="@lang('admin.iso_code')">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label>@lang('admin.phone_code')</label>
-                                                <input id="phone_code" type="text" name="phone_code"
-                                                    class="form-control" value="{{ $city->phone_code }}"
-                                                    placeholder="@lang('admin.phone_code')">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-12">
                                         <hr>
                                     </div>

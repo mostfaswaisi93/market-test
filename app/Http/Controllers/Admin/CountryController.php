@@ -55,7 +55,7 @@ class CountryController extends Controller
         $request->validate($rules);
 
         Country::create($request->all());
-        Toastr::success(__('admin.added_successfully'), 'Success');
+        Toastr::success(__('admin.added_successfully'));
         return redirect()->route('admin.countries.index');
     }
 
@@ -67,11 +67,8 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $rules = [
-            'iso_code'      => ['required', Rule::unique('countries')->ignore($country->id),],
-            'phone_code'      => ['required', Rule::unique('countries')->ignore($country->id),],
-
-            'iso_code'      => 'required|max:3|unique:countries',
-            'phone_code'    => 'required|unique:countries'
+            'iso_code'      => ['required', Rule::unique('countries')->ignore($country->id)],
+            'phone_code'    => ['required', Rule::unique('countries')->ignore($country->id)],
         ];
 
         foreach (config('translatable.locales') as $locale) {
@@ -81,8 +78,7 @@ class CountryController extends Controller
 
         $request->validate($rules);
         $country->update($request->all());
-
-        Toastr::success(__('admin.updated_successfully'), 'Success');
+        Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.countries.index');
     }
 

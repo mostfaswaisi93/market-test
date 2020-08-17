@@ -9,18 +9,18 @@ class Language extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'languages';
-    protected $guarded = [];
+    protected $table    = 'languages';
+    protected $guarded  = [];
+    protected $casts    = ['created_at' => 'date:Y-m-d'];
+    protected $dates    = ['created_at', 'updated_at', 'deleted_at'];
 
-    protected $casts = [
-        'email_verified_at'     => 'datetime',
-        'created_at'            => 'date:Y-m-d',
-    ];
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
+    public function scopeInactive($query)
+    {
+        return $query->where('active', 0);
+    }
 }

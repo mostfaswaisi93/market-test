@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\City;
+use App\Models\Country;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -12,9 +13,12 @@ class CityController extends Controller
 {
     public function index()
     {
-        $cities = City::get();
+        $cities = City::with(['country'])->get();
         if (request()->ajax()) {
             return datatables()->of($cities)
+                ->addColumn('country', function ($data) {
+                    return $data->country->name;
+                })
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_cities')) {
                         $button = '<a type="button" title="Edit" name="edit" href="cities/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
@@ -37,52 +41,47 @@ class CityController extends Controller
 
     public function create()
     {
-        return view('admin.cities.create');
+        $countries = Country::active()->get();
+        return view('admin.cities.create')->with('countries', $countries);
     }
 
     public function store(Request $request)
     {
         $rules = [
-            'iso_code'      => 'required|max:3|unique:cities',
-            'phone_code'    => 'required|unique:cities'
+            'country_id'   => 'required'
         ];
 
         foreach (config('translatable.locales') as $locale) {
             $rules += [$locale . '.name'        => 'required|unique:city_translations,name'];
-            $rules += [$locale . '.currency'    => 'required|unique:city_translations,currency'];
         }
 
         $request->validate($rules);
+        $request_data = $request->all();
+        City::create($request_data);
 
-        City::create($request->all());
-        Toastr::success(__('admin.added_successfully'), 'Success');
+        Toastr::success(__('admin.added_successfully'));
         return redirect()->route('admin.cities.index');
     }
 
     public function edit(City $city)
     {
-        return view('admin.cities.edit', compact('city'));
+        $countries = Country::active()->get();
+        return view('admin.cities.edit', compact('countries', 'city'));
     }
 
     public function update(Request $request, City $city)
     {
         $rules = [
-            'iso_code'      => ['required', Rule::unique('cities')->ignore($city->id),],
-            'phone_code'      => ['required', Rule::unique('cities')->ignore($city->id),],
-
-            'iso_code'      => 'required|max:3|unique:cities',
-            'phone_code'    => 'required|unique:cities'
+            'country_id'   => 'required'
         ];
 
         foreach (config('translatable.locales') as $locale) {
             $rules += [$locale . '.name'        => ['required', Rule::unique('city_translations', 'name')->ignore($city->id, 'city_id')]];
-            $rules += [$locale . '.currency'    => ['required', Rule::unique('city_translations', 'currency')->ignore($city->id, 'city_id')]];
         }
 
         $request->validate($rules);
         $city->update($request->all());
-
-        Toastr::success(__('admin.updated_successfully'), 'Success');
+        Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.cities.index');
     }
 

@@ -15,8 +15,23 @@ class Country extends Model
     protected $dates    = ['created_at', 'updated_at', 'deleted_at'];
     public $translatedAttributes = ['name', 'currency'];
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('active', 0);
+    }
+
     public function locations()
     {
         return $this->hasMany(Location::class);
+    }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
     }
 }
