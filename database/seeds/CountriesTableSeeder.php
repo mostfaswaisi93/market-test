@@ -86,97 +86,97 @@ class CountriesTableSeeder extends Seeder
             'phone_code'    => '61',
         ]);
         Country::create([
-            'ar' => ['name' => 'النمسا', 'currency' => ''],
-            'en' => ['name' => 'Austria', 'currency' => ''],
-            'iso_code'      => '',
-            'phone_code'    => '',
+            'ar' => ['name' => 'النمسا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Austria', 'currency' => 'EUR'],
+            'iso_code'      => 'AUT',
+            'phone_code'    => '43',
         ]);
         Country::create([
-            'ar' => ['name' => 'أذربيجان', 'currency' => ''],
-            'en' => ['name' => 'Azerbaijan', 'currency' => ''],
-            'iso_code'      => '',
-            'phone_code'    => '',
+            'ar' => ['name' => 'أذربيجان', 'currency' => 'مانات أذربيجاني'],
+            'en' => ['name' => 'Azerbaijan', 'currency' => 'AZN'],
+            'iso_code'      => 'AZE',
+            'phone_code'    => '994',
         ]);
         Country::create([
-            'ar' => ['name' => 'الباهاما', 'currency' => ''],
-            'en' => ['name' => 'Bahamas', 'currency' => ''],
-            'iso_code'      => '',
-            'phone_code'    => '',
+            'ar' => ['name' => 'الباهاما', 'currency' => 'دولار بهامي'],
+            'en' => ['name' => 'Bahamas', 'currency' => 'BSD'],
+            'iso_code'      => 'BHS',
+            'phone_code'    => '+1-242',
         ]);
         Country::create([
-            'ar' => ['name' => 'البحرين', 'currency' => ''],
-            'en' => ['name' => 'Bahrain', 'currency' => ''],
-            'iso_code'      => '',
-            'phone_code'    => '',
+            'ar' => ['name' => 'البحرين', 'currency' => 'دينار بحريني'],
+            'en' => ['name' => 'Bahrain', 'currency' => 'BHD'],
+            'iso_code'      => 'BHR',
+            'phone_code'    => '973',
         ]);
         Country::create([
-            'ar' => ['name' => 'بنغلاديش', 'currency' => ''],
+            'ar' => ['name' => 'بنغلاديش', 'currency' => 'تاكا بنغلاديشي'],
             'en' => ['name' => 'Bangladesh', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بربادوس', 'currency' => ''],
+            'ar' => ['name' => 'بربادوس', 'currency' => 'دولار بربادوسي'],
             'en' => ['name' => 'Barbados', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'روسيا البيضاء', 'currency' => ''],
+            'ar' => ['name' => 'روسيا البيضاء', 'currency' => 'روبل روسي'],
             'en' => ['name' => 'Belarus', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بلجيكا', 'currency' => ''],
-            'en' => ['name' => 'Belgium', 'currency' => ''],
+            'ar' => ['name' => 'بلجيكا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Belgium', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'بيليز', 'currency' => 'دولار بليزي'],
             'en' => ['name' => 'Belize', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بليز', 'currency' => ''],
+            'ar' => ['name' => 'بنين', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Benin', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'برمودا', 'currency' => ''],
+            'ar' => ['name' => 'برمودا', 'currency' => 'دولار برمودي'],
             'en' => ['name' => 'Bermuda', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بوتان', 'currency' => ''],
+            'ar' => ['name' => 'بوتان', 'currency' => 'نغولتروم بوتاني'],
             'en' => ['name' => 'Bhutan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بوليفيا', 'currency' => ''],
+            'ar' => ['name' => 'بوليفيا', 'currency' => 'بوليفيانو بوليفي'],
             'en' => ['name' => 'Bolivia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'البوسنة والهرسك', 'currency' => ''],
+            'ar' => ['name' => 'البوسنة والهرسك', 'currency' => 'مارك بوسني قابل للتحويل'],
             'en' => ['name' => 'Bosnia and Herzegovina', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بوتسوانا', 'currency' => ''],
+            'ar' => ['name' => 'بوتسوانا', 'currency' => 'بولا بوتسواني'],
             'en' => ['name' => 'Botswana', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'البرازيل', 'currency' => ''],
+            'ar' => ['name' => 'البرازيل', 'currency' => 'ريال برازيلي'],
             'en' => ['name' => 'Brazil', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
@@ -188,452 +188,451 @@ class CountriesTableSeeder extends Seeder
             'phone_code'    => '‎246',
         ]);
         Country::create([
-            'ar' => ['name' => 'بروناي', 'currency' => ''],
+            'ar' => ['name' => 'بروناي', 'currency' => 'دولار بروني'],
             'en' => ['name' => 'Brunei', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بلغاريا', 'currency' => ''],
+            'ar' => ['name' => 'بلغاريا', 'currency' => 'ليف بلغاري'],
             'en' => ['name' => 'Bulgaria', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بوركينا فاسو', 'currency' => ''],
+            'ar' => ['name' => 'بوركينا فاسو', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Burkina Faso', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بوروندي', 'currency' => ''],
+            'ar' => ['name' => 'بوروندي', 'currency' => 'فرنك بوروندي'],
             'en' => ['name' => 'Burundi', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كمبوديا', 'currency' => ''],
+            'ar' => ['name' => 'كمبوديا', 'currency' => 'ريال كمبودي'],
             'en' => ['name' => 'Cambodia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الكاميرون', 'currency' => ''],
+            'ar' => ['name' => 'الكاميرون', 'currency' => 'فرنك وسط أفريقي'],
             'en' => ['name' => 'Cameroon', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كندا', 'currency' => ''],
+            'ar' => ['name' => 'كندا', 'currency' => 'دولار كندي'],
             'en' => ['name' => 'Canada', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الرأس الأخضر', 'currency' => ''],
+            'ar' => ['name' => 'الرأس الأخضر', 'currency' => 'إيسكودو جزر الرأس الأخضر'],
             'en' => ['name' => 'Cape Verde', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر كايمان', 'currency' => ''],
+            'ar' => ['name' => 'جزر كايمان', 'currency' => 'دولار جزر كايمان'],
             'en' => ['name' => 'Cayman Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جمهورية افريقيا الوسطى', 'currency' => ''],
+            'ar' => ['name' => 'جمهورية افريقيا الوسطى', 'currency' => 'فرنك وسط أفريقي'],
             'en' => ['name' => 'Central African Republic', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تشاد', 'currency' => ''],
+            'ar' => ['name' => 'تشاد', 'currency' => 'فرنك وسط أفريقي'],
             'en' => ['name' => 'Chad', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تشيلي', 'currency' => ''],
+            'ar' => ['name' => 'تشيلي', 'currency' => 'بيزو تشيلي'],
             'en' => ['name' => 'Chile', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الصين', 'currency' => ''],
+            'ar' => ['name' => 'الصين', 'currency' => 'رنمينبي'],
             'en' => ['name' => 'China', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزيرة الكريسماس', 'currency' => ''],
+            'ar' => ['name' => 'جزيرة الكريسماس', 'currency' => 'دولار أسترالي'],
             'en' => ['name' => 'Christmas Island', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر كوكوس (كيلينغ)', 'currency' => ''],
+            'ar' => ['name' => 'جزر كوكوس (كيلينغ)', 'currency' => 'دولار أسترالي'],
             'en' => ['name' => 'Cocos (Keeling) Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كولومبيا', 'currency' => ''],
+            'ar' => ['name' => 'كولومبيا', 'currency' => 'بيزو كولومبي'],
             'en' => ['name' => 'Colombia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر القمر', 'currency' => ''],
+            'ar' => ['name' => 'جزر القمر', 'currency' => 'فرنك قمري'],
             'en' => ['name' => 'Comoros', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الكونغو', 'currency' => ''],
+            'ar' => ['name' => 'الكونغو', 'currency' => 'فرنك كونغولي'],
             'en' => ['name' => 'Congo', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جمهورية الكونغو الديموقراطية', 'currency' => ''],
+            'ar' => ['name' => 'جمهورية الكونغو الديمقراطية', 'currency' => 'فرنك كونغولي'],
             'en' => ['name' => 'Congo The Democratic Republic Of The', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر كوك', 'currency' => ''],
+            'ar' => ['name' => 'جزر كوك', 'currency' => 'دولار نيوزيلندي'],
             'en' => ['name' => 'Cook Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كوستا ريكا', 'currency' => ''],
+            'ar' => ['name' => 'كوستا ريكا', 'currency' => 'كولون كوستاريكي'],
             'en' => ['name' => 'Costa Rica', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ساحل العاج', 'currency' => ''],
+            'ar' => ['name' => 'ساحل العاج', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Ivory Coast', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كرواتيا ', 'currency' => ''],
+            'ar' => ['name' => 'كرواتيا ', 'currency' => 'كونا كرواتية'],
             'en' => ['name' => 'Croatia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كوبا', 'currency' => ''],
-            'en' => ['name' => 'Cuba
-            ', 'currency' => ''],
+            'ar' => ['name' => 'كوبا', 'currency' => 'بيزو كوبي'],
+            'en' => ['name' => 'Cuba', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'قبرص', 'currency' => ''],
-            'en' => ['name' => 'Cyprus', 'currency' => ''],
+            'ar' => ['name' => 'قبرص', 'currency' => 'يورو'],
+            'en' => ['name' => 'Cyprus', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جمهورية التشيك', 'currency' => ''],
+            'ar' => ['name' => 'جمهورية التشيك', 'currency' => 'كرونة تشيكية'],
             'en' => ['name' => 'Czech Republic', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الدنمارك', 'currency' => ''],
+            'ar' => ['name' => 'الدنمارك', 'currency' => 'كرونة دنماركية'],
             'en' => ['name' => 'Denmark', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جيبوتي', 'currency' => ''],
+            'ar' => ['name' => 'جيبوتي', 'currency' => 'فرنك جيبوتي'],
             'en' => ['name' => 'Djibouti', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'دومينيكا', 'currency' => ''],
+            'ar' => ['name' => 'دومينيكا', 'currency' => 'دولار شرق الكاريبي'],
             'en' => ['name' => 'Dominica', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جمهورية الدومنيكان', 'currency' => ''],
+            'ar' => ['name' => 'جمهورية الدومينيكان', 'currency' => 'بيزو دومنيكاني'],
             'en' => ['name' => 'Dominican Republic', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'تيمور الشرقية', 'currency' => 'دولار أمريكي'],
             'en' => ['name' => 'East Timor', 'currency' => 'USD'],
             'iso_code'      => 'TLS',
             'phone_code'    => '670',
         ]);
         Country::create([
-            'ar' => ['name' => 'الإكوادور', 'currency' => ''],
-            'en' => ['name' => 'Ecuador', 'currency' => ''],
+            'ar' => ['name' => 'الإكوادور', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Ecuador', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مصر', 'currency' => ''],
+            'ar' => ['name' => 'مصر', 'currency' => 'جنيه مصري'],
             'en' => ['name' => 'Egypt', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'السلفادور', 'currency' => ''],
-            'en' => ['name' => 'El Salvador', 'currency' => ''],
+            'ar' => ['name' => 'السلفادور', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'El Salvador', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غينيا الإستوائية', 'currency' => ''],
+            'ar' => ['name' => 'غينيا الإستوائية', 'currency' => 'فرنك وسط أفريقي'],
             'en' => ['name' => 'Equatorial Guinea', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'إريتريا', 'currency' => ''],
+            'ar' => ['name' => 'إريتريا', 'currency' => 'ناكفا'],
             'en' => ['name' => 'Eritrea', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'استونيا', 'currency' => ''],
-            'en' => ['name' => 'Estonia', 'currency' => ''],
+            'ar' => ['name' => 'استونيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Estonia', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أثيوبيا', 'currency' => ''],
+            'ar' => ['name' => 'أثيوبيا', 'currency' => 'بير إثيوبي'],
             'en' => ['name' => 'Ethiopia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر فوكلاند', 'currency' => ''],
+            'ar' => ['name' => 'جزر فوكلاند', 'currency' => 'جنيه جزر فوكلاند'],
             'en' => ['name' => 'Falkland Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر صناعية', 'currency' => ''],
+            'ar' => ['name' => 'جزر فارو', 'currency' => 'كرونة دنماركية'],
             'en' => ['name' => 'Faroe Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر فيجي', 'currency' => ''],
+            'ar' => ['name' => 'جزر فيجي', 'currency' => 'دولار فيجي'],
             'en' => ['name' => 'Fiji Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'فنلندا', 'currency' => ''],
-            'en' => ['name' => 'Finland', 'currency' => ''],
+            'ar' => ['name' => 'فنلندا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Finland', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'فرنسا', 'currency' => ''],
-            'en' => ['name' => 'France', 'currency' => ''],
+            'ar' => ['name' => 'فرنسا', 'currency' => 'يورو'],
+            'en' => ['name' => 'France', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'غينيا الفرنسية', 'currency' => 'يورو'],
             'en' => ['name' => 'French Guiana', 'currency' => 'EUR'],
             'iso_code'      => 'GUF',
             'phone_code'    => '594',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'بولينيزيا الفرنسية', 'currency' => 'فرنك باسيفيكي'],
             'en' => ['name' => 'French Polynesia', 'currency' => 'XPF'],
             'iso_code'      => 'PYF',
             'phone_code'    => '689',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
-            'en' => ['name' => 'French Southern Territories', 'currency' => 'EUR'],
+            'ar' => ['name' => 'أراضي فرنسية جنوبية وأنتارتيكية', 'currency' => 'يورو'],
+            'en' => ['name' => 'French Southern and Antarctic Lands', 'currency' => 'EUR'],
             'iso_code'      => 'ATF',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الغابون', 'currency' => ''],
+            'ar' => ['name' => 'الغابون', 'currency' => 'فرنك وسط أفريقي'],
             'en' => ['name' => 'Gabon', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غامبيا', 'currency' => ''],
+            'ar' => ['name' => 'غامبيا', 'currency' => 'دالاسي غامبي'],
             'en' => ['name' => 'Gambia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جورجيا', 'currency' => ''],
+            'ar' => ['name' => 'جورجيا', 'currency' => 'لاري جورجي'],
             'en' => ['name' => 'Georgia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ألمانيا', 'currency' => ''],
-            'en' => ['name' => 'Germany', 'currency' => ''],
+            'ar' => ['name' => 'ألمانيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Germany', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غانا', 'currency' => ''],
+            'ar' => ['name' => 'غانا', 'currency' => 'سيدي غاني'],
             'en' => ['name' => 'Ghana', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جبل طارق', 'currency' => ''],
+            'ar' => ['name' => 'جبل طارق', 'currency' => 'جنيه جبل طارق'],
             'en' => ['name' => 'Gibraltar', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'اليونان', 'currency' => ''],
-            'en' => ['name' => 'Greece', 'currency' => ''],
+            'ar' => ['name' => 'اليونان', 'currency' => 'يورو'],
+            'en' => ['name' => 'Greece', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الأرض الخضراء', 'currency' => ''],
+            'ar' => ['name' => 'جرينلاند', 'currency' => 'كرونة دنماركية'],
             'en' => ['name' => 'Greenland', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غرينادا', 'currency' => ''],
+            'ar' => ['name' => 'غرينادا', 'currency' => 'دولار شرق الكاريبي'],
             'en' => ['name' => 'Grenada', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جوادلوب', 'currency' => ''],
-            'en' => ['name' => 'Guadeloupe', 'currency' => ''],
+            'ar' => ['name' => 'جوادلوب', 'currency' => 'يورو'],
+            'en' => ['name' => 'Guadeloupe', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غوام', 'currency' => ''],
-            'en' => ['name' => 'Guam', 'currency' => ''],
+            'ar' => ['name' => 'غوام', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Guam', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غواتيمالا', 'currency' => ''],
+            'ar' => ['name' => 'غواتيمالا', 'currency' => 'كتزال غواتيمالي'],
             'en' => ['name' => 'Guatemala', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'آلدرني', 'currency' => 'جنيه إسترليني'],
             'en' => ['name' => 'Guernsey and Alderney', 'currency' => 'GBP'],
             'iso_code'      => 'GGY',
             'phone_code'    => '+44-1481',
         ]);
         Country::create([
-            'ar' => ['name' => 'غينيا', 'currency' => ''],
+            'ar' => ['name' => 'غينيا', 'currency' => 'فرنك غيني'],
             'en' => ['name' => 'Guinea', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غينيا بيساو', 'currency' => ''],
+            'ar' => ['name' => 'غينيا بيساو', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Guinea-Bissau', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'غيانا', 'currency' => ''],
+            'ar' => ['name' => 'غيانا', 'currency' => 'دولار غياني'],
             'en' => ['name' => 'Guyana', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'هايتي', 'currency' => ''],
-            'en' => ['name' => 'Haiti', 'currency' => ''],
+            'ar' => ['name' => 'هايتي', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Haiti', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'هندوراس', 'currency' => ''],
+            'ar' => ['name' => 'هندوراس', 'currency' => 'لمبيرة هندوراسية'],
             'en' => ['name' => 'Honduras', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'هونغ كونغ', 'currency' => ''],
+            'ar' => ['name' => 'هونغ كونغ', 'currency' => 'دولار هونغ كونغ'],
             'en' => ['name' => 'Hong Kong', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'المجر', 'currency' => ''],
+            'ar' => ['name' => 'المجر', 'currency' => 'فورنت مجري'],
             'en' => ['name' => 'Hungary', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أيسلندا', 'currency' => ''],
+            'ar' => ['name' => 'أيسلندا', 'currency' => 'كرونة آيسلندية'],
             'en' => ['name' => 'Iceland', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الهند', 'currency' => ''],
+            'ar' => ['name' => 'الهند', 'currency' => 'روبية هندية'],
             'en' => ['name' => 'India', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أندونيسيا', 'currency' => ''],
+            'ar' => ['name' => 'أندونيسيا', 'currency' => 'روبية إندونيسية'],
             'en' => ['name' => 'Indonesia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'إيران', 'currency' => ''],
+            'ar' => ['name' => 'إيران', 'currency' => 'ريال إيراني'],
             'en' => ['name' => 'Iran', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'العراق', 'currency' => ''],
+            'ar' => ['name' => 'العراق', 'currency' => 'دينار عراقي'],
             'en' => ['name' => 'Iraq', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أيرلندا', 'currency' => ''],
-            'en' => ['name' => 'Ireland', 'currency' => ''],
+            'ar' => ['name' => 'أيرلندا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Ireland', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الكيان الصهيوني', 'currency' => ''],
+            'ar' => ['name' => 'الكيان الصهيوني', 'currency' => 'شيكل إسرائيلي'],
             'en' => ['name' => 'Israel', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'إيطاليا', 'currency' => ''],
-            'en' => ['name' => 'Italy', 'currency' => ''],
+            'ar' => ['name' => 'إيطاليا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Italy', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جامايكا', 'currency' => ''],
+            'ar' => ['name' => 'جامايكا', 'currency' => 'دولار جامايكي'],
             'en' => ['name' => 'Jamaica', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
@@ -645,164 +644,164 @@ class CountriesTableSeeder extends Seeder
             'phone_code'    => '81',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'جيرسي', 'currency' => 'جنيه إسترليني'],
             'en' => ['name' => 'Jersey', 'currency' => 'GBP'],
             'iso_code'      => 'JEY',
             'phone_code'    => '+44-1534',
         ]);
         Country::create([
-            'ar' => ['name' => 'الأردن', 'currency' => ''],
+            'ar' => ['name' => 'الأردن', 'currency' => 'دينار أردني'],
             'en' => ['name' => 'Jordan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كازاخستان', 'currency' => ''],
+            'ar' => ['name' => 'كازاخستان', 'currency' => 'تينغ كازاخستاني'],
             'en' => ['name' => 'Kazakhstan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كينيا', 'currency' => ''],
+            'ar' => ['name' => 'كينيا', 'currency' => 'شيلينغ كيني'],
             'en' => ['name' => 'Kenya', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كيريباس', 'currency' => ''],
+            'ar' => ['name' => 'كيريباس', 'currency' => 'دولار أسترالي'],
             'en' => ['name' => 'Kiribati', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كوريا الشمالية', 'currency' => ''],
-            'en' => ['name' => 'Korea North', 'currency' => ''],
+            'ar' => ['name' => 'كوريا الشمالية', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Korea North', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كوريا الجنوبية', 'currency' => ''],
+            'ar' => ['name' => 'كوريا الجنوبية', 'currency' => 'وون كوري جنوبي'],
             'en' => ['name' => 'Korea South', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كوسوفو', 'currency' => ''],
-            'en' => ['name' => 'Kosovo', 'currency' => ''],
+            'ar' => ['name' => 'كوسوفو', 'currency' => 'يورو'],
+            'en' => ['name' => 'Kosovo', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الكويت', 'currency' => ''],
+            'ar' => ['name' => 'الكويت', 'currency' => 'دينار كويتي'],
             'en' => ['name' => 'Kuwait', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'قرغيزستان', 'currency' => ''],
+            'ar' => ['name' => 'قرغيزستان', 'currency' => 'سوم قيرغيزستاني'],
             'en' => ['name' => 'Kyrgyzstan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'لاوس', 'currency' => ''],
+            'ar' => ['name' => 'لاوس', 'currency' => 'كيب لاوي'],
             'en' => ['name' => 'Laos', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'لاتفيا', 'currency' => ''],
-            'en' => ['name' => 'Latvia', 'currency' => ''],
+            'ar' => ['name' => 'لاتفيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Latvia', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'لبنان', 'currency' => ''],
+            'ar' => ['name' => 'لبنان', 'currency' => 'ليرة لبنانية'],
             'en' => ['name' => 'Lebanon', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ليسوتو', 'currency' => ''],
+            'ar' => ['name' => 'ليسوتو', 'currency' => 'راند جنوب أفريقي'],
             'en' => ['name' => 'Lesotho', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ليبيريا', 'currency' => ''],
+            'ar' => ['name' => 'ليبيريا', 'currency' => 'دولار ليبيري'],
             'en' => ['name' => 'Liberia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ليبيا', 'currency' => ''],
+            'ar' => ['name' => 'ليبيا', 'currency' => 'دينار ليبي'],
             'en' => ['name' => 'Libya', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ليختنشتاين', 'currency' => ''],
+            'ar' => ['name' => 'ليختنشتاين', 'currency' => 'فرنك سويسري'],
             'en' => ['name' => 'Liechtenstein', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ليتوانيا', 'currency' => ''],
-            'en' => ['name' => 'Lithuania', 'currency' => ''],
+            'ar' => ['name' => 'ليتوانيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Lithuania', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'لوكسمبورغ', 'currency' => ''],
-            'en' => ['name' => 'Luxembourg', 'currency' => ''],
+            'ar' => ['name' => 'لوكسمبورغ', 'currency' => 'يورو'],
+            'en' => ['name' => 'Luxembourg', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'ماكاو', 'currency' => 'باتاكا ماكاوية'],
             'en' => ['name' => 'Macau', 'currency' => 'MOP'],
             'iso_code'      => 'MAC',
             'phone_code'    => '853',
         ]);
         Country::create([
-            'ar' => ['name' => 'مقدونيا', 'currency' => ''],
+            'ar' => ['name' => 'مقدونيا', 'currency' => 'دينار مقدوني'],
             'en' => ['name' => 'Macedonia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مدغشقر', 'currency' => ''],
+            'ar' => ['name' => 'مدغشقر', 'currency' => 'أرياري مدغشقري'],
             'en' => ['name' => 'Madagascar', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مالاوي', 'currency' => ''],
+            'ar' => ['name' => 'مالاوي', 'currency' => 'كواشا ملاوية'],
             'en' => ['name' => 'Malawi', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ماليزيا', 'currency' => ''],
+            'ar' => ['name' => 'ماليزيا', 'currency' => 'رينغيت ماليزي'],
             'en' => ['name' => 'Malaysia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر المالديف', 'currency' => ''],
+            'ar' => ['name' => 'جزر المالديف', 'currency' => 'روفيا مالديفية'],
             'en' => ['name' => 'Maldives', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مالي', 'currency' => ''],
+            'ar' => ['name' => 'مالي', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Mali', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مالطا', 'currency' => ''],
-            'en' => ['name' => 'Malta', 'currency' => ''],
+            'ar' => ['name' => 'مالطا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Malta', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
@@ -813,571 +812,565 @@ class CountriesTableSeeder extends Seeder
             'phone_code'    => '+44-1624',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر مارشال', 'currency' => ''],
-            'en' => ['name' => 'Marshall Islands', 'currency' => ''],
+            'ar' => ['name' => 'جزر مارشال', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Marshall Islands', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مارتينيك', 'currency' => ''],
-            'en' => ['name' => 'Martinique', 'currency' => ''],
+            'ar' => ['name' => 'مارتينيك', 'currency' => 'يورو'],
+            'en' => ['name' => 'Martinique', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'موريتانيا', 'currency' => ''],
+            'ar' => ['name' => 'موريتانيا', 'currency' => 'أوقية موريتانية'],
             'en' => ['name' => 'Mauritania', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'موريشيوس', 'currency' => ''],
+            'ar' => ['name' => 'موريشيوس', 'currency' => 'روبي موريشي'],
             'en' => ['name' => 'Mauritius', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مايوت', 'currency' => ''],
-            'en' => ['name' => 'Mayotte', 'currency' => ''],
+            'ar' => ['name' => 'مايوت', 'currency' => 'يورو'],
+            'en' => ['name' => 'Mayotte', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'المكسيك', 'currency' => ''],
+            'ar' => ['name' => 'المكسيك', 'currency' => 'بيزو مكسيكي'],
             'en' => ['name' => 'Mexico', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ولايات ميكرونيزيا الموحدة', 'currency' => ''],
-            'en' => ['name' => 'Micronesia', 'currency' => ''],
+            'ar' => ['name' => 'ولايات ميكرونيزيا الموحدة', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Micronesia', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مولدوفا', 'currency' => ''],
+            'ar' => ['name' => 'مولدوفا', 'currency' => 'ليو مولدوفي'],
             'en' => ['name' => 'Moldova', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'موناكو', 'currency' => ''],
-            'en' => ['name' => 'Monaco', 'currency' => ''],
+            'ar' => ['name' => 'موناكو', 'currency' => 'يورو'],
+            'en' => ['name' => 'Monaco', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'منغوليا', 'currency' => ''],
+            'ar' => ['name' => 'منغوليا', 'currency' => 'توغروغ منغولي'],
             'en' => ['name' => 'Mongolia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
             'ar' => ['name' => 'الجبل الأسود', 'currency' => 'يورو'],
-            'en' => ['name' => 'Montenegro', 'currency' => ''],
+            'en' => ['name' => 'Montenegro', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'مونتسيرات', 'currency' => ''],
+            'ar' => ['name' => 'مونتسيرات', 'currency' => 'دولار شرق الكاريبي'],
             'en' => ['name' => 'Montserrat', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'المغرب', 'currency' => ''],
+            'ar' => ['name' => 'المغرب', 'currency' => 'درهم مغربي'],
             'en' => ['name' => 'Morocco', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'موزمبيق', 'currency' => ''],
+            'ar' => ['name' => 'موزمبيق', 'currency' => 'متكال موزمبيقي'],
             'en' => ['name' => 'Mozambique', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ميانمار', 'currency' => ''],
+            'ar' => ['name' => 'ميانمار', 'currency' => 'كيات ميانماري'],
             'en' => ['name' => 'Myanmar', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ناميبيا', 'currency' => ''],
+            'ar' => ['name' => 'ناميبيا', 'currency' => 'راند جنوب أفريقي'],
             'en' => ['name' => 'Namibia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ناورو', 'currency' => ''],
+            'ar' => ['name' => 'ناورو', 'currency' => 'دولار أسترالي'],
             'en' => ['name' => 'Nauru', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'نيبال', 'currency' => ''],
+            'ar' => ['name' => 'نيبال', 'currency' => 'روبية نيبالية'],
             'en' => ['name' => 'Nepal', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر الأنتيل الهولندية', 'currency' => ''],
+            'ar' => ['name' => 'جزر الأنتيل الهولندية', 'currency' => 'غيلدر الأنتيل الهولندية'],
             'en' => ['name' => 'Netherlands Antilles', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'هولندا', 'currency' => ''],
-            'en' => ['name' => 'Netherlands', 'currency' => ''],
+            'ar' => ['name' => 'هولندا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Netherlands', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'كاليدونيا الجديدة', 'currency' => ''],
+            'ar' => ['name' => 'كاليدونيا الجديدة', 'currency' => 'فرنك باسيفيكي'],
             'en' => ['name' => 'New Caledonia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'نيوزيلندا ', 'currency' => ''],
+            'ar' => ['name' => 'نيوزيلندا ', 'currency' => 'دولار نيوزيلندي'],
             'en' => ['name' => 'New Zealand', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'نيكاراغوا', 'currency' => ''],
+            'ar' => ['name' => 'نيكاراغوا', 'currency' => 'كوردبا نيكاراغوا'],
             'en' => ['name' => 'Nicaragua', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'النيجر', 'currency' => ''],
+            'ar' => ['name' => 'النيجر', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Niger', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'نيجيريا', 'currency' => ''],
+            'ar' => ['name' => 'نيجيريا', 'currency' => 'نيرة نيجيرية'],
             'en' => ['name' => 'Nigeria', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'نيوي', 'currency' => ''],
+            'ar' => ['name' => 'نييوي', 'currency' => 'دولار نيوزيلندي'],
             'en' => ['name' => 'Niue', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزيرة نورفولك', 'currency' => ''],
+            'ar' => ['name' => 'جزيرة نورفولك', 'currency' => 'دولار أسترالي'],
             'en' => ['name' => 'Norfolk Island', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر مريانا الشمالية', 'currency' => ''],
-            'en' => ['name' => 'Northern Mariana Islands', 'currency' => ''],
+            'ar' => ['name' => 'جزر ماريانا الشمالية', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Northern Mariana Islands', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'النرويج', 'currency' => ''],
+            'ar' => ['name' => 'النرويج', 'currency' => 'كرونة نروجية'],
             'en' => ['name' => 'Norway', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سلطنة عمان', 'currency' => ''],
+            'ar' => ['name' => 'سلطنة عمان', 'currency' => 'ريال عماني'],
             'en' => ['name' => 'Oman', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'باكستان', 'currency' => ''],
+            'ar' => ['name' => 'باكستان', 'currency' => 'روبية باكستانية'],
             'en' => ['name' => 'Pakistan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بالاو', 'currency' => ''],
-            'en' => ['name' => 'Palau', 'currency' => ''],
+            'ar' => ['name' => 'بالاو', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Palau', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الأراضي الفلسطينية', 'currency' => ''],
+            'ar' => ['name' => 'الأراضي الفلسطينية', 'currency' => 'شيكل إسرائيلي'],
             'en' => ['name' => 'Palestinian Territory', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بناما', 'currency' => ''],
-            'en' => ['name' => 'Panama', 'currency' => ''],
+            'ar' => ['name' => 'بناما', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Panama', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بابوا غينيا الجديدة', 'currency' => ''],
+            'ar' => ['name' => 'بابوا غينيا الجديدة', 'currency' => 'بابوا غينيا الجديدة'],
             'en' => ['name' => 'Papua new Guinea', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'باراغواي', 'currency' => ''],
+            'ar' => ['name' => 'باراغواي', 'currency' => 'غواراني باراغواي'],
             'en' => ['name' => 'Paraguay', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بيرو', 'currency' => ''],
+            'ar' => ['name' => 'بيرو', 'currency' => 'سول بيروفي جديد'],
             'en' => ['name' => 'Peru', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الفلبين', 'currency' => ''],
+            'ar' => ['name' => 'الفلبين', 'currency' => 'بيسو فلبيني'],
             'en' => ['name' => 'Philippines', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بيتكيرن', 'currency' => ''],
+            'ar' => ['name' => 'بيتكيرن', 'currency' => 'دولار نيوزيلندي'],
             'en' => ['name' => 'Pitcairn', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بولندا', 'currency' => ''],
+            'ar' => ['name' => 'بولندا', 'currency' => 'زلوتي بولندي'],
             'en' => ['name' => 'Poland', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'البرتغال', 'currency' => ''],
-            'en' => ['name' => 'Portugal', 'currency' => ''],
+            'ar' => ['name' => 'البرتغال', 'currency' => 'يورو'],
+            'en' => ['name' => 'Portugal', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'بورتوريكو', 'currency' => ''],
-            'en' => ['name' => 'Puerto Rico', 'currency' => ''],
+            'ar' => ['name' => 'بورتوريكو', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Puerto Rico', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'قطر', 'currency' => ''],
+            'ar' => ['name' => 'قطر', 'currency' => 'ريال قطري'],
             'en' => ['name' => 'Qatar', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جمع شمل', 'currency' => ''],
-            'en' => ['name' => 'Reunion', 'currency' => ''],
+            'ar' => ['name' => 'ريونيون', 'currency' => 'يورو'],
+            'en' => ['name' => 'Reunion', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'رومانيا', 'currency' => ''],
+            'ar' => ['name' => 'رومانيا', 'currency' => 'ليو روماني'],
             'en' => ['name' => 'Romania', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'روسيا', 'currency' => ''],
+            'ar' => ['name' => 'روسيا', 'currency' => 'روبل روسي'],
             'en' => ['name' => 'Russia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'رواندا', 'currency' => ''],
+            'ar' => ['name' => 'رواندا', 'currency' => 'فرنك رواندي'],
             'en' => ['name' => 'Rwanda', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سانت هيلانة', 'currency' => ''],
+            'ar' => ['name' => 'سانت هيلانة', 'currency' => 'جنيه سانت هيليني'],
             'en' => ['name' => 'Saint Helena', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سانت كيتس ونيفيس', 'currency' => ''],
+            'ar' => ['name' => 'سانت كيتس ونيفيس', 'currency' => 'دولار شرق الكاريبي'],
             'en' => ['name' => 'Saint Kitts And Nevis', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'القديسة لوسيا', 'currency' => ''],
+            'ar' => ['name' => 'القديسة لوسيا', 'currency' => 'دولار شرق الكاريبي'],
             'en' => ['name' => 'Saint Lucia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سانت بيير وميكلون', 'currency' => ''],
-            'en' => ['name' => 'Saint Pierre and Miquelon', 'currency' => ''],
+            'ar' => ['name' => 'سانت بيير وميكلون', 'currency' => 'يورو'],
+            'en' => ['name' => 'Saint Pierre and Miquelon', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سانت فنسنت وجزر غرينادين', 'currency' => ''],
+            'ar' => ['name' => 'سانت فنسنت وجزر غرينادين', 'currency' => 'دولار شرق الكاريبي'],
             'en' => ['name' => 'Saint Vincent And The Grenadines', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'سانت بارتيليمي', 'currency' => 'يورو'],
             'en' => ['name' => 'Saint-Barthelemy', 'currency' => 'EUR'],
             'iso_code'      => 'BLM',
             'phone_code'    => '590',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'سانت مارتن', 'currency' => 'غيلدر الأنتيل الهولندية'],
             'en' => ['name' => 'Saint-Martin', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ساموا', 'currency' => ''],
+            'ar' => ['name' => 'ساموا', 'currency' => 'تالا ساموي'],
             'en' => ['name' => 'Samoa', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سان مارينو', 'currency' => ''],
-            'en' => ['name' => 'San Marino', 'currency' => ''],
+            'ar' => ['name' => 'سان مارينو', 'currency' => 'يورو'],
+            'en' => ['name' => 'San Marino', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ساو تومي وبرنسيبي', 'currency' => ''],
+            'ar' => ['name' => 'ساو تومي وبرينسيبي', 'currency' => 'دوبرا ساو تومي وبرينسيب'],
             'en' => ['name' => 'Sao Tome and Principe', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'المملكة العربية السعودية', 'currency' => ''],
+            'ar' => ['name' => 'المملكة العربية السعودية', 'currency' => 'ريال سعودي'],
             'en' => ['name' => 'Saudi Arabia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'السنغال', 'currency' => ''],
+            'ar' => ['name' => 'السنغال', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Senegal', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'صربيا', 'currency' => 'دينار صربي'],
             'en' => ['name' => 'Serbia', 'currency' => 'RSD'],
             'iso_code'      => 'SRB',
             'phone_code'    => '381',
         ]);
         Country::create([
-            'ar' => ['name' => 'سيشيل', 'currency' => ''],
+            'ar' => ['name' => 'سيشيل', 'currency' => 'روبية سيشلية'],
             'en' => ['name' => 'Seychelles', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سيرا ليون', 'currency' => ''],
+            'ar' => ['name' => 'سيرا ليون', 'currency' => 'ليون سيراليوني'],
             'en' => ['name' => 'Sierra Leone', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سنغافورة', 'currency' => ''],
+            'ar' => ['name' => 'سنغافورة', 'currency' => 'دولار سنغافوري'],
             'en' => ['name' => 'Singapore', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سلوفاكيا', 'currency' => ''],
-            'en' => ['name' => 'Slovakia', 'currency' => ''],
+            'ar' => ['name' => 'سلوفاكيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Slovakia', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سلوفينيا', 'currency' => ''],
-            'en' => ['name' => 'Slovenia', 'currency' => ''],
+            'ar' => ['name' => 'سلوفينيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Slovenia', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر سليمان', 'currency' => ''],
+            'ar' => ['name' => 'جزر سليمان', 'currency' => 'دولار جزر سليمان'],
             'en' => ['name' => 'Solomon Islands', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الصومال', 'currency' => ''],
-            'en' => ['name' => 'Somalia', 'currency' => ''],
+            'ar' => ['name' => 'الصومال', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Somalia', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جنوب أفريقيا', 'currency' => ''],
+            'ar' => ['name' => 'جنوب أفريقيا', 'currency' => 'راند جنوب أفريقي'],
             'en' => ['name' => 'South Africa', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'ساوث جورجيا', 'currency' => 'جنيه إسترليني'],
             'en' => ['name' => 'South Georgia', 'currency' => 'GBP'],
             'iso_code'      => 'SGS',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => '', 'currency' => ''],
+            'ar' => ['name' => 'جنوب السودان', 'currency' => 'جنيه جنوب سوداني'],
             'en' => ['name' => 'South Sudan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'إسبانيا', 'currency' => ''],
-            'en' => ['name' => 'Spain', 'currency' => ''],
+            'ar' => ['name' => 'إسبانيا', 'currency' => 'يورو'],
+            'en' => ['name' => 'Spain', 'currency' => 'EUR'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سيريلانكا', 'currency' => ''],
+            'ar' => ['name' => 'سيريلانكا', 'currency' => 'روبية سريلانكي'],
             'en' => ['name' => 'Sri Lanka', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سودان', 'currency' => ''],
+            'ar' => ['name' => 'السودان', 'currency' => 'جنيه سوداني'],
             'en' => ['name' => 'Sudan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سورينام', 'currency' => ''],
+            'ar' => ['name' => 'سورينام', 'currency' => 'دولار سورينامي'],
             'en' => ['name' => 'Suriname', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سفالبارد وجان مايان', 'currency' => ''],
-            'en' => ['name' => 'Svalbard And Jan Mayen', 'currency' => ''],
-            'iso_code'      => '',
-            'phone_code'    => '',
-        ]);
-        Country::create([
-            'ar' => ['name' => 'سوازيلاند', 'currency' => ''],
+            'ar' => ['name' => 'سوازيلاند', 'currency' => 'راند جنوب أفريقي'],
             'en' => ['name' => 'Swaziland', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'السويد', 'currency' => ''],
+            'ar' => ['name' => 'السويد', 'currency' => 'كرونة سويدية'],
             'en' => ['name' => 'Sweden', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سويسرا', 'currency' => ''],
+            'ar' => ['name' => 'سويسرا', 'currency' => 'فرنك سويسري'],
             'en' => ['name' => 'Switzerland', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'سوريا', 'currency' => ''],
+            'ar' => ['name' => 'سوريا', 'currency' => 'ليرة سورية'],
             'en' => ['name' => 'Syria', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تايوان', 'currency' => ''],
+            'ar' => ['name' => 'تايوان', 'currency' => 'دولار تايواني جديد'],
             'en' => ['name' => 'Taiwan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'طاجيكستان', 'currency' => ''],
+            'ar' => ['name' => 'طاجيكستان', 'currency' => 'ساماني طاجيكي'],
             'en' => ['name' => 'Tajikistan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تنزانيا', 'currency' => ''],
+            'ar' => ['name' => 'تنزانيا', 'currency' => 'شلن تنزاني'],
             'en' => ['name' => 'Tanzania', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تايلاند', 'currency' => ''],
+            'ar' => ['name' => 'تايلاند', 'currency' => 'بات تايلاندي'],
             'en' => ['name' => 'Thailand', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'توجو', 'currency' => ''],
+            'ar' => ['name' => 'توجو', 'currency' => 'فرنك غرب أفريقي'],
             'en' => ['name' => 'Togo', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'توكيلاو', 'currency' => ''],
+            'ar' => ['name' => 'توكيلاو', 'currency' => 'دولار نيوزيلندي'],
             'en' => ['name' => 'Tokelau', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تونغا', 'currency' => ''],
+            'ar' => ['name' => 'تونغا', 'currency' => 'بانغا تونغي'],
             'en' => ['name' => 'Tonga', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'ترينداد وتوباغو', 'currency' => ''],
+            'ar' => ['name' => 'ترينيداد وتوباغو', 'currency' => 'دولار ترينيداد وتوباغو'],
             'en' => ['name' => 'Trinidad And Tobago', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تونس', 'currency' => ''],
+            'ar' => ['name' => 'تونس', 'currency' => 'دينار تونسي'],
             'en' => ['name' => 'Tunisia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تركيا', 'currency' => ''],
+            'ar' => ['name' => 'تركيا', 'currency' => 'ليرة تركية'],
             'en' => ['name' => 'Turkey', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'تركمانستان', 'currency' => ''],
+            'ar' => ['name' => 'تركمانستان', 'currency' => 'منات تركمانستاني'],
             'en' => ['name' => 'Turkmenistan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر تركس وكايكوس', 'currency' => ''],
-            'en' => ['name' => 'Turks And Caicos Islands', 'currency' => ''],
+            'ar' => ['name' => 'جزر تركس وكايكوس', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Turks And Caicos Islands', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'توفالو', 'currency' => ''],
+            'ar' => ['name' => 'توفالو', 'currency' => 'دولار أسترالي'],
             'en' => ['name' => 'Tuvalu', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أوغندا', 'currency' => ''],
+            'ar' => ['name' => 'أوغندا', 'currency' => 'شيلينغ أوغندي'],
             'en' => ['name' => 'Uganda', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أوكرانيا', 'currency' => ''],
+            'ar' => ['name' => 'أوكرانيا', 'currency' => 'هريفنا أوكرانية'],
             'en' => ['name' => 'Ukraine', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الإمارات العربية المتحدة', 'currency' => ''],
+            'ar' => ['name' => 'الإمارات العربية المتحدة', 'currency' => 'درهم إماراتي'],
             'en' => ['name' => 'United Arab Emirates', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
@@ -1389,31 +1382,31 @@ class CountriesTableSeeder extends Seeder
             'phone_code'    => '44',
         ]);
         Country::create([
-            'ar' => ['name' => 'الولايات المتحدة', 'currency' => ''],
-            'en' => ['name' => 'United States', 'currency' => ''],
+            'ar' => ['name' => 'الولايات المتحدة', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'United States', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أوروغواي', 'currency' => ''],
+            'ar' => ['name' => 'أوروغواي', 'currency' => 'بيزو أوروغواي'],
             'en' => ['name' => 'Uruguay', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'أوزبكستان', 'currency' => ''],
+            'ar' => ['name' => 'أوزبكستان', 'currency' => 'سوم أوزبكستاني'],
             'en' => ['name' => 'Uzbekistan', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'فانواتو', 'currency' => ''],
+            'ar' => ['name' => 'فانواتو', 'currency' => 'فاتو فانواتي'],
             'en' => ['name' => 'Vanuatu', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'فنزويلا', 'currency' => ''],
+            'ar' => ['name' => 'فنزويلا', 'currency' => 'بوليفار فنزويلي'],
             'en' => ['name' => 'Venezuela', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
@@ -1425,44 +1418,38 @@ class CountriesTableSeeder extends Seeder
             'phone_code'    => '84',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر العذراء البريطانية', 'currency' => ''],
-            'en' => ['name' => 'Virgin Islands - British', 'currency' => ''],
+            'ar' => ['name' => 'جزر فيرجن البريطانية', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Virgin Islands - British', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'جزر فيرجن (الولايات المتحدة)', 'currency' => ''],
-            'en' => ['name' => 'Virgin Islands - US', 'currency' => ''],
-            'iso_code'      => '',
-            'phone_code'    => '',
-        ]);
-        Country::create([
-            'ar' => ['name' => 'واليس وفوتونا', 'currency' => ''],
+            'ar' => ['name' => 'واليس وفوتونا', 'currency' => 'فرنك باسيفيكي'],
             'en' => ['name' => 'Wallis And Futuna', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'الصحراء الغربية', 'currency' => ''],
+            'ar' => ['name' => 'الصحراء الغربية', 'currency' => 'درهم مغربي'],
             'en' => ['name' => 'Western Sahara', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'اليمن', 'currency' => ''],
+            'ar' => ['name' => 'اليمن', 'currency' => 'ريال يمني'],
             'en' => ['name' => 'Yemen', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'زامبيا', 'currency' => ''],
+            'ar' => ['name' => 'زامبيا', 'currency' => 'كواشا زامبي'],
             'en' => ['name' => 'Zambia', 'currency' => ''],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);
         Country::create([
-            'ar' => ['name' => 'زيمبابوي', 'currency' => ''],
-            'en' => ['name' => 'Zimbabwe', 'currency' => ''],
+            'ar' => ['name' => 'زيمبابوي', 'currency' => 'دولار أمريكي'],
+            'en' => ['name' => 'Zimbabwe', 'currency' => 'USD'],
             'iso_code'      => '',
             'phone_code'    => '',
         ]);

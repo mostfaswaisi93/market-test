@@ -116,7 +116,8 @@
                                                 @lang('admin.permissions')
                                             </h6> <br>
                                             @php
-                                            $models = ['users', 'categories', 'items'];
+                                            $models = ['users', 'categories', 'items', 'countries', 'cities',
+                                            'locations', 'languages'];
                                             $maps = ['create', 'read', 'update', 'delete'];
                                             @endphp
                                             <table class="table table-borderless">

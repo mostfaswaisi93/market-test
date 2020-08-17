@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default(1);
+            $table->integer('active')->default(1);
             $table->string('image_ar')->default('default.png');
             $table->string('image_en')->default('default.png');
             $table->string('icon')->default('default.png');

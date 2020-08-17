@@ -160,8 +160,8 @@ class CategoryController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $category           = Category::find($id);
-        $status             = $request->get('status');
-        $category->status   = $status;
+        $active             = $request->get('active');
+        $category->active   = $active;
         $category           = $category->save();
 
         if ($category) {

@@ -54,11 +54,11 @@
                                     <th>@lang('admin.icon')</th>
                                     <th>@lang('admin.image')</th>
                                     <th>@lang('admin.name')</th>
+                                    <th>@lang('admin.created_at')</th>
                                     {{-- <th>@lang('admin.items_count')</th> --}}
                                     {{-- <th>@lang('admin.related_items')</th> --}}
                                     <th>@lang('admin.status')</th>
                                     <th>@lang('admin.change_status')</th>
-                                    {{-- <th>@lang('admin.created_at')</th> --}}
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -102,18 +102,18 @@
                     }, orderable: false , searchable: false
                 },
                 { data: 'name', name: 'name' },
-                { data: 'status', name: 'status',
+                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status',
                     render: function(data, type, full, meta) {
                         var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
                         var color = data ? "success" : "danger"; 
                         return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
                     }, orderable: false , searchable: false
                 },
-                { data: 'status', name: 'status' },
-                // { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status' },
                 { data: 'action', name: 'action', orderable: false }
             ], "columnDefs": [ {
-                "targets": 5,
+                "targets": 6,
                 render: function (data, type, row, meta){
                 var $select = $(`
                     <select class='status form-control'
@@ -122,7 +122,7 @@
                     <option value='0'>{{ trans('admin.inactive') }}</option>
                     </select>
                 `);
-                $select.find('option[value="'+row.status+'"]').attr('selected', 'selected');
+                $select.find('option[value="'+row.active+'"]').attr('selected', 'selected');
                 return $select[0].outerHTML
                 }
             } ],
@@ -168,7 +168,7 @@
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"categories/updateStatus/"+category_id+"?status="+status_category,
+            url:"categories/updateStatus/"+category_id+"?active="+status_category,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },

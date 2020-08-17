@@ -129,8 +129,8 @@ class UserController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $user           = User::find($id);
-        $status         = $request->get('status');
-        $user->status   = $status;
+        $active         = $request->get('active');
+        $user->active   = $active;
         $user           = $user->save();
 
         if ($user) {

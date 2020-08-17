@@ -53,6 +53,14 @@
                 </a>
             </li>
             @endif
+            @if (auth()->user()->hasPermission('read_cities'))
+            <li {{ request()->route()->getName() === 'admin.cities.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.cities.index') }}" class="nav-link">
+                    <i class="fa fa-building-o"></i>
+                    <span class="title">@lang('admin.cities_management')</span>
+                </a>
+            </li>
+            @endif
             @if (auth()->user()->hasPermission('read_notifications'))
             <li {{ request()->route()->getName() === 'admin.notifications.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">

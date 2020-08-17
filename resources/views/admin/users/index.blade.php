@@ -55,9 +55,9 @@
                                     <th>@lang('admin.name')</th>
                                     <th>@lang('admin.username')</th>
                                     <th>@lang('admin.email')</th>
+                                    <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.status')</th>
                                     <th>@lang('admin.change_status')</th>
-                                    {{-- <th>@lang('admin.created_at')</th> --}}
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -98,18 +98,18 @@
                 { data: 'name', name: 'name' },
                 { data: 'username', name: 'username' },
                 { data: 'email', name: 'email' },
-                { data: 'status', name: 'status',
+                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status',
                     render: function(data, type, full, meta) {
                         var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
                         var color = data ? "success" : "danger"; 
                         return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
                     }, orderable: false , searchable: false
                 },
-                { data: 'status', name: 'status' },
-                // { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status' },
                 { data: 'action', name: 'action', orderable: false }
             ], "columnDefs": [ {
-                "targets": 6,
+                "targets": 7,
                 render: function (data, type, row, meta){
                 var $select = $(`
                     <select class='status form-control'
@@ -118,7 +118,7 @@
                     <option value='0'>{{ trans('admin.inactive') }}</option>
                     </select>
                 `);
-                $select.find('option[value="'+row.status+'"]').attr('selected', 'selected');
+                $select.find('option[value="'+row.active+'"]').attr('selected', 'selected');
                 return $select[0].outerHTML
                 }
             } ],
@@ -164,7 +164,7 @@
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"users/updateStatus/"+user_id+"?status="+status_user,
+            url:"users/updateStatus/"+user_id+"?active="+status_user,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },

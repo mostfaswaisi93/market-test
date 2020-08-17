@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.edit_country') @endsection
+@section('title') @lang('admin.edit_city') @endsection
 
 @section('content')
 
@@ -7,16 +7,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_country')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_city')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.countries.index') }}">@lang('admin.countries_management')</a>
+                            <a href="{{ route('admin.cities.index') }}">@lang('admin.cities_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.edit_country')</li>
+                        <li class="breadcrumb-item active">@lang('admin.edit_city')</li>
                     </ol>
                 </div>
             </div>
@@ -32,13 +32,13 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit_country') {{ $country->name }}
+                            @lang('admin.edit_city') {{ $city->name }}
                         </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.countries.update', $country->id) }}" method="post"
+                            <form action="{{ route('admin.cities.update', $city->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -48,14 +48,14 @@
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.name')</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
-                                                value="{{ $country->translate($locale)->name }}"
+                                                value="{{ $city->translate($locale)->name }}"
                                                 placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.currency')</label>
                                             <input id="currency" type="text" name="{{ $locale }}[currency]"
                                                 class="form-control"
-                                                value="{{ $country->translate($locale)->currency }}"
+                                                value="{{ $city->translate($locale)->currency }}"
                                                 placeholder="@lang('admin.' . $locale . '.currency')">
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                             <div class="controls">
                                                 <label>@lang('admin.iso_code')</label>
                                                 <input id="iso_code" type="text" name="iso_code" class="form-control"
-                                                    value="{{ $country->iso_code }}"
+                                                    value="{{ $city->iso_code }}"
                                                     placeholder="@lang('admin.iso_code')">
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@
                                             <div class="controls">
                                                 <label>@lang('admin.phone_code')</label>
                                                 <input id="phone_code" type="text" name="phone_code"
-                                                    class="form-control" value="{{ $country->phone_code }}"
+                                                    class="form-control" value="{{ $city->phone_code }}"
                                                     placeholder="@lang('admin.phone_code')">
                                             </div>
                                         </div>
