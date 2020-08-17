@@ -11,20 +11,12 @@ class Category extends Model
 {
     use Translatable, SoftDeletes;
 
-    protected $table = 'categories';
-    protected $guarded              = [];
-    public $translatedAttributes    = ['name'];
-    protected $appends = ['image_path', 'icon_path', 'image_path_ar', 'image_path_en'];
-
-    protected $casts = [
-        'created_at'                => 'date:Y-m-d',
-    ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
+    protected $table    = 'categories';
+    protected $guarded  = [];
+    protected $appends  = ['image_path', 'icon_path', 'image_path_ar', 'image_path_en'];
+    protected $casts    = ['created_at' => 'date:Y-m-d'];
+    protected $dates    = ['created_at', 'updated_at', 'deleted_at'];
+    public $translatedAttributes  = ['name'];
 
     public function getImagePathAttribute()
     {

@@ -98,7 +98,7 @@
                 },
                 { data: 'image_path', name: 'image_path',
                     render: function(data, type, full, meta) {
-                        return "<img src=" + data + " width='70px' class='img-thumbnail' />";
+                        return "<img src=" + data + " width='50px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
                 { data: 'name', name: 'name' },

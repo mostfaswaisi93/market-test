@@ -101,8 +101,8 @@ return [
     'module'                    => 'القيمة',
     'action'                    => 'خيارات',
 
-    'active'                    => 'فعال',
-    'inactive'                  => 'غير فعال',
+    'active'                    => 'مفعل',
+    'inactive'                  => 'غير مفعل',
 
     'change_status'             => 'تحديث الحالة',
     'status_changed'            => 'تم تحديث الحالة',
@@ -115,7 +115,8 @@ return [
     'name'                      => 'الاسم',
     'username'                  => 'اسم المستخدم',
     'title'                     => 'العنوان',
-    'intro_state'               => 'مقدمة الدولة',
+    'phone_code'                => 'رمز الاتصال',
+    'iso_code'                  => 'رمز الدولة',
     'currency'                  => 'العملة',
     'description'               => 'الوصف',
     'items_count'               => 'عدد الأصناف',

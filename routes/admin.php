@@ -11,12 +11,14 @@ Route::group(
             Route::post('categories/updateStatus/{id}', 'CategoryController@updateStatus')->name('category.status');
             // Route::resource('sub/categories', 'SubCategoryController')->except(['show']);
 
+            Route::resource('countries', 'CountryController')->except(['show']);
+            Route::get('countries/destroy/{id}', 'CountryController@destroy');
+
             Route::resource('items', 'ItemController')->except(['show']);
             Route::resource('customers', 'CustomerController')->except(['show']);
             Route::resource('locations', 'LocationController')->except(['show']);
             Route::resource('notifications', 'NotificationController')->except(['show']);
             Route::resource('orders', 'OrderController')->except(['show']);
-            Route::resource('countries', 'CountryController')->except(['show']);
             Route::resource('languages', 'LanguageController')->except(['show']);
 
             Route::get('settings', 'SettingController@index')->name('settings.index');

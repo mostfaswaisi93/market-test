@@ -13,20 +13,19 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::get();
-
         if (request()->ajax()) {
             return datatables()->of($countries)
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_countries')) {
-                        $button = '<a type="button" name="edit" href="countries/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" title="Edit" name="edit" href="countries/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
-                        $button = '<a type="button" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
+                        $button = '<a type="button" title="Edit" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_countries')) {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
-                        $button .= '<a type="button" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
+                        $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
                     }
                     return $button;
                 })
@@ -35,6 +34,7 @@ class CountryController extends Controller
         }
         return view('admin.countries.index');
     }
+
     public function create()
     {
         return view('admin.countries.create');
@@ -43,7 +43,8 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'intro_state'   => 'required'
+            'iso_code'      => 'required|max:3|unique:countries',
+            'phone_code'    => 'required|unique:countries'
         ];
 
         foreach (config('translatable.locales') as $locale) {
@@ -52,8 +53,8 @@ class CountryController extends Controller
         }
 
         $request->validate($rules);
-        Country::create($request->all());
 
+        Country::create($request->all());
         Toastr::success(__('admin.added_successfully'), 'Success');
         return redirect()->route('admin.countries.index');
     }
@@ -66,7 +67,11 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $rules = [
-            'intro_state'   => 'required'
+            'iso_code'      => ['required', Rule::unique('countries')->ignore($country->id),],
+            'phone_code'      => ['required', Rule::unique('countries')->ignore($country->id),],
+
+            'iso_code'      => 'required|max:3|unique:countries',
+            'phone_code'    => 'required|unique:countries'
         ];
 
         foreach (config('translatable.locales') as $locale) {
@@ -81,10 +86,9 @@ class CountryController extends Controller
         return redirect()->route('admin.countries.index');
     }
 
-    public function destroy(Country $country)
+    public function destroy($id)
     {
+        $country = Country::findOrFail($id);
         $country->delete();
-        Toastr::success(__('admin.deleted_successfully'), 'Success');
-        return redirect()->route('admin.countries.index');
     }
 }

@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit') {{ $user->name }}
+                            @lang('admin.edit_user') {{ $user->name }}
                         </h4>
                     </div>
                     <div class="card-content">
@@ -43,7 +43,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.name')</label>
@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.username')</label>
@@ -61,7 +61,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.email')</label>
@@ -70,7 +70,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12"></div>
                                     <div class="col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
@@ -134,6 +133,8 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="col-12">
                                         <hr>
                                     </div>
                                     <div class="col-md-6 col-12">

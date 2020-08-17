@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.edit_country') @endsection
 
 @section('content')
 
@@ -29,7 +30,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.edit_country')</h4>
+                        <h4 class="card-title">
+                            <i class="feather icon-edit mr-25"></i>
+                            @lang('admin.edit_country') {{ $country->name }}
+                        </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -39,16 +43,6 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label>@lang('admin.intro_state')</label>
-                                                <input id="intro_state" type="text" name="intro_state"
-                                                    class="form-control" value="{{ $country->intro_state }}"
-                                                    placeholder="@lang('admin.intro_state')">
-                                            </div>
-                                        </div>
-                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -66,6 +60,29 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.iso_code')</label>
+                                                <input id="iso_code" type="text" name="iso_code" class="form-control"
+                                                    value="{{ $country->iso_code }}"
+                                                    placeholder="@lang('admin.iso_code')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.phone_code')</label>
+                                                <input id="phone_code" type="text" name="phone_code"
+                                                    class="form-control" value="{{ $country->phone_code }}"
+                                                    placeholder="@lang('admin.phone_code')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">

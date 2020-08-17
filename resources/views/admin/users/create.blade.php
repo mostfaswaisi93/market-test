@@ -42,7 +42,7 @@
                                 @csrf
                                 @method('POST')
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.name')</label>
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.username')</label>
@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.email')</label>
@@ -69,7 +69,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12"></div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">
@@ -153,6 +152,8 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="col-12">
                                         <hr>
                                     </div>
                                     <div class="col-md-6 col-12">

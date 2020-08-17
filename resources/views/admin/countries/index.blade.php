@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.countries_management') @endsection
 
 @section('content')
 
@@ -50,10 +51,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.intro_state')</th>
-                                    <th>@lang('admin.name')</th>
+                                    <th>@lang('admin.country')</th>
+                                    <th>@lang('admin.iso_code')</th>
+                                    <th>@lang('admin.phone_code')</th>
                                     <th>@lang('admin.currency')</th>
-                                    <th>@lang('admin.created_at')</th>
+                                    {{-- <th>@lang('admin.created_at')</th> --}}
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -85,12 +87,37 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
                 },
-                { data: 'intro_state', name: 'intro_state' },
                 { data: 'name', name: 'name' },
+                { data: 'iso_code', name: 'iso_code' },
+                { data: 'phone_code', name: 'phone_code' },
                 { data: 'currency', name: 'currency' },
-                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                // { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
             ]
+        });
+    });
+
+    $(document).on('click', '.delete', function(){
+        country_id = $(this).attr('id');
+        swal({
+            title: "{{ trans('admin.are_sure') }}",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '{{ trans('admin.yes') }}',
+            cancelButtonText: '{{ trans('admin.cancel') }}'
+        }).then(function(result){
+            if(result.value){
+                $.ajax({
+                    url:"countries/destroy/" + country_id,
+                    success: function(data){
+                        console.log(data);
+                        $('#data-table').DataTable().ajax.reload();
+                        toastr.success('{{ trans('admin.deleted_successfully') }}!');
+                    }
+                });
+            }
         });
     });
 </script>

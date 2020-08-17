@@ -90,8 +90,8 @@ class UserController extends Controller
     {
         $request->validate([
             'name'          => 'required',
-            'username'      => ['required', Rule::unique('users')->ignore($user->id),],
-            'email'         => ['required', Rule::unique('users')->ignore($user->id),],
+            'username'      => ['required', Rule::unique('users')->ignore($user->id)],
+            'email'         => ['required', Rule::unique('users')->ignore($user->id)],
             'image'         => 'image',
             'permissions'   => 'required|min:1'
         ]);
