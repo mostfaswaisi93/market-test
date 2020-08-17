@@ -14,6 +14,15 @@ Route::group(
             Route::resource('countries', 'CountryController')->except(['show']);
             Route::get('countries/destroy/{id}', 'CountryController@destroy');
 
+            Route::resource('cities', 'CityController')->except(['show']);
+            Route::get('cities/destroy/{id}', 'CityController@destroy');
+
+            Route::resource('brands', 'BrandController')->except(['show']);
+            Route::get('brands/destroy/{id}', 'BrandController@destroy');
+
+            Route::resource('languages', 'LanguageController')->except(['show']);
+            Route::get('languages/destroy/{id}', 'LanguageController@destroy');
+
             Route::resource('items', 'ItemController')->except(['show']);
             Route::resource('customers', 'CustomerController')->except(['show']);
             Route::resource('locations', 'LocationController')->except(['show']);

@@ -15,7 +15,11 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned()->onDelete('cascade');
+            $table->integer('status')->default(1);
+            $table->string('image')->default('default.png');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
