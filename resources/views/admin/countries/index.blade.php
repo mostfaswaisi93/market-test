@@ -55,7 +55,9 @@
                                     <th>@lang('admin.iso_code')</th>
                                     <th>@lang('admin.phone_code')</th>
                                     <th>@lang('admin.currency')</th>
-                                    {{-- <th>@lang('admin.created_at')</th> --}}
+                                    <th>@lang('admin.created_at')</th>
+                                    <th>@lang('admin.status')</th>
+                                    <th>@lang('admin.change_status')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -91,9 +93,30 @@
                 { data: 'iso_code', name: 'iso_code' },
                 { data: 'phone_code', name: 'phone_code' },
                 { data: 'currency', name: 'currency' },
-                // { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status',
+                    render: function(data, type, full, meta) {
+                        var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
+                        var color = data ? "success" : "danger"; 
+                        return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
+                    }, orderable: false , searchable: false
+                },
+                { data: 'active', name: 'status' },
                 { data: 'action', name: 'action', orderable: false }
-            ]
+            ], "columnDefs": [ {
+                "targets": 7,
+                render: function (data, type, row, meta){
+                var $select = $(`
+                    <select class='status form-control'
+                    id='status' onchange=selectStatus(${row.id})>
+                    <option value='1'>{{ trans('admin.active') }}</option>
+                    <option value='0'>{{ trans('admin.inactive') }}</option>
+                    </select>
+                `);
+                $select.find('option[value="'+row.active+'"]').attr('selected', 'selected');
+                return $select[0].outerHTML
+                }
+            } ],
         });
     });
 
@@ -117,6 +140,51 @@
                         toastr.success('{{ trans('admin.deleted_successfully') }}!');
                     }
                 });
+            }
+        });
+    });
+
+    function selectStatus(id){
+        country_id = id;
+    }
+
+    $(document).on('change', '#status', function(e) {
+        var status_country = $(this).find("option:selected").val();
+        console.log(status_country)
+        if(status_country == "1"){
+            toastr.success('{{ trans('admin.status_changed') }}!');
+        }else if(status_country == "0"){
+            toastr.success('{{ trans('admin.status_changed') }}!');
+        } else {
+            toastr.error('{{ trans('admin.status_not_changed') }}!');
+        }
+        $.ajax({
+            url:"countries/updateStatus/"+country_id+"?active="+status_country,
+            headers: {
+                'X-CSRF-Token': "{{ csrf_token() }}"
+            },
+            method:"POST",
+            data:{},
+            contentType: false,
+            cache: false,
+            processData: false,
+            dataType:"json",
+            success:function(data)
+                {
+                var html = '';
+                if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                {
+                    html += '<p>' + data.errors[count] + '</p>';
+                }
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    $('#data-table').DataTable().ajax.reload();
+                }
             }
         });
     });

@@ -91,4 +91,16 @@ class CityController extends Controller
         $city = City::findOrFail($id);
         $city->delete();
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $city           = City::find($id);
+        $active         = $request->get('active');
+        $city->active   = $active;
+        $city           = $city->save();
+
+        if ($city) {
+            return response(['success' => TRUE, "message" => 'Done']);
+        }
+    }
 }

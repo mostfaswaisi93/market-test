@@ -91,4 +91,16 @@ class CountryController extends Controller
         $country = Country::findOrFail($id);
         $country->delete();
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $country           = Country::find($id);
+        $active            = $request->get('active');
+        $country->active   = $active;
+        $country           = $country->save();
+
+        if ($country) {
+            return response(['success' => TRUE, "message" => 'Done']);
+        }
+    }
 }

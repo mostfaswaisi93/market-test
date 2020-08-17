@@ -8,17 +8,20 @@ Route::group(
 
             Route::resource('categories', 'CategoryController')->except(['show']);
             Route::get('categories/destroy/{id}', 'CategoryController@destroy');
-            Route::post('categories/updateStatus/{id}', 'CategoryController@updateStatus')->name('category.status');
+            Route::post('categories/updateStatus/{id}', 'CategoryController@updateStatus');
             // Route::resource('sub/categories', 'SubCategoryController')->except(['show']);
 
             Route::resource('countries', 'CountryController')->except(['show']);
             Route::get('countries/destroy/{id}', 'CountryController@destroy');
+            Route::post('countries/updateStatus/{id}', 'CountryController@updateStatus');
 
             Route::resource('cities', 'CityController')->except(['show']);
             Route::get('cities/destroy/{id}', 'CityController@destroy');
+            Route::post('cities/updateStatus/{id}', 'CityController@updateStatus');
 
             Route::resource('brands', 'BrandController')->except(['show']);
             Route::get('brands/destroy/{id}', 'BrandController@destroy');
+            Route::post('brands/updateStatus/{id}', 'BrandController@updateStatus');
 
             Route::resource('languages', 'LanguageController')->except(['show']);
             Route::get('languages/destroy/{id}', 'LanguageController@destroy');
@@ -35,7 +38,7 @@ Route::group(
 
             Route::resource('users', 'UserController')->except(['show']);
             Route::get('users/destroy/{id}', 'UserController@destroy');
-            Route::post('users/updateStatus/{id}', 'UserController@updateStatus')->name('user.status');
+            Route::post('users/updateStatus/{id}', 'UserController@updateStatus');
         });
     }
 );
