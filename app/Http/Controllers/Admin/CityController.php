@@ -14,7 +14,12 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::with(['country'])->get();
+        $country_id = request()->get('country_id');
         if (request()->ajax()) {
+            if (isset($country_id))
+                $cities->whereHas('country', function ($q) use ($country_id) {
+                    $q->where('id', $country_id);
+                });
             return datatables()->of($cities)
                 ->addColumn('country', function ($data) {
                     return $data->country->name;
@@ -36,7 +41,7 @@ class CityController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.cities.index');
+        return view('admin.cities.index')->with('countries', Country::active()->get());;
     }
 
     public function create()

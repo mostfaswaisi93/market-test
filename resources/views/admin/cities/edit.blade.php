@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit_city') {{ $city->name }}
+                            @lang('admin.edit_city') - {{ $city->name }}
                         </h4>
                     </div>
                     <div class="card-content">
@@ -47,11 +47,11 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.countries')</label>
-                                                <select name="country_id" class="form-control">
-                                                    <option value="">@lang('admin.all_countries')</option>
+                                                <select name="country_id" class="form-control select2">
+                                                    <option value="">@lang('site.all_countries')</option>
                                                     @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}"
-                                                        {{ old('country_id') == $country->id ? 'selected' : '' }}>
+                                                        {{ $city->country_id == $country->id ? 'selected' : '' }}>
                                                         {{ $country->name }}
                                                     </option>
                                                     @endforeach
@@ -92,3 +92,13 @@
 </div>
 
 @endsection
+
+@push('scripts')
+
+<script type="text/javascript">
+    $('.select2').select2({
+        placeholder: "Select Country"
+    });
+</script>
+
+@endpush

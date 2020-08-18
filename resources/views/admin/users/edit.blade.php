@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit_user') {{ $user->name }}
+                            @lang('admin.edit_user') - {{ $user->name }}
                         </h4>
                     </div>
                     <div class="card-content">
@@ -75,9 +75,10 @@
                                             <a class="mr-2 my-25" href="#">
                                                 <img src="{{ $user->image_path }}" alt="users avatar"
                                                     class="users-avatar-shadow rounded image img-thumbnail image-preview"
-                                                    height="90" width="90">
+                                                    height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
+                                                <label>@lang('admin.user_image')</label>
                                                 <div class="col-4 d-flex mt-1 px-0">
                                                     <input type="file" class="form-control-file image" name="image"
                                                         id="image" style="display:none;">

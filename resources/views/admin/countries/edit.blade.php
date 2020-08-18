@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit_country') {{ $country->name }}
+                            @lang('admin.edit_country') - {{ $country->name }}
                         </h4>
                     </div>
                     <div class="card-content">

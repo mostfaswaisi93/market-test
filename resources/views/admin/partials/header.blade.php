@@ -73,6 +73,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
     <script src="https://unpkg.com/sweetalert2@7.1.2/dist/sweetalert2.all.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="{{url('/css/styles.css')}}">
 

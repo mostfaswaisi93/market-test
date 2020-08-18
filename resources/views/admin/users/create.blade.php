@@ -94,7 +94,7 @@
                                                 <img src="{{ asset('uploads/user_images/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image img-thumbnail image-preview"
-                                                    height="90" width="90">
+                                                    height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
                                                 <label>@lang('admin.user_image')</label>

@@ -21,6 +21,14 @@
                     <span class="title">@lang('admin.home')</span>
                 </a>
             </li>
+            @if (auth()->user()->hasPermission('read_brands'))
+            <li {{ request()->route()->getName() === 'admin.brands.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.brands.index') }}" class="nav-link">
+                    <i class="fa fa-tags"></i>
+                    <span class="title">@lang('admin.brands_management')</span>
+                </a>
+            </li>
+            @endif
             @if (auth()->user()->hasPermission('read_categories'))
             <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.categories.index') }}" class="nav-link">

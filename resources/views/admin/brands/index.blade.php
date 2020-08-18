@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.categories_management') @endsection
+@section('title') @lang('admin.brands_management') @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.categories_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.brands_management')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.categories_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.brands_management')</li>
                     </ol>
                 </div>
             </div>
@@ -25,13 +25,13 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.categories_management')</h4>
+                <h4 class="card-title">@lang('admin.brands_management')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
                     <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_categories'))
-                        <a href="{{ route('admin.categories.create') }}">
+                        @if (auth()->user()->hasPermission('create_brands'))
+                        <a href="{{ route('admin.brands.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
                                 @lang('admin.create_brand')
@@ -51,14 +51,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.icon')</th>
                                     <th>@lang('admin.image')</th>
                                     <th>@lang('admin.name')</th>
-                                    {{-- <th>@lang('admin.items_count')</th> --}}
-                                    {{-- <th>@lang('admin.related_items')</th> --}}
+                                    <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.status')</th>
                                     <th>@lang('admin.change_status')</th>
-                                    {{-- <th>@lang('admin.created_at')</th> --}}
                                     <th>@lang('admin.action')</th>
                                 </tr>
                             </thead>
@@ -84,17 +81,12 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.categories.index') }}",
+                url: "{{ route('admin.brands.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
-                },
-                { data: 'icon_path', name: 'icon_path',
-                    render: function(data, type, full, meta) {
-                        return "<img src=" + data + " width='40px' class='img-thumbnail' />";
-                    }, orderable: false , searchable: false
                 },
                 { data: 'image_path', name: 'image_path',
                     render: function(data, type, full, meta) {
@@ -102,15 +94,15 @@
                     }, orderable: false , searchable: false
                 },
                 { data: 'name', name: 'name' },
-                { data: 'status', name: 'status',
+                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status',
                     render: function(data, type, full, meta) {
                         var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
                         var color = data ? "success" : "danger"; 
                         return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
                     }, orderable: false , searchable: false
                 },
-                { data: 'status', name: 'status' },
-                // { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'active', name: 'status' },
                 { data: 'action', name: 'action', orderable: false }
             ], "columnDefs": [ {
                 "targets": 5,
@@ -122,7 +114,7 @@
                     <option value='0'>{{ trans('admin.inactive') }}</option>
                     </select>
                 `);
-                $select.find('option[value="'+row.status+'"]').attr('selected', 'selected');
+                $select.find('option[value="'+row.active+'"]').attr('selected', 'selected');
                 return $select[0].outerHTML
                 }
             } ],
@@ -142,7 +134,7 @@
         }).then(function(result){
             if(result.value){
                 $.ajax({
-                    url:"categories/destroy/" + brand_id,
+                    url:"brands/destroy/" + brand_id,
                     success: function(data){
                         console.log(data);
                         $('#data-table').DataTable().ajax.reload();
@@ -168,7 +160,7 @@
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"categories/updateStatus/"+brand_id+"?status="+status_brand,
+            url:"brands/updateStatus/"+brand_id+"?active="+status_brand,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },

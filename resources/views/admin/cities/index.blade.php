@@ -29,6 +29,37 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <label>@lang('admin.countries')</label>
+                                <fieldset class="form-group">
+                                    <select class="form-control" name="country" id="country"
+                                        onchange="filtetrCountry(this);">
+                                        <option value="">@lang('admin.select_country')</option>
+                                        @foreach ($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <label for="users-list-status">Status</label>
+                                <fieldset class="form-group">
+                                    <select class="form-control" id="users-list-status">
+                                        <option value="">All</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Blocked">Blocked</option>
+                                        <option value="deactivated">Deactivated</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
                     <div class="btn-group">
                         @if (auth()->user()->hasPermission('create_cities'))
                         <a href="{{ route('admin.cities.create') }}">
@@ -73,6 +104,7 @@
 @push('scripts')
 
 <script type="text/javascript">
+    var country_id= '';
     $(document).ready(function(){
         $('#data-table').DataTable({
             processing: true,
@@ -88,7 +120,11 @@
                     }, searchable: false, orderable: false
                 },
                 { data: 'name', name: 'name' },
-                { data: 'country', name: 'country' },
+                { data: 'country', name: 'country', 
+                    render: function(data, type, full, meta) {
+                        return "<div class='badge badge-primary'>"+ data +"</div>";
+                    }, orderable: false , searchable: false
+                },
                 { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'active', name: 'status',
                     render: function(data, type, full, meta) {
@@ -142,6 +178,13 @@
 
     function selectStatus(id){
         city_id = id;
+    }
+
+    function filtetrCountry(id=null){
+        console.log(id.value)
+        country_id= id.value;
+        $('#data-table').DataTable().ajax.url("{{ route('admin.cities.index') }}"+'?country_id='+country_id+'&type=filter').load();
+
     }
 
     $(document).on('change', '#status', function(e) {

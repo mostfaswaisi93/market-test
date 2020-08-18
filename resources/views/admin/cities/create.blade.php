@@ -47,8 +47,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.countries')</label>
-                                                <select name="country_id" class="form-control">
-                                                    <option value="">@lang('admin.all_countries')</option>
+                                                <select name="country_id" class="form-control select2">
                                                     @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}"
                                                         {{ old('country_id') == $country->id ? 'selected' : '' }}>
@@ -92,3 +91,13 @@
 </div>
 
 @endsection
+
+@push('scripts')
+
+<script type="text/javascript">
+    $('.select2').select2({
+        placeholder: "Select Country"
+    });
+</script>
+
+@endpush

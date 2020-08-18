@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Country extends Model
 {
     use Translatable, SoftDeletes;
+
     protected $table    = 'countries';
     protected $guarded  = ['id'];
     protected $casts    = ['created_at' => 'date:Y-m-d'];

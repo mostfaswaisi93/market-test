@@ -55,6 +55,7 @@ return [
 
     'create_user'               => 'إضافة مستخدم جديد',
     'create_category'           => 'إضافة قسم جديد',
+    'create_brand'              => 'إضافة علامة تجارية جديدة',
     'create_item'               => 'إضافة صنف جديد',
     'create_location'           => 'إضافة منطقة جديدة',
     'create_country'            => 'إضافة دولة جديدة',
@@ -63,6 +64,7 @@ return [
     'create_language'           => 'إضافة لغة جديدة',
     'edit_user'                 => 'تعديل مستخدم',
     'edit_category'             => 'تعديل قسم',
+    'edit_brand'                => 'تعديل علامة تجارية',
     'edit_item'                 => 'تعديل صنف',
     'edit_location'             => 'تعديل منطقة',
     'edit_country'              => 'تعديل دولة',
@@ -76,6 +78,7 @@ return [
 
     'users_management'          => 'إدارة المستخدمين',
     'categories_management'     => 'إدارة الأقسام',
+    'brands_management'         => 'العلامات التجارية',
     'locations_management'      => 'إدارة المناطق',
     'notifications_management'  => 'إدارة التنبيهات',
     'orders_management'         => 'إدارة الطلبات',
@@ -98,7 +101,8 @@ return [
     'last_name'                 => 'الاسم الأخير',
     'email'                     => 'البريد الإلكتروني',
     'image'                     => 'صورة',
-    'user_image'                     => 'صورة مستخدم',
+    'user_image'                => 'صورة مستخدم',
+    'brand_image'               => 'صورة علامة تجارية',
     'image_ar'                  => 'الصورة باللغة العربية',
     'image_en'                  => 'الصورة باللغة الإنجليزية',
     'icon'                      => 'أيقونة',
@@ -117,7 +121,9 @@ return [
 
     'permissions'               => 'الصلاحيات',
     'categories'                => 'الأقسام',
+    'brands'                    => 'العلامات التجارية',
     'all_categories'            => 'كل الأقسام',
+    'all_brands'                => 'كل العلامات التجارية',
     'all_countries'             => 'كل الدول',
     'all_cities'                => 'كل المدن',
     'name'                      => 'الاسم',
@@ -130,6 +136,7 @@ return [
     'items_count'               => 'عدد الأصناف',
     'related_items'             => 'الأصناف المرتبطة',
     'category'                  => 'قسم',
+    'brand'                     => 'علامة تجارية',
     'show_items'                => 'عرض الأصناف',
     'created_at'                => 'تاريخ الإنشاء',
 
