@@ -12,7 +12,6 @@ return [
             'brands'            => 'c,r,u,d',
             'countries'         => 'c,r,u,d',
             'cities'            => 'c,r,u,d',
-            'languages'         => 'c,r,u,d',
             'users'             => 'c,r,u,d',
             'settings'          => 'c,r,u,d',
         ],

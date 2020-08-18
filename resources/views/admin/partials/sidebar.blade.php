@@ -117,14 +117,6 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_languages'))
-            <li {{ request()->route()->getName() === 'admin.languages.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.languages.index') }}" class="nav-link">
-                    <i class="fa fa-language"></i>
-                    <span class="title">@lang('admin.languages_management')</span>
-                </a>
-            </li>
-            @endif
             @if (auth()->user()->hasPermission('read_users'))
             <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.users.index') }}" class="nav-link">

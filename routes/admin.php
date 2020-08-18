@@ -23,10 +23,6 @@ Route::group(
             Route::get('brands/destroy/{id}', 'BrandController@destroy');
             Route::post('brands/updateStatus/{id}', 'BrandController@updateStatus');
 
-            Route::resource('languages', 'LanguageController')->except(['show']);
-            Route::get('languages/destroy/{id}', 'LanguageController@destroy');
-            Route::post('languages/updateStatus/{id}', 'LanguageController@updateStatus');
-
             Route::resource('items', 'ItemController')->except(['show']);
             Route::resource('customers', 'CustomerController')->except(['show']);
             Route::resource('locations', 'LocationController')->except(['show']);
