@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.create_language') @endsection
 
 @section('content')
 
@@ -29,7 +30,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.create_language')</h4>
+                        <h4 class="card-title">
+                            <i class="feather icon-plus-square mr-25"></i>
+                            @lang('admin.create_language')
+                        </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -39,16 +43,35 @@
                                 @csrf
                                 @method('POST')
                                 <div class="row">
-                                    @foreach (config('translatable.locales') as $locale)
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label>@lang('admin.' . $locale . '.name')</label>
-                                            <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
-                                                value="{{ old($locale . '.name') }}"
-                                                placeholder="@lang('admin.' . $locale . '.name')">
+                                            <div class="controls">
+                                                <label>@lang('admin.abbr')</label>
+                                                <input id="abbr" type="text" name="abbr" class="form-control"
+                                                    value="{{ old('abbr') }}" placeholder="@lang('admin.abbr')">
+                                            </div>
                                         </div>
                                     </div>
-                                    @endforeach
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.name')</label>
+                                                <input id="name" type="text" name="name" class="form-control"
+                                                    value="{{ old('name') }}" placeholder="@lang('admin.name')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.direction')</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">

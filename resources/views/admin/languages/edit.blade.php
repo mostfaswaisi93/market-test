@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.edit_language') @endsection
 
 @section('content')
 
@@ -29,7 +30,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.edit_language')</h4>
+                        <h4 class="card-title">
+                            <i class="feather icon-edit mr-25"></i>
+                            @lang('admin.edit_language') - {{ $language->name }}
+                        </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -39,21 +43,107 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
-                                    @foreach (config('translatable.locales') as $locale)
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label>@lang('admin.' . $locale . '.name')</label>
-                                            <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
-                                                value="{{ $language->translate($locale)->name }}"
-                                                placeholder="@lang('admin.' . $locale . '.name')">
+                                            <div class="controls">
+                                                <label>@lang('admin.name')</label>
+                                                <input id="name" type="text" name="name" class="form-control"
+                                                    value="{{ $language->name }}" placeholder="@lang('admin.name')">
+                                            </div>
                                         </div>
                                     </div>
-                                    @endforeach
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.username')</label>
+                                                <input id="username" type="text" name="username" class="form-control"
+                                                    value="{{ $language->username }}" placeholder="@lang('admin.username')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>@lang('admin.email')</label>
+                                                <input id="email" type="email" name="email" class="form-control"
+                                                    value="{{ $language->email }}" placeholder="@lang('admin.email')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="media mb-2">
+                                            <a class="mr-2 my-25" href="#">
+                                                <img src="{{ $language->image_path }}" alt="languages avatar"
+                                                    class="languages-avatar-shadow rounded image img-thumbnail image-preview"
+                                                    height="70" width="70">
+                                            </a>
+                                            <div class="media-body mt-50">
+                                                <label>@lang('admin.language_image')</label>
+                                                <div class="col-4 d-flex mt-1 px-0">
+                                                    <input type="file" class="form-control-file image" name="image"
+                                                        id="image" style="display:none;">
+                                                    <button class="btn btn-primary" onclick="FileUpload();">
+                                                        <i class="fa fa-plus"></i>
+                                                        @lang('admin.file_upload')
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="table-responsive border rounded px-1">
+                                            <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2">
+                                                <i class="feather icon-lock mr-50"></i>
+                                                @lang('admin.permissions')
+                                            </h6> <br>
+                                            @php
+                                            $models = ['languages', 'categories', 'items', 'countries', 'cities',
+                                            'locations', 'languages'];
+                                            $maps = ['create', 'read', 'update', 'delete'];
+                                            @endphp
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th>@lang('admin.module')</th>
+                                                        @foreach ($maps as $map)
+                                                        <th>
+                                                            @lang('admin.' .$map)
+                                                        </th>
+                                                        @endforeach
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($models as $index => $model)
+                                                    <tr>
+                                                        <td> @lang('admin.' .$model)</td>
+                                                        @foreach ($maps as $map)
+                                                        <td>
+                                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                                <input type="checkbox" name="permissions[]"
+                                                                    {{ $user->hasPermission($map . '_' . $model) ? 'checked' : '' }}
+                                                                    value="{{ $map . '_' . $model }}">
+                                                                <span class="vs-checkbox">
+                                                                    <span class="vs-checkbox--check">
+                                                                        <i class="vs-icon feather icon-check"></i>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        @endforeach
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <button type="submit" class="btn btn-primary">
-                                                    @lang('admin.update')
+                                                    @lang('admin.edit')
                                                 </button>
                                             </div>
                                         </div>

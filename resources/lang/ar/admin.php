@@ -76,6 +76,11 @@ return [
     'country'                   => 'الدولة',
     'city'                      => 'المدينة',
 
+    'abbr'                      => 'الاختصار',
+    'direction'                 => 'الاتجاه',
+    'rtl'                       => 'من اليمين إلى اليسار',
+    'ltr'                       => 'من اليسار إلى اليمين',
+
     'users_management'          => 'إدارة المستخدمين',
     'categories_management'     => 'إدارة الأقسام',
     'brands_management'         => 'العلامات التجارية',
