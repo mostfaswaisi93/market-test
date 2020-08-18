@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSliderTranslationsTable extends Migration
+class CreateFeatureTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSliderTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('slider_translations', function (Blueprint $table) {
+        Schema::create('feature_translations', function (Blueprint $table) {
             $table->id();
-            $table->integer('slider_id')->unsigned()->onDelete('cascade');
-            $table->string('text')->nullable();
+            $table->integer('feature_id')->unsigned()->onDelete('cascade');
+            $table->string('name');
             $table->string('locale')->index();
 
-            $table->unique(['slider_id', 'locale']);
+            $table->unique(['feature_id', 'locale']);
         });
     }
 
@@ -30,6 +30,6 @@ class CreateSliderTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slider_translations');
+        Schema::dropIfExists('feature_translations');
     }
 }

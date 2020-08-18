@@ -9,7 +9,10 @@ Route::group(
             Route::resource('categories', 'CategoryController')->except(['show']);
             Route::get('categories/destroy/{id}', 'CategoryController@destroy');
             Route::post('categories/updateStatus/{id}', 'CategoryController@updateStatus');
-            // Route::resource('sub/categories', 'SubCategoryController')->except(['show']);
+
+            // Route::resource('subcategories', 'SubCategoryController')->except(['show']);
+            // Route::get('subcategories/destroy/{id}', 'SubCategoryController@destroy');
+            // Route::post('subcategories/updateStatus/{id}', 'SubCategoryController@updateStatus');
 
             Route::resource('countries', 'CountryController')->except(['show']);
             Route::get('countries/destroy/{id}', 'CountryController@destroy');
@@ -31,6 +34,10 @@ Route::group(
             Route::get('units/destroy/{id}', 'UnitController@destroy');
             Route::post('units/updateStatus/{id}', 'UnitController@updateStatus');
 
+            Route::resource('contacts', 'ContactController')->except(['show']);
+            Route::get('contacts/destroy/{id}', 'ContactController@destroy');
+            Route::post('contacts/updateStatus/{id}', 'ContactController@updateStatus');
+
             Route::resource('customers', 'CustomerController')->except(['show']);
             Route::resource('locations', 'LocationController')->except(['show']);
             Route::resource('notifications', 'NotificationController')->except(['show']);
@@ -39,6 +46,10 @@ Route::group(
 
             Route::get('settings', 'SettingController@index')->name('settings.index');
             Route::post('settings', 'SettingController@update')->name('settings.update');
+
+            Route::resource('roles', 'RoleController')->except(['show']);
+            Route::get('roles/destroy/{id}', 'RoleController@destroy');
+            Route::post('roles/updateStatus/{id}', 'RoleController@updateStatus');
 
             Route::resource('users', 'UserController')->except(['show']);
             Route::get('users/destroy/{id}', 'UserController@destroy');

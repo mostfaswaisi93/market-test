@@ -14,7 +14,7 @@
                 </div>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-language nav-item">
-                        @if (app()->getLocale() == 'en')
+                        @if(app()->getLocale() == 'en')
                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
@@ -28,7 +28,7 @@
                             @if($localeCode == LaravelLocalization::getCurrentLocale())
                             <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                @if (app()->getLocale() == 'en')
+                                @if(app()->getLocale() == 'en')
                                 <i class="flag-icon flag-icon-us"></i>
                                 @else
                                 <i class="flag-icon flag-icon-sa"></i>
@@ -38,7 +38,7 @@
                             @elseif($url = LaravelLocalization::getLocalizedURL($localeCode))
                             <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                @if (app()->getLocale() == 'en')
+                                @if(app()->getLocale() == 'en')
                                 <i class="flag-icon flag-icon-sa"></i>
                                 @else
                                 <i class="flag-icon flag-icon-us"></i>

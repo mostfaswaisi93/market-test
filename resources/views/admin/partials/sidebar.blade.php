@@ -30,11 +30,29 @@
             </li>
             @endif
             @if (auth()->user()->hasPermission('read_categories'))
-            <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.categories.index') }}" class="nav-link">
+            <li class="nav-item">
+                <a href="#">
                     <i class="fa fa-list"></i>
-                    <span class="title">@lang('admin.categories_management')</span>
+                    <span class="menu-title">@lang('admin.categories')</span>
                 </a>
+                <ul class="menu-content">
+                    @if (auth()->user()->hasPermission('read_categories'))
+                    <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.categories.index') }}" class="nav-link">
+                            <i class="fa fa-list"></i>
+                            <span class="title">@lang('admin.categories_management')</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (auth()->user()->hasPermission('read_subcategories'))
+                    <li {{ request()->route()->getName() === 'admin.subcategories.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.subcategories.index') }}" class="nav-link">
+                            <i class="fa fa-list"></i>
+                            <span class="title">@lang('admin.subcategories_management')</span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
             </li>
             @endif
             @if (auth()->user()->hasPermission('read_items'))
@@ -50,16 +68,6 @@
                 <a href="{{ route('admin.locations.index') }}" class="nav-link">
                     <i class="fa fa-map"></i>
                     <span class="title">@lang('admin.locations_management')</span>
-                </a>
-            </li>
-            @endif
-
-
-            @if (auth()->user()->hasPermission('read_notifications'))
-            <li {{ request()->route()->getName() === 'admin.notifications.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.notifications.index') }}" class="nav-link">
-                    <i class="fa fa-bell"></i>
-                    <span class="title">@lang('admin.notifications_management')</span>
                 </a>
             </li>
             @endif
@@ -95,19 +103,19 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_messages'))
-            <li {{ request()->route()->getName() === 'admin.messages.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.messages.index') }}" class="nav-link">
-                    <i class="ficon feather icon-mail"></i>
-                    <span class="title">@lang('admin.messages')</span>
+            @if (auth()->user()->hasPermission('read_notifications'))
+            <li {{ request()->route()->getName() === 'admin.notifications.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.notifications.index') }}" class="nav-link">
+                    <i class="fa fa-bell"></i>
+                    <span class="title">@lang('admin.notifications_management')</span>
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_users'))
-            <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.users.index') }}" class="nav-link">
-                    <i class="feather icon-users"></i>
-                    <span class="title">@lang('admin.users_management')</span>
+            @if (auth()->user()->hasPermission('read_contacts'))
+            <li {{ request()->route()->getName() === 'admin.contacts.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.contacts.index') }}" class="nav-link">
+                    <i class="ficon feather icon-mail"></i>
+                    <span class="title">@lang('admin.contacts')</span>
                 </a>
             </li>
             @endif
@@ -150,6 +158,36 @@
                     </li>
                 </ul>
             </li>
+            @if (auth()->user()->hasPermission('read_users'))
+            <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.users.index') }}" class="nav-link">
+                    <i class="feather icon-users"></i>
+                    <span class="title">@lang('admin.users_management')</span>
+                </a>
+            </li>
+            @endif
+            <li class="nav-item">
+                <a href="#">
+                    <i class="fa fa-bar-chart"></i>
+                    <span class="menu-title">@lang('admin.reports')</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="data-list-view.html">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item">List View</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @if (auth()->user()->hasPermission('read_roles'))
+            <li {{ request()->route()->getName() === 'admin.roles.index' ? ' class=active' : '' }}>
+                <a href="{{ route('admin.roles.index') }}" class="nav-link">
+                    <i class="fa fa-sliders"></i>
+                    <span class="title">@lang('admin.roles')</span>
+                </a>
+            </li>
+            @endif
             @if (auth()->user()->hasPermission('read_settings'))
             <li {{ request()->route()->getName() === 'admin.settings.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">
