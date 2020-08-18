@@ -46,7 +46,8 @@
 {!! Toastr::message() !!}
 <script>
     $(document).ready(function () {
-        CKEDITOR.config.language =  "{{ app()->getLocale() }}";
+        CKEDITOR.config.language    =  "{{ app()->getLocale() }}";
+        CKEDITOR.config.height      =  '5em';
     });
 
     function FileUpload() {

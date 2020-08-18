@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.cities_management') @endsection
+@section('title') @lang('admin.units_management') @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.cities_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.units_management')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.cities_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.units_management')</li>
                     </ol>
                 </div>
             </div>
@@ -25,22 +25,22 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.cities_management')</h4>
+                <h4 class="card-title">@lang('admin.units_management')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
                     <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_cities'))
-                        <a href="{{ route('admin.cities.create') }}">
+                        @if (auth()->user()->hasPermission('create_units'))
+                        <a href="{{ route('admin.units.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
-                                @lang('admin.create_city')
+                                @lang('admin.create_unit')
                             </button>
                         </a>
                         @else
                         <a href="#">
                             <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_city')
+                                <i class="feather icon-plus"></i> @lang('admin.create_unit')
                             </button>
                         </a>
                         @endif
@@ -51,7 +51,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.city')</th>
+                                    <th>@lang('admin.unit')</th>
                                     <th>@lang('admin.country')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.status')</th>
@@ -80,7 +80,7 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.cities.index') }}",
+                url: "{{ route('admin.units.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {
@@ -121,7 +121,7 @@
     });
 
     $(document).on('click', '.delete', function(){
-        city_id = $(this).attr('id');
+        unit_id = $(this).attr('id');
         swal({
             title: "{{ trans('admin.are_sure') }}",
             type: 'warning',
@@ -133,7 +133,7 @@
         }).then(function(result){
             if(result.value){
                 $.ajax({
-                    url:"cities/destroy/" + city_id,
+                    url:"units/destroy/" + unit_id,
                     success: function(data){
                         console.log(data);
                         $('#data-table').DataTable().ajax.reload();
@@ -145,21 +145,21 @@
     });
 
     function selectStatus(id){
-        city_id = id;
+        unit_id = id;
     }
 
     $(document).on('change', '#status', function(e) {
-        var status_city = $(this).find("option:selected").val();
-        console.log(status_city)
-        if(status_city == "1"){
+        var status_unit = $(this).find("option:selected").val();
+        console.log(status_unit)
+        if(status_unit == "1"){
             toastr.success('{{ trans('admin.status_changed') }}!');
-        }else if(status_city == "0"){
+        }else if(status_unit == "0"){
             toastr.success('{{ trans('admin.status_changed') }}!');
         } else {
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"cities/updateStatus/"+city_id+"?active="+status_city,
+            url:"units/updateStatus/"+unit_id+"?active="+status_unit,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },

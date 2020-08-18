@@ -57,6 +57,7 @@ return [
     'create_category'           => 'إضافة قسم جديد',
     'create_brand'              => 'إضافة علامة تجارية جديدة',
     'create_item'               => 'إضافة صنف جديد',
+    'create_unit'               => 'إضافة وحدة جديدة',
     'create_location'           => 'إضافة منطقة جديدة',
     'create_country'            => 'إضافة دولة جديدة',
     'create_city'               => 'إضافة مدينة جديدة',
@@ -66,6 +67,7 @@ return [
     'edit_category'             => 'تعديل قسم',
     'edit_brand'                => 'تعديل علامة تجارية',
     'edit_item'                 => 'تعديل صنف',
+    'edit_unit'                 => 'تعديل وحدة',
     'edit_location'             => 'تعديل منطقة',
     'edit_country'              => 'تعديل دولة',
     'edit_city'                 => 'تعديل مدينة',
@@ -75,11 +77,6 @@ return [
     'language'                  => 'اللغة',
     'country'                   => 'الدولة',
     'city'                      => 'المدينة',
-
-    'abbr'                      => 'الاختصار',
-    'direction'                 => 'الاتجاه',
-    'rtl'                       => 'من اليمين إلى اليسار',
-    'ltr'                       => 'من اليسار إلى اليمين',
 
     'users_management'          => 'إدارة المستخدمين',
     'categories_management'     => 'إدارة الأقسام',
@@ -126,6 +123,7 @@ return [
 
     'permissions'               => 'الصلاحيات',
     'categories'                => 'الأقسام',
+    'system_constants'          => 'ثوابت النظام',
     'brands'                    => 'العلامات التجارية',
     'all_categories'            => 'كل الأقسام',
     'all_brands'                => 'كل العلامات التجارية',
@@ -146,7 +144,9 @@ return [
     'created_at'                => 'تاريخ الإنشاء',
 
     'items'                     => 'الأصناف',
+    'units'                     => 'الوحدات',
     'item'                      => 'الصنف',
+    'unit'                      => 'الوحدة',
     'quantity'                  => 'الكمية',
     'total'                     => 'المجموع',
     'purchase_price'            => 'سعر الشراء',

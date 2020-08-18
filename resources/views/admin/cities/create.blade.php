@@ -48,6 +48,7 @@
                                             <div class="controls">
                                                 <label>@lang('admin.countries')</label>
                                                 <select name="country_id" class="form-control select2">
+                                                    <option value="">@lang('admin.all_countries')</option>
                                                     @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}"
                                                         {{ old('country_id') == $country->id ? 'selected' : '' }}>

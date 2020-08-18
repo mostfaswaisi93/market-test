@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.create_item') @endsection
 
 @section('content')
 
@@ -29,7 +30,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> @lang('admin.create_item')</h4>
+                        <h4 class="card-title">
+                            <i class="feather icon-plus-square mr-25"></i>
+                            @lang('admin.create_item')
+                        </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -38,9 +42,9 @@
                                 @csrf
                                 @method('POST')
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label>@lang('admin.categories')</label>
+                                            <label>@lang('admin.category')</label>
                                             <select name="category_id" class="form-control">
                                                 <option value="">@lang('admin.all_categories')</option>
                                                 @foreach ($categories as $category)
@@ -53,7 +57,7 @@
                                         </div>
                                     </div>
                                     @foreach (config('translatable.locales') as $locale)
-                                    <div class="col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.name')</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
@@ -61,7 +65,9 @@
                                                 placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    @endforeach
+                                    @foreach (config('translatable.locales') as $locale)
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.description')</label>
                                             <textarea name="{{ $locale }}[description]" id="description"
@@ -69,7 +75,7 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.purchase_price')</label>
@@ -78,7 +84,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.sale_price')</label>
@@ -87,16 +93,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
                                                 <img src="{{ asset('uploads/item_images/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image img-thumbnail image-preview"
-                                                    height="100px" width="100px">
+                                                    height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <div class="col-4 d-flex mt-1 px-0">
+                                                <div class="col-12 d-flex mt-1 px-0">
                                                     <input type="file" class="form-control-file image" name="image"
                                                         id="image" style="display:none;">
                                                     <button class="btn btn-primary" onclick="FileUpload();">
@@ -107,7 +113,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label>@lang('admin.stock')</label>

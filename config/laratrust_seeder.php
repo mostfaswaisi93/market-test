@@ -2,7 +2,7 @@
 
 return [
     'role_structure' => [
-        'super_admin' => [
+        'super_admin'   => [
             'categories'        => 'c,r,u,d',
             'locations'         => 'c,r,u,d',
             'notifications'     => 'c,r,u,d',
@@ -12,10 +12,12 @@ return [
             'brands'            => 'c,r,u,d',
             'countries'         => 'c,r,u,d',
             'cities'            => 'c,r,u,d',
+            'units'             => 'c,r,u,d',
             'users'             => 'c,r,u,d',
             'settings'          => 'c,r,u,d',
         ],
-        'admin' => []
+        'admin'         => [],
+        'customer'      => []
     ],
 
     'permissions_map' => [

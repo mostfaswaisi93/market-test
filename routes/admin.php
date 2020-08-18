@@ -24,6 +24,13 @@ Route::group(
             Route::post('brands/updateStatus/{id}', 'BrandController@updateStatus');
 
             Route::resource('items', 'ItemController')->except(['show']);
+            Route::get('items/destroy/{id}', 'ItemController@destroy');
+            Route::post('items/updateStatus/{id}', 'ItemController@updateStatus');
+
+            Route::resource('units', 'UnitController')->except(['show']);
+            Route::get('units/destroy/{id}', 'UnitController@destroy');
+            Route::post('units/updateStatus/{id}', 'UnitController@updateStatus');
+
             Route::resource('customers', 'CustomerController')->except(['show']);
             Route::resource('locations', 'LocationController')->except(['show']);
             Route::resource('notifications', 'NotificationController')->except(['show']);

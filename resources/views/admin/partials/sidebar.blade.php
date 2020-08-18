@@ -53,22 +53,8 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_countries'))
-            <li {{ request()->route()->getName() === 'admin.countries.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.countries.index') }}" class="nav-link">
-                    <i class="fa fa-flag"></i>
-                    <span class="title">@lang('admin.countries_management')</span>
-                </a>
-            </li>
-            @endif
-            @if (auth()->user()->hasPermission('read_cities'))
-            <li {{ request()->route()->getName() === 'admin.cities.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.cities.index') }}" class="nav-link">
-                    <i class="fa fa-building-o"></i>
-                    <span class="title">@lang('admin.cities_management')</span>
-                </a>
-            </li>
-            @endif
+
+
             @if (auth()->user()->hasPermission('read_notifications'))
             <li {{ request()->route()->getName() === 'admin.notifications.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
@@ -125,6 +111,45 @@
                 </a>
             </li>
             @endif
+            <li class="nav-item">
+                <a href="#">
+                    <i class="fa fa-info-circle"></i>
+                    <span class="menu-title">@lang('admin.system_constants')</span>
+                    {{-- <span class="badge badge badge-primary badge-pill float-right mr-2">New</span> --}}
+                </a>
+                <ul class="menu-content">
+                    @if (auth()->user()->hasPermission('read_countries'))
+                    <li {{ request()->route()->getName() === 'admin.countries.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.countries.index') }}" class="nav-link">
+                            <i class="fa fa-flag"></i>
+                            <span class="title">@lang('admin.countries')</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (auth()->user()->hasPermission('read_cities'))
+                    <li {{ request()->route()->getName() === 'admin.cities.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.cities.index') }}" class="nav-link">
+                            <i class="fa fa-building-o"></i>
+                            <span class="title">@lang('admin.cities')</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (auth()->user()->hasPermission('read_units'))
+                    <li {{ request()->route()->getName() === 'admin.units.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.units.index') }}" class="nav-link">
+                            <i class="feather icon-bookmark"></i>
+                            <span class="title">@lang('admin.units')</span>
+                        </a>
+                    </li>
+                    @endif
+                    <li>
+                        <a href="data-list-view.html">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item">List View</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             @if (auth()->user()->hasPermission('read_settings'))
             <li {{ request()->route()->getName() === 'admin.settings.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">

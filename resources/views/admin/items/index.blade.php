@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') @lang('admin.items_management') @endsection
 
 @section('content')
 

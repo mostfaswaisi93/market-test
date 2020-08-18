@@ -2,31 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\City;
-use App\Models\Country;
+use App\Models\Unit;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Brian2694\Toastr\Facades\Toastr;
 
-class CityController extends Controller
+class UnitController extends Controller
 {
     public function index()
     {
-        $cities = City::with(['country'])->get();
+        $units = Unit::get();
         if (request()->ajax()) {
-            return datatables()->of($cities)
-                ->addColumn('country', function ($data) {
-                    return $data->country->name;
-                })
+            return datatables()->of($units)
                 ->addColumn('action', function ($data) {
-                    if (auth()->user()->hasPermission('update_cities')) {
-                        $button = '<a type="button" title="Edit" name="edit" href="cities/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
+                    if (auth()->user()->hasPermission('update_units')) {
+                        $button = '<a type="button" title="Edit" name="edit" href="units/' . $data->id . '/edit" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
                         $button = '<a type="button" title="Edit" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
-                    if (auth()->user()->hasPermission('delete_cities')) {
+                    if (auth()->user()->hasPermission('delete_units')) {
                         $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
                         $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
@@ -36,13 +32,12 @@ class CityController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.cities.index');
+        return view('admin.units.index');
     }
 
     public function create()
     {
-        $countries = Country::active()->get();
-        return view('admin.cities.create')->with('countries', $countries);
+        return view('admin.units.create');
     }
 
     public function store(Request $request)
@@ -52,53 +47,52 @@ class CityController extends Controller
         ];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name'        => 'required|unique:city_translations,name'];
+            $rules += [$locale . '.name'        => 'required|unique:unit_translations,name'];
         }
 
         $request->validate($rules);
         $request_data = $request->all();
-        City::create($request_data);
+        Unit::create($request_data);
 
         Toastr::success(__('admin.added_successfully'));
-        return redirect()->route('admin.cities.index');
+        return redirect()->route('admin.units.index');
     }
 
-    public function edit(City $city)
+    public function edit(Unit $unit)
     {
-        $countries = Country::active()->get();
-        return view('admin.cities.edit', compact('countries', 'city'));
+        return view('admin.units.edit', compact('unit'));
     }
 
-    public function update(Request $request, City $city)
+    public function update(Request $request, Unit $unit)
     {
         $rules = [
             'country_id'   => 'required'
         ];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name'        => ['required', Rule::unique('city_translations', 'name')->ignore($city->id, 'city_id')]];
+            $rules += [$locale . '.name'        => ['required', Rule::unique('unit_translations', 'name')->ignore($unit->id, 'unit_id')]];
         }
 
         $request->validate($rules);
-        $city->update($request->all());
+        $unit->update($request->all());
         Toastr::success(__('admin.updated_successfully'));
-        return redirect()->route('admin.cities.index');
+        return redirect()->route('admin.units.index');
     }
 
     public function destroy($id)
     {
-        $city = City::findOrFail($id);
-        $city->delete();
+        $unit = Unit::findOrFail($id);
+        $unit->delete();
     }
 
     public function updateStatus(Request $request, $id)
     {
-        $city           = City::find($id);
+        $unit           = Unit::find($id);
         $active         = $request->get('active');
-        $city->active   = $active;
-        $city           = $city->save();
+        $unit->active   = $active;
+        $unit           = $unit->save();
 
-        if ($city) {
+        if ($unit) {
             return response(['success' => TRUE, "message" => 'Done']);
         }
     }
