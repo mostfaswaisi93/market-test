@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Slider;
 use App\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Brian2694\Toastr\Facades\Toastr;
 
 class SliderController extends Controller
@@ -17,7 +18,7 @@ class SliderController extends Controller
         if (request()->ajax()) {
             return datatables()->of($sliders)
                 ->addColumn('user', function ($data) {
-                    return $data->user->username;
+                    return $data->user->name;
                 })
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('update_sliders')) {
@@ -51,54 +52,73 @@ class SliderController extends Controller
             'user_id'   => 'required'
         ];
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name'        => 'required|unique:city_translations,name'];
-        }
-
         $request->validate($rules);
         $request_data = $request->all();
-        Slider::create($request_data);
 
+        if ($request->image) {
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/slider_images/' . $request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
+        }
+
+        Slider::create($request_data);
         Toastr::success(__('admin.added_successfully'));
         return redirect()->route('admin.sliders.index');
     }
 
-    public function edit(Slider $city)
+    public function edit(Slider $slider)
     {
         $users = User::active()->get();
-        return view('admin.sliders.edit', compact('users', 'city'));
+        return view('admin.sliders.edit', compact('users', 'slider'));
     }
 
-    public function update(Request $request, Slider $city)
+    public function update(Request $request, Slider $slider)
     {
         $rules = [
             'user_id'   => 'required'
         ];
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name'        => ['required', Rule::unique('city_translations', 'name')->ignore($city->id, 'city_id')]];
+        $request->validate($rules);
+        $request_data = $request->all();
+
+        if ($request->image) {
+            if ($slider->image != 'default.png') {
+                Storage::disk('public_uploads')->delete('/slider_images/' . $slider->image);
+            }
+
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/slider_images/' . $request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
         }
 
-        $request->validate($rules);
-        $city->update($request->all());
+        $slider->update($request_data);
         Toastr::success(__('admin.updated_successfully'));
         return redirect()->route('admin.sliders.index');
     }
 
     public function destroy($id)
     {
-        $city = Slider::findOrFail($id);
-        $city->delete();
+        $slider = Slider::findOrFail($id);
+        if ($slider->image != 'default.png') {
+            Storage::disk('public_uploads')->delete('/slider_images/' . $slider->image);
+        }
+        $slider->delete();
     }
 
     public function updateStatus(Request $request, $id)
     {
-        $city           = Slider::find($id);
-        $active         = $request->get('active');
-        $city->active   = $active;
-        $city           = $city->save();
+        $slider           = Slider::find($id);
+        $active           = $request->get('active');
+        $slider->active   = $active;
+        $slider           = $slider->save();
 
-        if ($city) {
+        if ($slider) {
             return response(['success' => TRUE, "message" => 'Done']);
         }
     }

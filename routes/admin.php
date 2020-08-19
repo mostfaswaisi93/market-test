@@ -45,6 +45,7 @@ Route::group(
 
             Route::resource('sliders', 'SliderController')->except(['show']);
             Route::get('sliders/destroy/{id}', 'SliderController@destroy');
+            Route::post('sliders/updateStatus/{id}', 'SliderController@updateStatus');
 
             Route::resource('notifications', 'NotificationController')->except(['show']);
             Route::resource('orders', 'OrderController')->except(['show']);
