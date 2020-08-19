@@ -51,8 +51,6 @@
     </section>
 </div>
 
-@include('admin.contacts.form')
-
 @endsection
 
 @push('scripts')
@@ -83,23 +81,6 @@
                 { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'action', name: 'action', orderable: false }
             ]
-        });
-    });
-
-    $(document).on('click', '.showBtn', function(){
-        contact_id = $(this).attr('id');
-        $.ajax({
-            url:"/admin/contacts/"+contact_id,
-            dataType:"json",
-            success:function(html){
-                $('#showTitle').html(html.data.title);
-                $('#showCustomer').html(html.data.customer.name);
-                $('#showDescription').html(html.data.description);
-                $('#showStatus').html(html.data.status);
-                $('#hidden_id').val(html.data.id);
-                $('.modal-title').text("Show Contact");
-                $('#showModal').modal('show');
-            }
         });
     });
 

@@ -53,6 +53,7 @@ return [
 
     'add_order'                 => 'أضف طلب',
     'edit_order'                => 'تعديل طلب',
+    'show_contact'              => 'عرض رسالة',
 
     'create_user'               => 'إضافة مستخدم جديد',
     'create_category'           => 'إضافة قسم جديد',
@@ -99,6 +100,7 @@ return [
     'reports'                   => 'التقارير والإحصائيات',
     'contacts'                  => 'رسائل تواصل معنا',
     'messages'                  => 'الرسائل',
+    'message'                   => 'الرسالة',
     'settings'                  => 'إعدادات النظام',
     'languages'                 => 'اللغات',
     'locations'                 => 'المناطق',

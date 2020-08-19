@@ -95,14 +95,6 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_sliders'))
-            <li {{ request()->route()->getName() === 'admin.sliders.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.sliders.index') }}" class="nav-link">
-                    <i class="feather icon-sliders"></i>
-                    <span class="title">@lang('admin.sliders')</span>
-                </a>
-            </li>
-            @endif
             @if (auth()->user()->hasPermission('read_notifications'))
             <li {{ request()->route()->getName() === 'admin.notifications.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
@@ -150,20 +142,40 @@
                         </a>
                     </li>
                     @endif
-                    <li>
-                        <a href="data-list-view.html">
-                            <i class="feather icon-circle"></i>
-                            <span class="menu-item">List View</span>
+                    @if (auth()->user()->hasPermission('read_sliders'))
+                    <li {{ request()->route()->getName() === 'admin.sliders.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.sliders.index') }}" class="nav-link">
+                            <i class="feather icon-sliders"></i>
+                            <span class="title">@lang('admin.sliders')</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
             @if (auth()->user()->hasPermission('read_users'))
-            <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.users.index') }}" class="nav-link">
+            <li class="nav-item">
+                <a href="#">
                     <i class="feather icon-users"></i>
-                    <span class="title">@lang('admin.users_management')</span>
+                    <span class="menu-title">@lang('admin.users')</span>
                 </a>
+                <ul class="menu-content">
+                    @if (auth()->user()->hasPermission('read_users'))
+                    <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.users.index') }}" class="nav-link">
+                            <i class="feather icon-users"></i>
+                            <span class="title">@lang('admin.users_management')</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (auth()->user()->hasPermission('read_roles'))
+                    <li {{ request()->route()->getName() === 'admin.roles.index' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.roles.index') }}" class="nav-link">
+                            <i class="fa fa-sliders"></i>
+                            <span class="title">@lang('admin.roles')</span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
             </li>
             @endif
             <li class="nav-item">
@@ -180,14 +192,6 @@
                     </li>
                 </ul>
             </li>
-            @if (auth()->user()->hasPermission('read_roles'))
-            <li {{ request()->route()->getName() === 'admin.roles.index' ? ' class=active' : '' }}>
-                <a href="{{ route('admin.roles.index') }}" class="nav-link">
-                    <i class="fa fa-sliders"></i>
-                    <span class="title">@lang('admin.roles')</span>
-                </a>
-            </li>
-            @endif
             @if (auth()->user()->hasPermission('read_settings'))
             <li {{ request()->route()->getName() === 'admin.settings.index' ? ' class=active' : '' }}>
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">

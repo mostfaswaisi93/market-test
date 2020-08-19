@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return asset('uploads/user_images/' . $this->image);
     }
+
+    public function sliders()
+    {
+        return $this->hasMany(Slider::class);
+    }
 }

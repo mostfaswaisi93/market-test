@@ -19,10 +19,10 @@ class ContactController extends Controller
                     return $data->customer->name;
                 })
                 ->addColumn('action', function ($data) {
-                    if (auth()->user()->hasPermission('show_contacts')) {
-                        $button = '<a type="button" title="Show" name="show" id="' . $data->id . '" class="showBtn btn btn-sm btn-icon"><i class="fa fa-folder-open"></i></a>';
+                    if (auth()->user()->hasPermission('read_contacts')) {
+                        $button = '<a type="button" title="Show" name="show" href="contacts/' . $data->id . '" class="show btn btn-sm btn-icon"><i class="fa fa-folder-open"></i></a>';
                     } else {
-                        $button = '<a type="button" title="Show" name="show" id="' . $data->id . '" class="showBtn btn btn-sm btn-icon"><i class="fa fa-folder-open"></i></a>';
+                        $button = '<a type="button" title="Show" name="show" id="' . $data->id . '" class="show btn btn-sm btn-icon disabled"><i class="fa fa-folder-open"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
                     if (auth()->user()->hasPermission('delete_contacts')) {
@@ -52,13 +52,10 @@ class ContactController extends Controller
         return redirect()->route('admin.contacts.index');
     }
 
-    public function show($id)
+    public function show(Contact $contact)
     {
-        if (request()->ajax()) {
-            $data   = Contact::with('customer')->findOrFail($id);
-            $data->customer->name;
-            return response()->json(['data' => $data]);
-        }
+        $contacts = Contact::get();
+        return view('admin.contacts.show', compact('contacts', 'contact'));
     }
 
     public function destroy($id)

@@ -34,15 +34,20 @@ Route::group(
             Route::get('units/destroy/{id}', 'UnitController@destroy');
             Route::post('units/updateStatus/{id}', 'UnitController@updateStatus');
 
-            Route::resource('contacts', 'ContactController')->except(['show']);
+            Route::resource('contacts', 'ContactController');
             Route::get('contacts/destroy/{id}', 'ContactController@destroy');
-            Route::post('contacts/updateStatus/{id}', 'ContactController@updateStatus');
 
             Route::resource('customers', 'CustomerController')->except(['show']);
+            Route::get('customers/destroy/{id}', 'CustomerController@destroy');
+
             Route::resource('locations', 'LocationController')->except(['show']);
+            Route::get('locations/destroy/{id}', 'LocationController@destroy');
+
+            Route::resource('sliders', 'SliderController')->except(['show']);
+            Route::get('sliders/destroy/{id}', 'SliderController@destroy');
+
             Route::resource('notifications', 'NotificationController')->except(['show']);
             Route::resource('orders', 'OrderController')->except(['show']);
-            Route::resource('languages', 'LanguageController')->except(['show']);
 
             Route::get('settings', 'SettingController@index')->name('settings.index');
             Route::post('settings', 'SettingController@update')->name('settings.update');

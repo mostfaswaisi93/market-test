@@ -6,13 +6,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.categories_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.sliders')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.categories_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.sliders')</li>
                     </ol>
                 </div>
             </div>
@@ -24,13 +24,13 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.categories_management')</h4>
+                <h4 class="card-title">@lang('admin.sliders')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
                     <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_categories'))
-                        <a href="{{ route('admin.categories.create') }}">
+                        @if (auth()->user()->hasPermission('create_sliders'))
+                        <a href="{{ route('admin.sliders.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
                                 @lang('admin.create_category')
@@ -50,7 +50,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.name')</th>
+                                    <th>@lang('admin.text')</th>
                                     <th>@lang('admin.created_at')</th>
                                     <th>@lang('admin.action')</th>
                                 </tr>
@@ -76,7 +76,7 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.categories.index') }}",
+                url: "{{ route('admin.sliders.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {
