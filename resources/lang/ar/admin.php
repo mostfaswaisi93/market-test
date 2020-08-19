@@ -47,6 +47,7 @@ return [
     'client_name'               => 'اسم الزبون',
     'choose_client'             => 'اختر زبون',
     'phone'                     => 'التلفون',
+    'mobile'                    => 'الهاتف',
     'address'                   => 'العنوان',
     'previous_orders'           => 'الطلبات السابقة',
 
@@ -55,6 +56,7 @@ return [
 
     'create_user'               => 'إضافة مستخدم جديد',
     'create_category'           => 'إضافة قسم جديد',
+    'create_subcategory'        => 'إضافة قسم فرعي جديد',
     'create_brand'              => 'إضافة علامة تجارية جديدة',
     'create_item'               => 'إضافة صنف جديد',
     'create_unit'               => 'إضافة وحدة جديدة',
@@ -65,6 +67,7 @@ return [
     'create_language'           => 'إضافة لغة جديدة',
     'edit_user'                 => 'تعديل مستخدم',
     'edit_category'             => 'تعديل قسم',
+    'edit_subcategory'             => 'تعديل قسم فرعي',
     'edit_brand'                => 'تعديل علامة تجارية',
     'edit_item'                 => 'تعديل صنف',
     'edit_unit'                 => 'تعديل وحدة',
@@ -80,6 +83,7 @@ return [
 
     'users_management'          => 'إدارة المستخدمين',
     'categories_management'     => 'إدارة الأقسام',
+    'subcategories_management'  => 'إدارة الأقسام الفرعية',
     'brands_management'         => 'العلامات التجارية',
     'locations_management'      => 'إدارة المناطق',
     'notifications_management'  => 'إدارة التنبيهات',
@@ -126,9 +130,11 @@ return [
 
     'permissions'               => 'الصلاحيات',
     'categories'                => 'الأقسام',
+    'subcategories'             => 'الأقسام الفرعية',
     'system_constants'          => 'ثوابت النظام',
     'brands'                    => 'العلامات التجارية',
     'all_categories'            => 'كل الأقسام',
+    'all_subcategories'         => 'كل الأقسام الفرعية',
     'all_brands'                => 'كل العلامات التجارية',
     'all_countries'             => 'كل الدول',
     'all_cities'                => 'كل المدن',
@@ -142,6 +148,7 @@ return [
     'items_count'               => 'عدد الأصناف',
     'related_items'             => 'الأصناف المرتبطة',
     'category'                  => 'قسم',
+    'subcategory'               => 'قسم فرعي',
     'brand'                     => 'علامة تجارية',
     'show_items'                => 'عرض الأصناف',
     'created_at'                => 'تاريخ الإنشاء',

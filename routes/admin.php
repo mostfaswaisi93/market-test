@@ -10,9 +10,9 @@ Route::group(
             Route::get('categories/destroy/{id}', 'CategoryController@destroy');
             Route::post('categories/updateStatus/{id}', 'CategoryController@updateStatus');
 
-            // Route::resource('subcategories', 'SubCategoryController')->except(['show']);
-            // Route::get('subcategories/destroy/{id}', 'SubCategoryController@destroy');
-            // Route::post('subcategories/updateStatus/{id}', 'SubCategoryController@updateStatus');
+            Route::resource('subcategories', 'SubCategoryController')->except(['show']);
+            Route::get('subcategories/destroy/{id}', 'SubCategoryController@destroy');
+            Route::post('subcategories/updateStatus/{id}', 'SubCategoryController@updateStatus');
 
             Route::resource('countries', 'CountryController')->except(['show']);
             Route::get('countries/destroy/{id}', 'CountryController@destroy');

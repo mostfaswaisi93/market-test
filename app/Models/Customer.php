@@ -11,4 +11,9 @@ class Customer extends Model
     protected $casts = [
         'phone' => 'array'
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

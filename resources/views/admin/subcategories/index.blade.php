@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.categories_management') @endsection
+@section('title') @lang('admin.subcategories_management') @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.categories_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.subcategories_management')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.categories_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.subcategories_management')</li>
                     </ol>
                 </div>
             </div>
@@ -25,22 +25,22 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.categories_management')</h4>
+                <h4 class="card-title">@lang('admin.subcategories_management')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
                     <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_categories'))
-                        <a href="{{ route('admin.categories.create') }}">
+                        @if (auth()->user()->hasPermission('create_subcategories'))
+                        <a href="{{ route('admin.subcategories.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
-                                @lang('admin.create_category')
+                                @lang('admin.create_subcategory')
                             </button>
                         </a>
                         @else
                         <a href="#">
                             <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_category')
+                                <i class="feather icon-plus"></i> @lang('admin.create_subcategory')
                             </button>
                         </a>
                         @endif
@@ -84,7 +84,7 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.categories.index') }}",
+                url: "{{ route('admin.subcategories.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {
@@ -130,7 +130,7 @@
     });
 
     $(document).on('click', '.delete', function(){
-        category_id = $(this).attr('id');
+        subcategory_id = $(this).attr('id');
         swal({
             title: "{{ trans('admin.are_sure') }}",
             type: 'warning',
@@ -142,7 +142,7 @@
         }).then(function(result){
             if(result.value){
                 $.ajax({
-                    url:"categories/destroy/" + category_id,
+                    url:"subcategories/destroy/" + subcategory_id,
                     success: function(data){
                         console.log(data);
                         $('#data-table').DataTable().ajax.reload();
@@ -154,21 +154,21 @@
     });
 
     function selectStatus(id){
-        category_id = id;
+        subcategory_id = id;
     }
 
     $(document).on('change', '#status', function(e) {
-        var status_category = $(this).find("option:selected").val();
-        console.log(status_category)
-        if(status_category == "1"){
+        var status_subcategory = $(this).find("option:selected").val();
+        console.log(status_subcategory)
+        if(status_subcategory == "1"){
             toastr.success('{{ trans('admin.status_changed') }}!');
-        }else if(status_category == "0"){
+        }else if(status_subcategory == "0"){
             toastr.success('{{ trans('admin.status_changed') }}!');
         } else {
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"categories/updateStatus/"+category_id+"?active="+status_category,
+            url:"subcategories/updateStatus/"+subcategory_id+"?active="+status_subcategory,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },

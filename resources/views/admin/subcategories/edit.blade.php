@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.edit_category') @endsection
+@section('title') @lang('admin.edit_subcategory') @endsection
 
 @section('content')
 
@@ -7,16 +7,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_category')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_subcategory')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.categories.index') }}">@lang('admin.categories_management')</a>
+                            <a href="{{ route('admin.subcategories.index') }}">@lang('admin.subcategories_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.edit_category')</li>
+                        <li class="breadcrumb-item active">@lang('admin.edit_subcategory')</li>
                     </ol>
                 </div>
             </div>
@@ -32,13 +32,13 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit_category') - {{ $category->name }}
+                            @lang('admin.edit_subcategory') - {{ $subcategory->name }}
                         </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.categories.update', $category->id) }}" method="post"
+                            <form action="{{ route('admin.subcategories.update', $subcategory->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -48,7 +48,7 @@
                                         <div class="form-group">
                                             <label>@lang('admin.' . $locale . '.name')</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
-                                                value="{{ $category->translate($locale)->name }}"
+                                                value="{{ $subcategory->translate($locale)->name }}"
                                                 placeholder="@lang('admin.' . $locale . '.name')">
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ $category->image_path_ar }}" alt="users avatar"
+                                                <img src="{{ $subcategory->image_path_ar }}" alt="users avatar"
                                                     class="users-avatar-shadow rounded image_ar img-thumbnail image-ar-preview"
                                                     height="70" width="70">
                                             </a>
@@ -76,7 +76,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ $category->image_path_en }}" alt="users avatar"
+                                                <img src="{{ $subcategory->image_path_en }}" alt="users avatar"
                                                     class="users-avatar-shadow rounded image_en img-thumbnail image-en-preview"
                                                     height="70" width="70">
                                             </a>
@@ -96,7 +96,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ $category->icon_path }}" alt="users avatar"
+                                                <img src="{{ $subcategory->icon_path }}" alt="users avatar"
                                                     class="users-avatar-shadow rounded icon img-thumbnail icon-preview"
                                                     height="50" width="50">
                                             </a>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.create_category') @endsection
+@section('title') @lang('admin.create_subcategory') @endsection
 
 @section('content')
 
@@ -7,16 +7,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_category')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_subcategory')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.categories.index') }}">@lang('admin.categories_management')</a>
+                            <a href="{{ route('admin.subcategories.index') }}">@lang('admin.subcategories_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_category')</li>
+                        <li class="breadcrumb-item active">@lang('admin.create_subcategory')</li>
                     </ol>
                 </div>
             </div>
@@ -32,13 +32,13 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-plus-square mr-25"></i>
-                            @lang('admin.create_category')
+                            @lang('admin.create_subcategory')
                         </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.categories.store') }}" method="post"
+                            <form action="{{ route('admin.subcategories.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
@@ -56,7 +56,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ asset('uploads/category_images/ar/default.png') }}"
+                                                <img src="{{ asset('uploads/subcategory_images/ar/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image_ar img-thumbnail image-ar-preview"
                                                     height="70" width="70">
@@ -77,7 +77,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ asset('uploads/category_images/en/default.png') }}"
+                                                <img src="{{ asset('uploads/subcategory_images/en/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image_en img-thumbnail image-en-preview"
                                                     height="70" width="70">
@@ -98,7 +98,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ asset('uploads/category_icons/default.png') }}"
+                                                <img src="{{ asset('uploads/subcategory_icons/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded icon img-thumbnail icon-preview"
                                                     height="50" width="50">
