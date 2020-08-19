@@ -41,7 +41,7 @@
                                 <div class="col-md-3 col-12">
                                     <div class="form-group">
                                         <label class="col-6"><b>@lang('admin.customer')</b></label>
-                                        <span class="col-6">{{ $contact->customer->name }}</span>
+                                        <span class="col-6">{{ $contact->customer->first_name }}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-12">

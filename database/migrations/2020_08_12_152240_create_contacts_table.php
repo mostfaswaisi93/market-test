@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('title');
             $table->integer('customer_id')->unsigned()->onDelete('cascade');
             $table->string('mobile');
-            $table->integer('active')->default(0);
+            $table->integer('readable')->default(0);
             $table->text('message');
             $table->timestamps();
             $table->softDeletes();

@@ -49,14 +49,74 @@
                             @endforeach
                         </div>
                     </li>
-                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
-                            data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span
-                                class="badge badge-pill badge-primary badge-up">2</span></a>
+                    {{-- Start Mails --}}
+                    <li class="dropdown dropdown-notification nav-item">
+                        <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+                            <i class="ficon feather icon-mail"></i>
+                            @php
+                            $countContact = getContact('count');
+                            @endphp
+                            @if($countContact > 0)
+                            <span class="badge badge-pill badge-primary badge-up">{{ $countContact }}</span>
+                            @endif
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
                                 <div class="dropdown-header m-0 p-2">
-                                    <h3 class="white">2 New</h3><span class="notification-title">App
-                                        Notifications</span>
+                                    @if($countContact > 0)
+                                    <h3 class="white">{{ getContact('count') }} @lang('admin.new_mail')</h3>
+                                    @else
+                                    <h3 class="white">0 @lang('admin.new_mail')</h3>
+                                    @endif
+                                </div>
+                            </li>
+                            @forelse(getContact() as $message)
+                            <li class="scrollable-container media-list">
+                            <a class="d-flex justify-content-between" href="{{ route('admin.contacts.show', $message->id) }}">
+                                    <div class="media d-flex align-items-start">
+                                        <div class="media-left"><i
+                                                class="feather icon-mail font-medium-5 primary"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="primary media-heading"> {{ $message->title }}</h6>
+                                            <small
+                                                class="notification-text"> {{ Str::limit($message->message, 100) }}</small>
+                                        </div>
+                                        <small>
+                                            <time class="media-meta">
+                                                {{ $message->created_at->diffForHumans() }}
+                                            </time>
+                                        </small>
+                                    </div>
+                                </a>
+                            </li>
+                            @empty
+                            <li class="scrollable-container media-list">
+                                <a class="d-flex justify-content-between" href="javascript:void(0)">
+                                    <div class="media d-flex align-items-start">
+                                        @lang('admin.no_messages')
+                                    </div>
+                                </a>
+                            </li>
+                            @endforelse
+                            <li class="dropdown-menu-footer">
+                                <a class="dropdown-item p-1 text-center" href="{{ route('admin.contacts.index') }}">
+                                    @lang('admin.rall_messages')
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- End Mails --}}
+                    {{-- Start Notifications --}}
+                    <li class="dropdown dropdown-notification nav-item">
+                        <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+                            <i class="ficon feather icon-bell"></i>
+                            <span class="badge badge-pill badge-primary badge-up">2</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                            <li class="dropdown-menu-header">
+                                <div class="dropdown-header m-0 p-2">
+                                    <h3 class="white">2 New</h3>
+                                    <span class="notification-title">App Notifications</span>
                                 </div>
                             </li>
                             <li class="scrollable-container media-list">
@@ -72,23 +132,12 @@
                                                 ago</time></small>
                                     </div>
                                 </a>
-                                <a class="d-flex justify-content-between" href="javascript:void(0)">
-                                    <div class="media d-flex align-items-start">
-                                        <div class="media-left"><i
-                                                class="feather icon-download-cloud font-medium-5 success"></i></div>
-                                        <div class="media-body">
-                                            <h6 class="success media-heading red darken-1">99% Server load</h6><small
-                                                class="notification-text">You got new order of goods.</small>
-                                        </div><small>
-                                            <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">5 hour
-                                                ago</time></small>
-                                    </div>
-                                </a>
                             </li>
                             <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center"
                                     href="javascript:void(0)">Read all notifications</a></li>
                         </ul>
                     </li>
+                    {{-- End Notifications --}}
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">

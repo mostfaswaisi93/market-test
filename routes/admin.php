@@ -48,7 +48,12 @@ Route::group(
             Route::post('sliders/updateStatus/{id}', 'SliderController@updateStatus');
 
             Route::resource('notifications', 'NotificationController')->except(['show']);
+            Route::get('notifications/destroy/{id}', 'NotificationController@destroy');
+            Route::post('notifications/updateStatus/{id}', 'NotificationController@updateStatus');
+
             Route::resource('orders', 'OrderController')->except(['show']);
+            Route::get('orders/destroy/{id}', 'OrderController@destroy');
+            Route::post('orders/updateStatus/{id}', 'OrderController@updateStatus');
 
             Route::get('settings', 'SettingController@index')->name('settings.index');
             Route::post('settings', 'SettingController@update')->name('settings.update');

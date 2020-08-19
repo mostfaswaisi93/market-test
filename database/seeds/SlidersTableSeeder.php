@@ -9,13 +9,13 @@ class SlidersTableSeeder extends Seeder
     {
         Slider::create([
             'ar' => ['text' => 'Text One Ar'],
-            'en' => ['name' => 'Text One En'],
+            'en' => ['text' => 'Text One En'],
             'user_id'       => 1
         ]);
 
         Slider::create([
             'ar' => ['text' => 'Text Two Ar'],
-            'en' => ['name' => 'Text Two En'],
+            'en' => ['text' => 'Text Two En'],
             'user_id'       => 2
         ]);
     }

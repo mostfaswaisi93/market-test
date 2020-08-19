@@ -16,7 +16,7 @@ class ContactController extends Controller
         if (request()->ajax()) {
             return datatables()->of($contacts)
                 ->addColumn('customer', function ($data) {
-                    return $data->customer->name;
+                    return $data->customer->first_name;
                 })
                 ->addColumn('action', function ($data) {
                     if (auth()->user()->hasPermission('read_contacts')) {
@@ -55,6 +55,7 @@ class ContactController extends Controller
     public function show(Contact $contact)
     {
         $contacts = Contact::get();
+        $contact->update(['readable' => 1]);
         return view('admin.contacts.show', compact('contacts', 'contact'));
     }
 

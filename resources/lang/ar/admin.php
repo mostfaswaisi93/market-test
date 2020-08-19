@@ -174,10 +174,15 @@ return [
     'all_rights'                => 'جميع الحقوق محفوظة',
     'sales_graph'               => 'مخطط المبيعات',
     'new_order'                 => 'طلب جديد',
+    'new_mail'                  => 'رسالة جديدة',
     'save_print'                => 'حفظ وطباعة',
     'discount'                  => 'الخصم',
     'after_discount'            => 'المبلغ بعد الخصم',
     'amount_paid'               => 'المبلغ المدفوع',
+
+    'no_messages'               => 'لا يوجد رسائل جديدة',
+    'rall_messages'             => 'قراءة كل الرسائل',
+    'rall_notifications'        => 'قراءة كل الاشعارات',
 
     'ar'                        => [
         'name'          => 'الاسم باللغة العربية',
