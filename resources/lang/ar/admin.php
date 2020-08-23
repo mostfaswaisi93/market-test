@@ -123,7 +123,6 @@ return [
     'icon'                      => 'أيقونة',
     'file_upload'               => 'استعراض',
     'icon_upload'               => 'إضافة أيقونة',
-    'icon_upload'               => 'إضافة أيقونة',
     'module'                    => 'القيمة',
     'action'                    => 'خيارات',
 
